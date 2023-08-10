@@ -21,7 +21,7 @@ export default function Home(props: { menuData: string[],userData:{id:string,hav
       return ()=>{
         clearInterval(interval)
       }},[])
-  const {id,role}=props;
+  const {role,id}=props;
   const  handleLogout = async() => {
    await axios.get('/api/logout')
     .then(list=>console.log(list.data))
