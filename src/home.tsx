@@ -35,7 +35,7 @@ export default function Home(props: { menuData: string[],userData:{id:string,hav
     setAnimate("");
   }
   function buttonClick(e: any) {
-    e.target.style.backgroundColor = "#000000";
+    e.target.style.backgroundColor = "#e6dcdcf5";
     setTimeout(() => {
       e.target.style.backgroundColor = "white";
     }, 100);
