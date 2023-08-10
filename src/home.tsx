@@ -25,7 +25,7 @@ export default function Home(props: { menuData: string[],userData:{id:string,hav
   const  handleLogout = async() => {
    await axios.get('/api/logout')
     .then(list=>console.log(list.data))
-   localStorage.clear()
+  //  localStorage.clear()
    router.push('/login')
   };
   function mouseOverfn(e: any) {

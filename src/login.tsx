@@ -36,9 +36,9 @@ export default function Login() {
     axios.post('/api/login',{id,role:role})
     .then((val)=>{
         if(val.data.valid){
-          localStorage.setItem('isLoggedIn','true')
-          localStorage.setItem('id',id)
-          localStorage.setItem('role',role)
+          // localStorage.setItem('isLoggedIn','true')
+          // localStorage.setItem('id',id)
+          // localStorage.setItem('role',role)
           role==='employee'&&router.push({pathname:'/home',query:{id:id}},'/home')
           role==='admin'&& (key==='6789'&&(router.push('/admin')))
         }else{
