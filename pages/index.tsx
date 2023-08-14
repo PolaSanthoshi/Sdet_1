@@ -9,7 +9,7 @@ export default function Home() {
    
   )
 }
-export function getServerSideProps(){
+export function getInitialProps(){
   return {
     redirect: {
       destination: '/login',

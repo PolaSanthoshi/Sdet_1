@@ -3,7 +3,7 @@ import axios from "axios";
 export default function adminn(props:{items:string[],count:number,id:string}){
     return <Admin data={props.items} count={props.count} id={props.id}/>
 }
-export async function getServerSideProps(context:any){
+export async function getInitialProps(context:any){
      const {parseCookies}=require('nookies')
      const {id,role,isLoggedIn}=parseCookies(context)
     const response=await fetch("http://localhost:3000/api/menu")
