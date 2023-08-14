@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { json } from 'stream/consumers';
 export default function Login() {
   const [role, setRole] = useState('employee');
   const [id, setId] = useState('');
@@ -42,8 +43,9 @@ export default function Login() {
     //         alert('Invalid id')
     //     }
     // })
-    axios.get('.netlify/functions/login')
-    .then((val)=>console.log(val.data))
+   fetch('.netlify/functions/login')
+    .then(response=>response.json())
+    .then(val=>val.data)
   };
   const isLoginDisabled =
    (id === '' || id.length !== 4)
