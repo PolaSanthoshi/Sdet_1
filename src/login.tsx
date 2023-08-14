@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { json } from 'stream/consumers';
 export default function Login() {
   const [role, setRole] = useState('employee');
   const [id, setId] = useState('');

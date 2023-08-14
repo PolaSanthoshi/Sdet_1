@@ -1,4 +1,3 @@
-// import {menuData} from "../menuData";
 const menuData=[];
 export default function handler(req,res){
     

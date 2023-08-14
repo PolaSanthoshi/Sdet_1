@@ -1,4 +1,4 @@
-import { serialize } from "cookie";
+
 import { parseCookies, setCookie }  from 'nookies'
 export default function handler(req,res){
     const users=[{id:1000,role:'employee'},{id:1001,role:'employee'},
@@ -8,15 +8,6 @@ export default function handler(req,res){
   
     const validUser=users.find((each)=>id==each.id&&each.role===role)
     if(validUser){
-        // const cookie_options={
-        //     httpOnly:true,
-        //     path:'/'
-        // }
-        // const isLoggedInCookie = serialize('isLoggedIn', 'true', cookie_options);
-        // const idCookie = serialize('id', id, cookie_options);
-        // const combinedCookies = [idCookie, isLoggedInCookie].join('; ');
-    
-        // res.setHeader('Set-Cookie', combinedCookies );
         setCookie({res},'isLoggedIn',true,{
             path:'/',
             httpOnly:true

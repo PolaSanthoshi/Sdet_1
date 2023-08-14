@@ -55,7 +55,6 @@ export function getServerSideProps(context:any){
           return {
               props:{value:'Invalid ID'}
           }
-     axios.get('.netlify/functions/login')
-     .then((val)=>console.log(val.data))
+   
 
 }
