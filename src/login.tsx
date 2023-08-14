@@ -43,7 +43,7 @@ export default function Login() {
     //         alert('Invalid id')
     //     }
     // })
-   fetch('.netlify/functions/login')
+   fetch('https://64da0cb4555a762edf59c0e1--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/login')
     .then(response=>response.json())
     .then(val=>val.data)
   };
