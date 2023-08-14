@@ -34,7 +34,7 @@ export default function login(){
     <Login/>
   </div>
 }
-export function getInitialProps(context:any){
+export function getServerSideProps(context:any){
   const {parseCookies}=require('nookies')
      const {isLoggedIn,id,role}=parseCookies(context);
      if(isLoggedIn && role=='employee'){

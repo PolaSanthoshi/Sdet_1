@@ -9,7 +9,7 @@ export default function Homee(props:{menuData:string[],userData:{id:string,haveL
      <Home menuData={props.menuData} userData={props.userData} id={props.id} role={props.role}/>
     </div>
 }
-export async function getInitialProps(context:any){
+export async function getServerSideProps(context:any){
     
      // const {id,role}=context.query;
      const {parseCookies}=require('nookies')
