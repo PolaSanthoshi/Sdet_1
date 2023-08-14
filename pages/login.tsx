@@ -3,6 +3,7 @@ import LoginFunc from "./auth";
 import { useRouter } from "next/router";
 import Login from "@/src/login"
 import { parseCookies } from "nookies";
+import axios from "axios";
 export default function login(){
   //   const router=useRouter();
   //   const [valid,setValid]=useState(false);  
@@ -54,5 +55,7 @@ export function getServerSideProps(context:any){
           return {
               props:{value:'Invalid ID'}
           }
+     axios.get('.netlify/functions/login')
+     .then((val)=>console.log(val.data))
 
 }

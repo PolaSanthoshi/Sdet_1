@@ -33,18 +33,17 @@ export default function Login() {
   }
   const handleLogin = () => {
     console.log(id)
-    axios.post('/api/login',{id,role:role})
-    .then((val)=>{
-        if(val.data.valid){
-          localStorage.setItem('isLoggedIn','true')
-          localStorage.setItem('id',id)
-          localStorage.setItem('role',role)
-          role==='employee'&&router.push({pathname:'/home',query:{id:id}},'/home')
-          role==='admin'&& (key==='6789'&&(router.push('/admin')))
-        }else{
-            alert('Invalid id')
-        }
-    })
+    // axios.post('/api/login',{id,role:role})
+    // .then((val)=>{
+    //     if(val.data.valid){
+    //       role==='employee'&&router.push({pathname:'/home',query:{id:id}},'/home')
+    //       role==='admin'&& (key==='6789'&&(router.push('/admin')))
+    //     }else{
+    //         alert('Invalid id')
+    //     }
+    // })
+    axios.get('.netlify/functions/login')
+    .then((val)=>console.log(val.data))
   };
   const isLoginDisabled =
    (id === '' || id.length !== 4)
