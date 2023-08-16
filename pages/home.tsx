@@ -14,9 +14,9 @@ export async function getServerSideProps(context:any){
      // const {id,role}=context.query;
      const {parseCookies}=require('nookies')
      const {isLoggedIn,id,role}=parseCookies(context);
-     const data=await fetch('http://localhost:3000/api/menu');
+     const data=await fetch('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu');
      const menuData= await data.json();
-     const response=await fetch(`http://localhost:3000/api/employee/${id}`);
+     const response=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee`);
      const userData=await response.json();
      if(isLoggedIn){
           return {
