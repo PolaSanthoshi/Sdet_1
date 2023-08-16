@@ -25,7 +25,7 @@ if(validUser){
 }else{
         return {
 			statusCode:200,
-			body:JSON.stringify({valid:false,isLoggedIn:false})
+			body:JSON.stringify({valid:false,isLoggedIn:false,validUser})
 		}
 }
 	
