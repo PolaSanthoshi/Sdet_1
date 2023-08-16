@@ -20,7 +20,7 @@ if(validUser){
 })
         return {
 			statusCode:200,
-			body:JSON.stringify({valid:true,isLoggedIn:true})
+			body:JSON.stringify({valid:true,isLoggedIn:true,event})
 		}
 }else{
         return {
