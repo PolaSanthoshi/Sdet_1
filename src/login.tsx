@@ -42,7 +42,7 @@ export default function Login() {
     //         alert('Invalid id')
     //     }
     // })
-  axios.get('.netlify/functions/loginApi')
+  axios.post('.netlify/functions/loginApi',{id,role})
     .then(response=>console.log(response.data))
     .catch(k=>console.log('error'))
   };
