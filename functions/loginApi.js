@@ -1,4 +1,5 @@
 exports.handler = async (event, context) => {
+	console.log("api was called")
 	try { // Perform your API logic here
 	  const user = { id: 1, name: 'John' };
 	  return {
