@@ -1,15 +1,20 @@
 const menuData=[];
-export default function handler(event){
+export default function handler(event,context){
     
-    switch (req.method){
+    switch (event.httpMethod){
         case 'POST':
             menuData.length=0
-            const {menu}=req.body
+            const {menu}=JSON.parse(event.body)
             menu.forEach((element)=>menuData.push(element))
-            res.status(200).json(menu)
+            return{
+                statusCode:200,
+                body:JSON.stringify(menu)
+            }
             break
         default:
-            
-            res.status(200).json(menuData)
+            return{
+                statusCode:200,
+                body:JSON.stringify(menuData)
+            }
     }
 }
