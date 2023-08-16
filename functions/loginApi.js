@@ -22,7 +22,7 @@ if(y==90){
 })
         return {
 			statusCode:200,
-			body:JSON.stringify({valid:true,isLoggedIn:true,y})
+			body:JSON.stringify({valid:true,isLoggedIn:true,validUser})
 		}
 }else{
         return {
