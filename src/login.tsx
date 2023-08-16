@@ -42,10 +42,9 @@ export default function Login() {
     //         alert('Invalid id')
     //     }
     // })
-  axios.get('/.netlify/functions/loginApi')
+  axios.get('/functions/loginApi')
     .then(response=>console.log(response.data))
     .catch(k=>console.log('error'))
-   
   };
   const isLoginDisabled =
    (id === '' || id.length !== 4)
