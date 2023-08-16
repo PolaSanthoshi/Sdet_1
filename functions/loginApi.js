@@ -4,7 +4,7 @@ exports.handler = async (event, context) => {
 	  const user = { id: 1, name: 'John' };
 	  return {
 		statusCode: 200,
-		body: JSON.stringify({body:event.body,path:event.path,event}),
+		body: JSON.stringify({body:event.body,url:event.url,event}),
 	  };
 	} catch (error) {
 	  return {
