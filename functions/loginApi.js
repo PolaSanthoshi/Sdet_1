@@ -5,9 +5,8 @@ const users=[{id:1000,role:'employee'},{id:1001,role:'employee'},
 const {id,role}=event.body;
 const {rawUrl}=event;
 console.log(id,role)
-const validUser=users.find((each)=>id==each.id&&each.role===role)
-const y=90;
-if(y==90){
+const validUser=users.findIndex((each)=>id==each.id&&each.role===role)
+if(validUser>=0){
         setCookie({rawUrl},'isLoggedIn',true,{
         path:'/',
         httpOnly:true
@@ -22,7 +21,7 @@ if(y==90){
 })
         return {
 			statusCode:200,
-			body:JSON.stringify({valid:true,isLoggedIn:true,validUser})
+			body:JSON.stringify({valid:true,isLoggedIn:true,validUser:validUser})
 		}
 }else{
         return {
