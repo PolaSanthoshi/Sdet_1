@@ -5,7 +5,7 @@ const users=[{id:1000,role:'employee'},{id:1001,role:'employee'},
 const {id,role}=event.body;
 const {rawUrl}=event;
 console.log(id,role)
-const validUser=users.findIndex((each)=>id==each.id&&each.role===role)
+const validUser=users.findIndex((each)=>id==each.id&&each.role==role)
 if(validUser>=0){
         setCookie({rawUrl},'isLoggedIn',true,{
         path:'/',
