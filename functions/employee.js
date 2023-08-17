@@ -17,7 +17,7 @@ exports.handler=async(event,context)=>{
                
                return{
                   statuscode:200,
-                  body:JSON.stringify({userData,x:event.queryStringParameters})
+                  body:JSON.stringify({userData})
                }
         }
            case 'GET':    
