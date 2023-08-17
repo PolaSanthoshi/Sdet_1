@@ -8,13 +8,13 @@ exports.handler=async(event,context)=>{
             menu.forEach((element)=>menuData.push(element))
             return{
                 statusCode:200,
-                body:JSON.stringify({menu,event})
+                body:JSON.stringify(menu)
             }
             
         case 'GET':
             return{
                 statusCode:200,
-                body:JSON.stringify({menuData})
+                body:JSON.stringify(menuData)
             }
     }
 }
