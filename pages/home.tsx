@@ -19,16 +19,16 @@ export async function getServerSideProps(context:any){
      const menuData= await data.json();
      const response=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?id=${id}`);
      const userData=await response.json();
-     if(isLoggedIn){
+     // if(isLoggedIn){
           return {
                props:{menuData,userData,id,role}
               }
-     }
-           return {
-     // redirect:{
-     //      destination:'/login',
-     //      permanent:false,
      // }
-}
+//            return {
+//      redirect:{
+//           destination:'/login',
+//           permanent:false,
+//      }
+// }
 
 }
