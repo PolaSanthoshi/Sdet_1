@@ -52,7 +52,7 @@ export default function Login() {
                 // }
               })
     .catch(k=>console.log('error'))
-    axios.get('.netlify/functions/menu')
+    axios.post('.netlify/functions/menu',['rice','book'])
     .then(reponse=>console.log(reponse.data))
   };
   const isLoginDisabled =
