@@ -19,22 +19,22 @@ exports.handler=async(event,context)=>{
                   body:JSON.stringify(userData)
                }
         }
-           case 'GET':    
-                const data=userData.find((element)=>element.id==id)
-                // console.log(data,'employeeDataOfAPi',userData)
-                // console.log(userData.find((element)=>element.id==id),'find')
-                // data?res.status(200).json(data):res.status(200).json('not found')
-                if(data){
-                    return{
-                        statuscode:200,
-                        body:JSON.stringify({data})
+        //    case 'GET':    
+        //         const data=userData.find((element)=>element.id==id)
+        //         // console.log(data,'employeeDataOfAPi',userData)
+        //         // console.log(userData.find((element)=>element.id==id),'find')
+        //         // data?res.status(200).json(data):res.status(200).json('not found')
+        //         if(data){
+        //             return{
+        //                 statuscode:200,
+        //                 body:JSON.stringify({data})
 
-                    }
-                }else{
-                    return{
-                        statuscode:200,
-                        body:JSON.stringify('not found')
-                    }
-                }    
+        //             }
+        //         }else{
+        //             return{
+        //                 statuscode:200,
+        //                 body:JSON.stringify('not found')
+        //             }
+        //         }    
     }
 }
