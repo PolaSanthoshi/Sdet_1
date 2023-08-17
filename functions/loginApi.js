@@ -4,12 +4,10 @@ const users=[{id:1000,role:'employee'},{id:1001,role:'employee'},
 	{id:1002,role:'employee'},{id:1003,role:'employee'},{id:1004,role:'admin'},{id:1005,role:'admin'}]
 const {id,role}=JSON.parse(event.body)
 const validUser=users.findIndex((e)=>id==e.id && e.role==role)
-const responseHeaders = {
-        "Set-Cookie": [
-          "isLoggedIn=true;  Path=/",
-          // You can add more cookies here
-        ],
-}
+const myCookie = cookie.serialize('isLoggedIn', 'true', {
+        secure: true,
+        path: '/',
+      })
 if(validUser>=0){
         setCookie({res:event},'isLoggedIn',true,{
         path:'/',
@@ -25,7 +23,9 @@ if(validUser>=0){
 })
         return {
 			statusCode:200,
-                        headers:responseHeaders,
+                        headers:{
+                                'Set-Cookie':myCookie
+                        },
 			body:JSON.stringify({valid:true,isLoggedIn:true,validUser:validUser})
 		}
 }else{
