@@ -1,4 +1,4 @@
-const menuData=[];
+const menuData=['rice','dal','soon'];
 export default function handler(event,context){
     
     switch (event.httpMethod){
@@ -8,13 +8,13 @@ export default function handler(event,context){
             menu.forEach((element)=>menuData.push(element))
             return{
                 statusCode:200,
-                body:JSON.stringify(menu)
+                body:JSON.stringify({menu})
             }
             break
         default:
             return{
                 statusCode:200,
-                body:JSON.stringify(menuData)
+                body:JSON.stringify({menuData})
             }
     }
 }
