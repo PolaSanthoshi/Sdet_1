@@ -44,12 +44,13 @@ export default function Login() {
     // })
   axios.post('.netlify/functions/loginApi',{id,role})
     .then(response=>{console.log(response.data)
-                if(response.data.valid===true){
-                  role==='employee'&&router.push('/home')
-                  role==='admin'&& (key==='6789'&&(router.push('/admin')))
-                }else{
-                  alert('Invalid id')
-                }})
+                // if(response.data.valid===true){
+                //   role==='employee'&&router.push('/home')
+                //   role==='admin'&& (key==='6789'&&(router.push('/admin')))
+                // }else{
+                //   alert('Invalid id')
+                // }
+              })
     .catch(k=>console.log('error'))
     axios.post('.netlify/functions/menu',['rice','book'])
     .then(reponse=>console.log(reponse.data))
