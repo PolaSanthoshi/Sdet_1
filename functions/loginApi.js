@@ -1,12 +1,11 @@
 import { setCookie } from "nookies";
-import {cookie} from 'cookie';
 import { serialize } from "cookie";
 exports.handler=async(event,context)=>{
 const users=[{id:1000,role:'employee'},{id:1001,role:'employee'},
 	{id:1002,role:'employee'},{id:1003,role:'employee'},{id:1004,role:'admin'},{id:1005,role:'admin'}]
 const {id,role}=JSON.parse(event.body)
 const validUser=users.findIndex((e)=>id==e.id && e.role==role)
-const myCookie = cookie.serialize('isLoggedIn', 'true', {
+const myCookie = serialize('isLoggedIn', 'true', {
         secure: true,
         path: '/',
       })
