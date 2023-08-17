@@ -4,14 +4,14 @@ exports.handler=async(event,context)=>{
     switch (event.httpMethod){
         case 'POST':
             menuData.length=0
-            const {menu}=JSON.parse(event.body)
+            const menu=JSON.parse(event.body)
             menu.forEach((element)=>menuData.push(element))
             return{
                 statusCode:200,
-                body:JSON.stringify({menu})
+                body:JSON.stringify({menu,event})
             }
-            break
-        default:
+            
+        case 'GET':
             return{
                 statusCode:200,
                 body:JSON.stringify({menuData})

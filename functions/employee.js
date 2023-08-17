@@ -2,7 +2,7 @@ import { userAgent } from "next/server";
 import { test } from "node:test";
 
 export const userData=[];
-export default function employeeData(event,context){
+exports.handler=(event,context)=>{
     const id=event.queryStringParameters.id;
     const val=JSON.parse(event.body.val)
         switch(event.httpMethod){
