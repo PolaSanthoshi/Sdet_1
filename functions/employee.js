@@ -1,5 +1,3 @@
-import { userAgent } from "next/server";
-import { test } from "node:test";
 
 export const userData=[];
 exports.handler=async(event,context)=>{
@@ -21,16 +19,15 @@ exports.handler=async(event,context)=>{
                   body:JSON.stringify(userData)
                }
         }
-            default:
-               
+           case 'GET':    
                 const data=userData.find((element)=>element.id==id)
                 // console.log(data,'employeeDataOfAPi',userData)
                 // console.log(userData.find((element)=>element.id==id),'find')
-                data?res.status(200).json(data):res.status(200).json('not found')
+                // data?res.status(200).json(data):res.status(200).json('not found')
                 if(data){
                     return{
                         statuscode:200,
-                        body:JSON.stringify(userData)
+                        body:JSON.stringify({data})
 
                     }
                 }else{
