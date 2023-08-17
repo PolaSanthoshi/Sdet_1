@@ -56,7 +56,7 @@ export default function Login() {
     .then(reponse=>console.log(reponse.data))
   };
   axios.post(`.netlify/functions/id=${id}`,{val:"yes"})
-  .then(response=>response.data)
+  .then(response=>console.log(response.data))
   const isLoginDisabled =
    (id === '' || id.length !== 4)
   return (
