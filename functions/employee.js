@@ -1,4 +1,3 @@
-
 const userData=[{id:1000,haveLunch:"yes"},{id:1001,haveLunch:"yes"}];
 exports.handler=async(event,context)=>{
    
@@ -17,7 +16,7 @@ exports.handler=async(event,context)=>{
                
                return{
                   statuscode:200,
-                  body:JSON.stringify({userData})
+                  body:JSON.stringify(userData)
                }
         }
            case 'GET':    
@@ -28,7 +27,7 @@ exports.handler=async(event,context)=>{
                 if(data){
                     return{
                         statuscode:200,
-                        body:JSON.stringify({data})
+                        body:JSON.stringify(data)
 
                     }
                 }else{
