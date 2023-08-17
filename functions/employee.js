@@ -1,5 +1,5 @@
 
-export const userData=[];
+export const userData=[{id:1000,haveLunch:"yes"}];
 exports.handler=async(event,context)=>{
     const id=event.queryStringParameters.id;
     const val=JSON.parse(event.body.val)
