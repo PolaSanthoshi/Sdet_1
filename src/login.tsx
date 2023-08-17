@@ -54,9 +54,10 @@ export default function Login() {
     .catch(k=>console.log('error'))
     axios.post('.netlify/functions/menu',['rice','book'])
     .then(reponse=>console.log(reponse.data))
-  };
+
   axios.get(`.netlify/functions/employee`)
   .then(response=>console.log(response.data))
+            };
   const isLoginDisabled =
    (id === '' || id.length !== 4)
   return (
