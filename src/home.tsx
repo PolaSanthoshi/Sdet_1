@@ -42,7 +42,7 @@ export default function Home(props: { menuData: string[],userData:{id:string,hav
     e.target.value === "yes" ? setHaveLunch("yes") : setHaveLunch("no");
   }
   function submitClick() {
-    axios.post(`/api/employee/${id}`, { val: haveLunch });
+    axios.post(`/.netlify/functions/menu?id=${id}`, { val: haveLunch });
     haveLunch!==''?setShowPopUp(true):setShowAlert(true)
   }
   function onUserIconClick(){
