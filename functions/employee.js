@@ -7,12 +7,12 @@ exports.handler=async(event,context)=>{
         //     case 'POST':{
         //        !userData.id?userData.id=id:''
         //         userData.haveLunch=val;
-                const x=userData.findIndex((element)=>element.id==id);
-                if(x==-1){
-                    userData.push({id,haveLunch:val}) 
-                }else{
-                    userData[x].haveLunch=val
-                }
+                // const x=userData.findIndex((element)=>element.id==id);
+                // if(x==-1){
+                //     userData.push({id,haveLunch:val}) 
+                // }else{
+                //     userData[x].haveLunch=val
+                // }
                
                return{
                   statuscode:200,
