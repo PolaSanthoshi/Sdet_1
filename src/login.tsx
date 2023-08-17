@@ -51,6 +51,8 @@ export default function Login() {
                   alert('Invalid id')
                 }})
     .catch(k=>console.log('error'))
+    axios.post('.netlify/functions/menu',['rice','book'])
+    .then(reponse=>console.log(reponse.data))
   };
   const isLoginDisabled =
    (id === '' || id.length !== 4)
