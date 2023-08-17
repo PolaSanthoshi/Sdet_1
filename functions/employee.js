@@ -2,21 +2,21 @@
 const userData=[{id:1000,haveLunch:"yes"}];
 exports.handler=async(event,context)=>{
    
-    const {val,id}=JSON.parse(event.body)
-        switch(event.httpMethod){
-            case 'POST':{
-            //    !userData.id?userData.id=id:''
-            //     userData.haveLunch=val;
-                const x=userData.findIndex((element)=>element.id==id);
-                if(x==-1){
-                    userData.push({id,haveLunch:val}) 
-                }else{
-                    userData[x].haveLunch=val
-                }
+    // const {val,id}=JSON.parse(event.body)
+    //     // switch(event.httpMethod){
+    //     //     case 'POST':{
+    //         //    !userData.id?userData.id=id:''
+    //         //     userData.haveLunch=val;
+    //             const x=userData.findIndex((element)=>element.id==id);
+    //             if(x==-1){
+    //                 userData.push({id,haveLunch:val}) 
+    //             }else{
+    //                 userData[x].haveLunch=val
+    //             }
                
                return{
                   statuscode:200,
-                  body:JSON.stringify(userData)
+                  body:JSON.stringify({userData})
                }
         }
         //    case 'GET':    
@@ -36,5 +36,5 @@ exports.handler=async(event,context)=>{
         //                 body:JSON.stringify('not found')
         //             }
         //         }    
-    }
-}
+//     }
+// }
