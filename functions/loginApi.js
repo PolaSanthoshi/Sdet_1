@@ -25,12 +25,13 @@ if(validUser>=0){
 })
         return {
 			statusCode:200,
+                        headers:responseHeaders,
 			body:JSON.stringify({valid:true,isLoggedIn:true,validUser:validUser})
 		}
 }else{
         return {
 			statusCode:200,
-                        headers:responseHeaders,
+                    
 			body:JSON.stringify({valid:false,isLoggedIn:false,validUser:validUser,event:event})
 		}
 }
