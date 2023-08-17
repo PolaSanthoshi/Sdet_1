@@ -6,15 +6,15 @@ const {id,role}=JSON.parse(event.body)
 const {rawUrl}=event;
 const validUser=users.findIndex((e)=>id==e.id && e.role==role)
 if(validUser>=0){
-        setCookie({rawUrl},'isLoggedIn',true,{
+        setCookie({res:event},'isLoggedIn',true,{
         path:'/',
         httpOnly:true
 })
-         setCookie({rawUrl},'id',id,{
+         setCookie({res:event},'id',id,{
          path:'/',
          httpOnly:true
 })         
-        setCookie({rawUrl},'role',role,{
+        setCookie({res:event},'role',role,{
     	httpOnly:true,
      	path:'/'
 })
