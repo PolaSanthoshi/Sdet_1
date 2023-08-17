@@ -1,5 +1,5 @@
-const menuData=['rice','dal','soon'];
-export default function handler(event,context){
+const menuData=['rice','dal','salad'];
+exports.handler=async(event,context)=>{
     
     // switch (event.httpMethod){
     //     case 'POST':
