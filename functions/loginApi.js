@@ -6,7 +6,7 @@ const {id,role}=JSON.parse(event.body)
 const validUser=users.findIndex((e)=>id==e.id && e.role==role)
 const responseHeaders = {
         "Set-Cookie": [
-          "isLoggedIn=true;  Path=/; HttpOnly",
+          "isLoggedIn=true;  Path=/",
           // You can add more cookies here
         ],
 }
