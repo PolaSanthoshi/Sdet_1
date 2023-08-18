@@ -11,7 +11,7 @@ export async function getServerSideProps(context:any){
     const data=await fetch("https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/totalUsers")
     const value=await data.json();
     console.log(role,isLoggedIn,"noorol")
-    if(isLoggedIn&&role=='admin'){
+    if(isLoggedIn=='true'&&role=='admin'){
         return {
             props:{items:val,count:value,id}
         }  
