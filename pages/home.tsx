@@ -2,9 +2,12 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Home from "@/src/home";
 import { parseCookies } from "nookies";
-export default function Homee(props:{menuData:string[],userData:{id:string,haveLunch:string},id:string,role:string,isLoggedIn:any}){
+export default function Homee(props:{menuData:string[],userData:{id:string,haveLunch:string},id:string,role:string,cookieValue:any}){
      const router=useRouter();
-     console.log(props.isLoggedIn)
+     const {cookieValue}=props
+     console.log(cookieValue.isLoggedIn,typeof cookieValue.isLoggedIn)
+     console.log(cookieValue.id,typeof cookieValue.id)
+     console.log(cookieValue.role,typeof cookieValue.role)
      // const {id}=router.query;
   return  <div>
      <Home menuData={props.menuData} userData={props.userData} id={props.id} role={props.role}/>
@@ -22,7 +25,7 @@ export async function getServerSideProps(context:any){
      const userData=await response.json();
      if(isLoggedIn==='true'){
           return {
-               props:{menuData,userData,id,role,isLoggedIn}
+               props:{menuData,userData,id,role,cookievalue:[isLoggedIn,id,role]}
               }
      }
            return {
