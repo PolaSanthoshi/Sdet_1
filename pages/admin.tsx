@@ -6,9 +6,9 @@ export default function adminn(props:{items:string[],count:number,id:string}){
 export async function getServerSideProps(context:any){
      const {parseCookies}=require('nookies')
      const {id,role,isLoggedIn}=parseCookies(context)
-    const response=await fetch("http://localhost:3000/api/menu")
+    const response=await fetch("https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu")
     const val=await response.json();
-    const data=await fetch("http://localhost:3000/api/totalUsers")
+    const data=await fetch("https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/totalUsers")
     const value=await data.json();
     console.log(role,isLoggedIn,"noorol")
     if(isLoggedIn&&role=='admin'){
