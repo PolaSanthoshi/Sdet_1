@@ -25,7 +25,7 @@ exports.handler=async(event,context)=>{
                 // console.log(userData.find((element)=>element.id==id),'find')
                 // data?res.status(200).json(data):res.status(200).json('not found')
                 if(role==='admin'){
-                    const filteredData=data.filter((item)=>item.haveLunch==='yes')
+                    const filteredData=userData.filter((item)=>item.haveLunch==='yes')
                     return{
                       statuscode:200,
                       body:JSON.stringify(filteredData.length)
