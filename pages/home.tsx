@@ -16,9 +16,9 @@ export async function getServerSideProps(context:any){
      const {parseCookies}=require('nookies')
      const {isLoggedIn,id,role}=parseCookies(context);
      console.log(isLoggedIn,id,role)
-     const data=await fetch('http://localhost:3000/api/menu');
+     const data=await fetch('https://64df504f52534b13b36eccbb--shiny-semolina-9d28d3.netlify.app/api/menu');
      const menuData= await data.json();
-     const response=await fetch(`http://localhost:3000/api/employee/${id}`);
+     const response=await fetch(`https://64df504f52534b13b36eccbb--shiny-semolina-9d28d3.netlify.app/api/employee/${id}`);
      const userData=await response.json();
      if(1){
           return {
