@@ -1,6 +1,6 @@
 const userData=[{id:1000,haveLunch:"yes"},{id:1001,haveLunch:"yes"}];
 exports.handler=async(event,context)=>{
-   
+         const getCount=event.queryStringParameters.getCount;
          const id=event.queryStringParameters.id;
         switch(event.httpMethod){
             case 'POST':{
@@ -21,14 +21,22 @@ exports.handler=async(event,context)=>{
         }
            case 'GET':    
                 const data=userData.find((element)=>element.id==id)
+                
                 // console.log(data,'employeeDataOfAPi',userData)
                 // console.log(userData.find((element)=>element.id==id),'find')
                 // data?res.status(200).json(data):res.status(200).json('not found')
+                if(getCount){
+                      const filteredData=data.filter((item)=>item.haveLunch==='yes')
+                      return{
+                        statuscode:200,
+                        body:JSON.stringify(filteredData.length)
+                      }
+                     
+                }
                 if(data){
                     return{
                         statuscode:200,
                         body:JSON.stringify(data)
-
                     }
                 }else{
                     return{
