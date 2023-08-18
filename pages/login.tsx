@@ -38,14 +38,14 @@ export default function login(){
 export function getServerSideProps(context:any){
   const {parseCookies}=require('nookies')
      const {isLoggedIn,id,role}=parseCookies(context);
-     if(isLoggedIn && role=='employee'){
+     if(isLoggedIn==='true' && role=='employee'){
               return{
                    redirect:{
                   destination:`/home`,
                   permanent:false
               }
           } }
-     if(isLoggedIn && role=='admin'){
+     if(isLoggedIn==='true' && role=='admin'){
             return{
                  redirect:{
                 destination:`/admin`,
