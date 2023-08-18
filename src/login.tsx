@@ -43,7 +43,7 @@ export default function Login() {
     //     }
     // })
   axios.post('.netlify/functions/loginApi',{id,role})
-    .then(response=>{console.log(response.data)
+    .then(response=>{console.log(response.data,role)
                 if(response.data.valid===true){
                   role==='employee'&&router.push('/home')
                   role==='admin'&& (key==='6789'&&(router.push('/admin')))
