@@ -9,16 +9,15 @@ cookie_options={
         secure:true,
         path:'/'
 }
-const logInCookie = serialize('isLoggedIn', 'true', cookie_options)
+const logInCookie = serialize('isLoggedIn', true, cookie_options)
 const idCookie = serialize('id', id, cookie_options);
 const roleCookie = serialize('role', role, cookie_options);
-const combinedCookies = [idCookie, logInCookie,roleCookie].join('; ');
 if(validUser>=0){
 
         return {
 			statusCode:200,
                         headers:{
-                                'Set-Cookie':combinedCookies
+                                'Set-Cookie':[logInCookie,idCookie,roleCookie]
                         },
 			body:JSON.stringify({valid:true,isLoggedIn:true,validUser:validUser})
 		}
