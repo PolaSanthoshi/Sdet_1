@@ -3,6 +3,7 @@ import LoginFunc from "./auth";
 import { useRouter } from "next/router";
 import Login from "@/src/login"
 import { parseCookies } from "nookies";
+import axios from "axios";
 export default function login(){
   //   const router=useRouter();
   //   const [valid,setValid]=useState(false);  
@@ -37,14 +38,14 @@ export default function login(){
 export function getServerSideProps(context:any){
   const {parseCookies}=require('nookies')
      const {isLoggedIn,id,role}=parseCookies(context);
-     if(isLoggedIn && role=='employee'){
+     if(isLoggedIn=='true' && role=='employee'){
               return{
                    redirect:{
                   destination:`/home`,
                   permanent:false
               }
           } }
-     if(isLoggedIn && role=='admin'){
+     if(isLoggedIn==='true' && role=='admin'){
             return{
                  redirect:{
                 destination:`/admin`,
@@ -54,5 +55,6 @@ export function getServerSideProps(context:any){
           return {
               props:{value:'Invalid ID'}
           }
+   
 
 }
