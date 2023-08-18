@@ -60,7 +60,7 @@ export default function Login() {
   
   axios.post(`.netlify/functions/employee?id=${id}`,{val:"yes"})
   .then(response=>console.log(response.data))
-  axios.get(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?getCount=${true}`)
+  axios.get(`.netlify/functions/employee?getCount=${true}`)
   .then(response=>console.log(response.data))
             };
   const isLoginDisabled =
