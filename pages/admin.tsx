@@ -11,17 +11,17 @@ export async function getServerSideProps(context:any){
     const data=await fetch("https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/totalUsers")
     const value=await data.json();
     console.log(role,isLoggedIn,"noorol")
-    if(isLoggedIn=='true'&&role=='admin'){
+    // if(1){
         return {
             props:{items:val,count:value,id}
-        }  
-    }else{
-        return{
-            redirect:{
-                destination:`/login`,
-                permanent:false
-        }
-    }
+//         }  
+//     }else{
+//         return{
+//             redirect:{
+//                 destination:`/login`,
+//                 permanent:false
+//         }
+//     }
     
 }
 }
