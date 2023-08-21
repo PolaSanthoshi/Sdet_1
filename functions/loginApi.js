@@ -12,7 +12,7 @@ cookie_options={
 const logInCookie = serialize('isLoggedIn', true, cookie_options)
 const idCookie = serialize('id', id, cookie_options);
 const roleCookie = serialize('role', role, cookie_options);
-const combinedCookies = [logInCookie, idCookie,roleCookie].join('; ');
+const combinedCookies = [logInCookie, idCookie,roleCookie]
 if(validUser>=0){
 
         return {
