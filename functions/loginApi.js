@@ -28,9 +28,9 @@ if(validUser>=0){
             })
         return {
 			statusCode:200,
-                        headers:{
-                                'Set-Cookie':combinedCookies
-                        },
+                        // headers:{
+                        //         'Set-Cookie':combinedCookies
+                        // },
 			body:JSON.stringify({valid:true,isLoggedIn:true,validUser:validUser})
 		}
 }else{
