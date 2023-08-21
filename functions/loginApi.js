@@ -14,7 +14,7 @@ cookie_options={
 // const roleCookie = serialize('role', role, cookie_options);
 // const combinedCookies = [logInCookie, idCookie,roleCookie].join('; ');
 if(validUser>=0){
-        etCookie({res:event},'isLoggedIn',true,{
+        setCookie({res:event},'isLoggedIn',true,{
                 path:'/',
               
             })
