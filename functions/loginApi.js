@@ -9,17 +9,28 @@ cookie_options={
         secure:true,
         path:'/'
 }
-const logInCookie = serialize('isLoggedIn', true, cookie_options)
-const idCookie = serialize('id', id, cookie_options);
-const roleCookie = serialize('role', role, cookie_options);
-const combinedCookies = [logInCookie, idCookie,roleCookie]
+// const logInCookie = serialize('isLoggedIn', true, cookie_options)
+// const idCookie = serialize('id', id, cookie_options);
+// const roleCookie = serialize('role', role, cookie_options);
+// const combinedCookies = [logInCookie, idCookie,roleCookie].join('; ');
 if(validUser>=0){
-
+        etCookie({res:event},'isLoggedIn',true,{
+                path:'/',
+              
+            })
+            setCookie({res:event},'id',id,{
+                path:'/',
+             
+            })
+            setCookie({res:event},'role',role,{
+              
+                path:'/'
+            })
         return {
 			statusCode:200,
-                        headers:{
-                                'Set-Cookie':combinedCookies
-                        },
+                        // headers:{
+                        //         'Set-Cookie':combinedCookies
+                        // },
 			body:JSON.stringify({valid:true,isLoggedIn:true,validUser:validUser})
 		}
 }else{
