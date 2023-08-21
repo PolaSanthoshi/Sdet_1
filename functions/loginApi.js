@@ -28,16 +28,16 @@ if(validUser>=0){
             })
         return {
 			statusCode:200,
-                        // headers:{
-                        //         'Set-Cookie':combinedCookies
-                        // },
+                        headers:{
+                                'Set-Cookie':combinedCookies
+                        },
 			body:JSON.stringify({valid:true,isLoggedIn:true,validUser:validUser})
 		}
 }else{
         return {
 			statusCode:200,
                     
-			body:JSON.stringify({valid:false,isLoggedIn:false,validUser:validUser,event:event})
+			body:JSON.stringify({valid:false,isLoggedIn:false,context:context,event:event})
 		}
 }
 	
