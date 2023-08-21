@@ -9,27 +9,29 @@ cookie_options={
         secure:true,
         path:'/'
 }
-// const logInCookie = serialize('isLoggedIn', true, cookie_options)
-// const idCookie = serialize('id', id, cookie_options);
-// const roleCookie = serialize('role', role, cookie_options);
+const logInCookie = serialize('isLoggedIn', true, cookie_options)
+const idCookie = serialize('id', id, cookie_options);
+const roleCookie = serialize('role', role, cookie_options);
 // const combinedCookies = [logInCookie, idCookie,roleCookie].join('; ');
 if(validUser>=0){
-            setCookie({res:context},'isLoggedIn',true,{
-                path:'/',
-                httpOnly:true
-            })
-            setCookie({res:context},'id',id,{
-                path:'/',
-                httpOnly:true
-            })
-            setCookie({res:context},'role',role,{
-                httpOnly:true,
-                path:'/'
-            })
+        //     setCookie({res:context},'isLoggedIn',true,{
+        //         path:'/',
+        //         httpOnly:true
+        //     })
+        //     setCookie({res:context},'id',id,{
+        //         path:'/',
+        //         httpOnly:true
+        //     })
+        //     setCookie({res:context},'role',role,{
+        //         httpOnly:true,
+        //         path:'/'
+        //     })
         return {
 			statusCode:200,
                         headers:{
-                                'Set-Cookie':combinedCookies
+                                'Set-Cookie':logInCookie,
+                                'Set-Cookie':idCookie,
+                                'Set-Cookie':roleCookie
                         },
 			body:JSON.stringify({valid:true,isLoggedIn:true,validUser:validUser})
 		}
