@@ -14,15 +14,15 @@ export async function getServerSideProps(context:any){
     
      // const {id,role}=context.query;
      const {parseCookies}=require('nookies')
-     const {isLoggedIn,id,role}=parseCookies(context);
-     console.log(isLoggedIn,id,role)
+     const {isLoggedIn,id}=parseCookies(context);
+     console.log(isLoggedIn)
      const data=await fetch('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu');
      const menuData= await data.json();
      const response=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?id=${id}`);
      const userData=await response.json();
      if(1){
           return {
-               props:{menuData,userData,id,role,isLoggedIn:role}
+               props:{menuData,userData,isLoggedIn:isLoggedIn}
               }
      }
            return {
