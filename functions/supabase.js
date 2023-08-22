@@ -6,7 +6,7 @@ exports.handler=async(event,context)=>{
     const supabase = createClient(supabaseUrl, supabaseApiKey);
     const { data, error } = await supabase
       .from('users')
-      .select('*');
+      .select('employeeid');
       
     if (error) {
         return {
