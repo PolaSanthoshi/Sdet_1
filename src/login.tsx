@@ -62,7 +62,7 @@ export default function Login() {
   .then(response=>console.log(response.data))
   axios.get(`.netlify/functions/employee?id=${id}&role=admin`)
   .then(response=>console.log(response.data))
-  axios.get('/api/menu')
+  axios.get('.netlify/functions/supabase')
   .then(response=>console.log(response.data))
             };
   const isLoginDisabled =
