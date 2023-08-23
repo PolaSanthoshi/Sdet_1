@@ -64,7 +64,17 @@ export default function Login() {
   .then(response=>console.log(response.data))
   axios.get('.netlify/functions/supabase')
   .then(response=>console.log(response.data))
-            };
+  // auth
+  axios.post('.netlify/functions/auth')
+  .then(response=>{
+    const headers = response.headers;
+     // Access a specific header value (e.g., Authorization)
+const authorizationHeader=headers['Authorization']
+localStorage.setItem('token',authorizationHeader)
+console.log(response.data,authorizationHeader,headers)
+  }
+    )
+       };
   const isLoginDisabled =
    (id === '' || id.length !== 4)
   return (
