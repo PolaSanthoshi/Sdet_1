@@ -73,6 +73,7 @@ const authorizationHeader=headers.authorization
 localStorage.setItem('token',authorizationHeader)
   }
     )
+    console.log(localStorage.getItem('token'))
     // set header in server<<<<<<<<<<<<<<<<<<<<<<<<<<
     if(localStorage.getItem('token')){
       const x=localStorage.getItem('token')
