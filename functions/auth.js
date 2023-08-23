@@ -5,7 +5,7 @@ exports.handler=async(event,context)=>{
         case 'POST':
     const {id,role}=JSON.parse(event.body)
     const userVal={id,role,isLoggedIn:true}
-    const token=jwt.sign(userVal,secretKey,{expiresIn:'1h'})
+    const token=jwt.sign(userVal,secretKey,{})
     return {
         statusCode:200,
         headers:{
@@ -17,16 +17,15 @@ exports.handler=async(event,context)=>{
     const {headers}=event;
     if(headers.authorization){
         const token=headers.authorization.split(' ')[1];
-        const decodedToken=jwt.verify(token,secretKey);    
+        
         try{
-            
+            const decodedToken=jwt.verify(token,secretKey); 
             return{
                 statusCode:200,
                 body:JSON.stringify('Valid Token and verified')
             }
         }
         catch{
-            console.log(decodedToken)
             return{
                 statusCode:401,
                 body:JSON.stringify('Invalid Token')
