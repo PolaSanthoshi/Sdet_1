@@ -36,25 +36,21 @@ export default function login(){
   </div>
 }
 export function getServerSideProps(context:any){
-  const {parseCookies}=require('nookies')
-     const {isLoggedIn,id,role}=parseCookies(context);
-     if(isLoggedIn==='true' && role=='employee'){
-              return{
-                   redirect:{
-                  destination:`/home`,
-                  permanent:false
-              }
-          } }
-     if(isLoggedIn==='true' && role=='admin'){
+    if(localStorage.getItem('token')){
+      const x=localStorage.getItem('token')
+    axios.get('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/auth',
+    {
+      headers:{
+        'Authorization':`Bearer ${x}`,
+      }
+    }).then(response=>console.log(response.data))
+    }
             return{
                  redirect:{
                 destination:`/admin`,
                 permanent:false
             }
-        } }
-          return {
-              props:{value:'Invalid ID'}
-          }
-   
+        }
+       
 
 }

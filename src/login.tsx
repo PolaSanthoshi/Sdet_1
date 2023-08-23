@@ -71,7 +71,6 @@ export default function Login() {
      // Access a specific header value (e.g., Authorization)
 const authorizationHeader=headers.authorization
 localStorage.setItem('token',authorizationHeader)
-console.log(response.data,authorizationHeader,headers)
   }
     )
        };
