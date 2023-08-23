@@ -1,5 +1,5 @@
 const jwt=require('jsonwebtoken')
-exports.handler=(event,context)=>{
+exports.handler=async(event,context)=>{
     const {id,role}=JSON.parse(event.body)
     const userVal={id,role,isLoggedIn:true}
     const secretKey='aby_kLXIOPKANJD'
