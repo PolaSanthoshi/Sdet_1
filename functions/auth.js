@@ -19,6 +19,7 @@ exports.handler=async(event,context)=>{
         const token=headers.authorization.split(' ')[1];
         try{
             const decodedToken=jwt.verify(token,secretKey);
+            console.log(decodedToken)
             return{
                 statusCode:200,
                 body:JSON.stringify('Valid Token and verified')
