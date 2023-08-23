@@ -65,7 +65,7 @@ export default function Login() {
   axios.get('.netlify/functions/supabase')
   .then(response=>console.log(response.data))
   // auth
-  axios.post('.netlify/functions/auth',{id })
+  axios.post('.netlify/functions/auth',{id})
   .then(response=>{
     const headers = response.headers;
      // Access a specific header value (e.g., Authorization)
