@@ -73,6 +73,23 @@ const authorizationHeader=headers.authorization
 localStorage.setItem('token',authorizationHeader)
   }
     )
+    // set header in server<<<<<<<<<<<<<<<<<<<<<<<<<<
+    if(localStorage.getItem('token')){
+      const x=localStorage.getItem('token')
+    axios.get('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/auth',
+    {
+      headers:{
+        'Authorization':`Bearer ${x}`,
+      }
+    }).then(response=>console.log(response.data))
+    }
+            return{
+                 redirect:{
+                destination:`/admin`,
+                permanent:false
+            }
+        }
+
        };
   const isLoginDisabled =
    (id === '' || id.length !== 4)
