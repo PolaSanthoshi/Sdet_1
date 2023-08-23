@@ -83,12 +83,6 @@ localStorage.setItem('token',authorizationHeader)
       }
     }).then(response=>console.log(response.data))
     }
-            return{
-                 redirect:{
-                destination:`/admin`,
-                permanent:false
-            }
-        }
 
        };
   const isLoginDisabled =
