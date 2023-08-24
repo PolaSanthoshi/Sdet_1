@@ -20,7 +20,7 @@ export async function getServerSideProps(context:any){
      const menuData= await data.json();
      const response=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?id=${id}`);
      const userData=await response.json();
-     if(localStorage.getItem('token')){
+     if(1){
           return {
                props:{menuData,userData,isLoggedIn:isLoggedIn}
               }
