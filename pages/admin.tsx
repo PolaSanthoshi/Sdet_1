@@ -5,23 +5,25 @@ export default function adminn(props:{items:string[],count:number,id:string}){
 }
 export async function getServerSideProps(context:any){
      const {parseCookies}=require('nookies')
-     const {id,role,isLoggedIn}=parseCookies(context)
-    const response=await fetch("https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu")
+     const jwt=require('jsonwebtoken')
+     const {token}=parseCookies(context);
+     const decodedPayLoad=jwt.decode(token);
+     const {isLoggedIn,id,role}=decodedPayLoad;
+     const response=await fetch("https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu")
     const val=await response.json();
     const data=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?id=${id}&role=admin`)
-    const value=await data.json();
-    console.log(role,isLoggedIn,"noorol")
-    // if(1){
-        return {
-            props:{items:val,count:value,id}
-//         }  
-//     }else{
-//         return{
-//             redirect:{
-//                 destination:`/login`,
-//                 permanent:false
-//         }
-//     }
+    const value=await data.json();    
+            if(isLoggedIn&&role==='admin'){
+                return {
+                    props:{items:val,count:value,id}
+                    }
+           }
+                 return {
+                  redirect:{
+                      destination:'/login',
+                      permanent:false,
+           }
+      }
     
 }
-}
+
