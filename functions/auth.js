@@ -15,7 +15,7 @@ exports.handler=async(event,context)=>{
         statusCode:200,
         headers:{
             'Authorization':`Bearer ${token}`,
-            'Set-Cookie'   :logInCookie
+            
         },
         body:JSON.stringify('Created token')
     }
