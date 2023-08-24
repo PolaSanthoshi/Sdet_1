@@ -65,27 +65,25 @@ export default function Login() {
   axios.get('.netlify/functions/supabase')
   .then(response=>console.log(response.data))
   // auth
-  axios.post('.netlify/functions/auth',{id,role})
-  .then(response=>{
-    const headers = response.headers;
-     // Access a specific header value (e.g., Authorization)
-const authorizationHeader=headers.authorization
-console.log('post',authorizationHeader)
-localStorage.setItem('token',authorizationHeader)
-  }
-    )
-    console.log(localStorage.getItem('token'))
-    // set header in server<<<<<<<<<<<<<<<<<<<<<<<<<<
-    if(localStorage.getItem('token')){
-      const x=localStorage.getItem('token')
-      console.log('get',x)
-    axios.get('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/auth',
-    {
-      headers:{
-        'Authorization':`Bearer ${x}`,
-      }
-    }).then(response=>console.log(response.data))
-    }
+//   axios.post('.netlify/functions/auth',{id,role})
+//   .then(response=>{
+//     const headers = response.headers;
+// const authorizationHeader=headers.authorization
+// console.log('post',authorizationHeader)
+// localStorage.setItem('token',authorizationHeader)
+//   }
+//     )
+//     console.log(localStorage.getItem('token'))
+//     if(localStorage.getItem('token')){
+//       const x=localStorage.getItem('token')
+//       console.log('get',x)
+//     axios.get('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/auth',
+//     {
+//       headers:{
+//         'Authorization':`Bearer ${x}`,
+//       }
+//     }).then(response=>console.log(response.data))
+//     }
 
        };
   const isLoginDisabled =
