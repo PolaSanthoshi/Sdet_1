@@ -70,6 +70,7 @@ export default function Login() {
     const headers = response.headers;
      // Access a specific header value (e.g., Authorization)
 const authorizationHeader=headers.authorization
+console.log('post',authorizationHeader)
 localStorage.setItem('token',authorizationHeader)
   }
     )
@@ -77,6 +78,7 @@ localStorage.setItem('token',authorizationHeader)
     // set header in server<<<<<<<<<<<<<<<<<<<<<<<<<<
     if(localStorage.getItem('token')){
       const x=localStorage.getItem('token')
+      console.log(x,'get')
     axios.get('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/auth',
     {
       headers:{
