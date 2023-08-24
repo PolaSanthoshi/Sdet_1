@@ -70,7 +70,7 @@ export default function Login() {
     const headers = response.headers;
      // Access a specific header value (e.g., Authorization)
 const authorizationHeader=headers.authorization
-console.log('post',authorizationHeader)
+console.log('post',authorizationHeader.split[1])
 localStorage.setItem('token',authorizationHeader)
   }
     )
