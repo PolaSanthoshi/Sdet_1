@@ -14,17 +14,10 @@ export default function handler(req,res){
     //     'id=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
     //   ]);
       
-    destroyCookie({res},'isLoggedIn',{
+    destroyCookie({res},'token',{
        path:'/',
        maxAge:-1
     })
-    destroyCookie({res},'id',{
-        path:'/',
-        maxAge:-1
-    })
-    destroyCookie({res},'role',{
-        path:'/',
-        maxAge:-1
-    })
+   
     return res.status(200).json('You have been Logged Out')
 }
