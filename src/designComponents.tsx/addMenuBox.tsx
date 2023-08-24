@@ -35,10 +35,7 @@ export default function AddMenuBox(props: { menuData: string[] }) {
       });
     }
   }
-  // function arrowLeftClick(){
-  //   localStorage.clear();
-  //   router.push('/login')
-  // }
+ 
   return (
     <div className="w-[500px] h-[420px] bg-blue-300 rounded-lg pt-5 justify-center items-center">
       {/* <div className='ml-4 cursor-pointer' onClick={arrowLeftClick}><FaArrowLeft/></div> */}
