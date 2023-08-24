@@ -25,9 +25,9 @@ export async function getServerSideProps(context:any){
      const userData=await response.json();
         
   
-     if(isLoggedIn=='true'){
+     if(1){
           return {
-               props:{menuData,userData,isLoggedIn:isLoggedIn}
+               props:{menuData,userData,isLoggedIn:decodedPayLoad}
               }
      }
            return {
