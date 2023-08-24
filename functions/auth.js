@@ -1,5 +1,5 @@
-const jwt=require('jsonwebtoken')
 import { serialize } from 'cookie'
+const jwt=require('jsonwebtoken')
 exports.handler=async(event,context)=>{
     const secretKey='aby_kLXIOPKANJD'
     switch (event.httpMethod){
@@ -15,7 +15,7 @@ exports.handler=async(event,context)=>{
         statusCode:200,
         headers:{
             'Authorization':`Bearer ${token}`,
-            
+           
         },
         body:JSON.stringify('Created token')
     }
