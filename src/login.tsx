@@ -78,7 +78,7 @@ localStorage.setItem('token',authorizationHeader)
     // set header in server<<<<<<<<<<<<<<<<<<<<<<<<<<
     if(localStorage.getItem('token')){
       const x=localStorage.getItem('token')
-      console.log('get',x.split(' ')[1])
+      console.log('get',x)
     axios.get('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/auth',
     {
       headers:{
