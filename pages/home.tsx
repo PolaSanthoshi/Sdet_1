@@ -12,7 +12,7 @@ export default function Homee(props:{menuData:string[],userData:{id:string,haveL
 }
 export async function getServerSideProps(context:any){
     
-     // const {id,role}=context.query;
+     const {id,role}=context.query;
      const isLoggedIn=localStorage.getItem('token')?true:false;
      // const {parseCookies}=require('nookies')
      // const {isLoggedIn,id}=parseCookies(context);
