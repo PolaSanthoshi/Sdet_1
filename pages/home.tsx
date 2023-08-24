@@ -12,11 +12,11 @@ export default function Homee(props:{menuData:string[],userData:{id:string,haveL
 }
 export async function getServerSideProps(context:any){
     
-     const {id,role}=context.query;
-     const isLoggedIn=localStorage.getItem('token')?true:false;
+     // const {id,role}=context.query;
+     // const isLoggedIn=localStorage.getItem('token')?true:false;
      // const {parseCookies}=require('nookies')
-     // const {isLoggedIn,id}=parseCookies(context);
-     console.log(isLoggedIn)
+     const {isLoggedIn,id}=parseCookies(context);
+     // console.log(isLoggedIn)
      const data=await fetch('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu');
      const menuData= await data.json();
      const response=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?id=${id}`);
