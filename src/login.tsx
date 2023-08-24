@@ -82,7 +82,7 @@ localStorage.setItem('token',authorizationHeader)
     axios.get('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/auth',
     {
       headers:{
-        'Authorization':x,
+        'Authorization':`Bearer ${x}`,
       }
     }).then(response=>console.log(response.data))
     }
