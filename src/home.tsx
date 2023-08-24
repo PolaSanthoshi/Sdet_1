@@ -23,9 +23,8 @@ export default function Home(props: { menuData: string[],userData:{id:string,hav
       }},[])
   const {id,role}=props;
   const  handleLogout = async() => {
-   await axios.get('/api/logout')
+   await axios.get('/.netlify/functions/logout')
     .then(list=>console.log(list.data))
-   localStorage.clear()
    router.push('/login')
   };
   function mouseOverfn(e: any) {
