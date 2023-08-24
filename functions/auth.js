@@ -16,7 +16,7 @@ exports.handler=async(event,context)=>{
         case 'GET':
     const {headers}=event;
     if(headers.authorization){
-        const token=headers.authorization.split(' ')[1];
+        const token=headers.authorization.split(' ')[2];
         
         try{
             const decodedToken=jwt.verify(token,secretKey); 
