@@ -6,7 +6,7 @@ exports.handler=async(event,context)=>{
         case 'POST':
     const {id,role}=JSON.parse(event.body)
     const userVal={id,role,isLoggedIn:true}
-    const token=jwt.sign(userVal,secretKey,{})
+    const token=jwt.sign(userVal,secretKey,{expiresIn:'1h'})
     const logInCookie = serialize('token', token, {
         secure:true,
         path:'/'
@@ -14,7 +14,7 @@ exports.handler=async(event,context)=>{
     return {
         statusCode:200,
         headers:{
-            // 'Authorization':`Bearer ${token}`,
+            'Authorization':`Bearer ${token}`,
             'Set-Cookie'   :logInCookie
         },
         body:JSON.stringify('Created token')
