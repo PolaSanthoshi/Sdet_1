@@ -1,4 +1,5 @@
 const jwt=require('jsonwebtoken')
+import { serialize } from 'cookie'
 exports.handler=async(event,context)=>{
     const secretKey='aby_kLXIOPKANJD'
     switch (event.httpMethod){
@@ -6,10 +7,15 @@ exports.handler=async(event,context)=>{
     const {id,role}=JSON.parse(event.body)
     const userVal={id,role,isLoggedIn:true}
     const token=jwt.sign(userVal,secretKey,{})
+    const logInCookie = serialize('token', token, {
+        secure:true,
+        path:'/'
+})
     return {
         statusCode:200,
         headers:{
-            'Authorization':`Bearer ${token}`
+            'Authorization':`Bearer ${token}`,
+            'Set-Cookie'   :logInCookie
         },
         body:JSON.stringify('Created token')
     }
