@@ -17,6 +17,7 @@ export default function handler(req,res){
     destroyCookie({res},'token',{
        path:'/',
        maxAge:-1
+       
     })
    
     return res.status(200).json('You have been Logged Out')
