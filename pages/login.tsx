@@ -49,7 +49,7 @@ export function getServerSideProps(context:any){
             permanent:false
         }
     } }
-    if(isLoggedIn==='true' && role=='admin'){
+    if(isLoggedIn && role=='admin'){
       return{
            redirect:{
           destination:`/admin`,
@@ -58,8 +58,6 @@ export function getServerSideProps(context:any){
   }
  }
      }
-    
-    
           return {
               props:{value:'Invalid ID'}
           }
