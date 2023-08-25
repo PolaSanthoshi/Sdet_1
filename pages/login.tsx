@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
-import LoginFunc from "./auth";
-import { useRouter } from "next/router";
+
 import Login from "@/src/login"
-import { parseCookies } from "nookies";
-import axios from "axios";
-export default function login(){
+export default function LLogin(){
   //   const router=useRouter();
   //   const [valid,setValid]=useState(false);  
   //   const [loading,setLoading]=useState(true);
@@ -56,7 +52,6 @@ export function getServerSideProps(context:any){
           permanent:false
       }
   }
- 
      }
     }
           return {
