@@ -38,11 +38,7 @@ export default function login(){
 export function getServerSideProps(context:any){
   const jwt=require('jsonwebtoken')
   const {parseCookies}=require('nookies')
-  const cookies=parseCookies(context);
-
-    
-     if(cookies){
-      const {token}=cookies
+  const {token}=parseCookies(context);
       const decodedPayLoad=jwt.decode(token);
       const {isLoggedIn,id,role}=decodedPayLoad;
       if(isLoggedIn && role=='employee'){
@@ -59,7 +55,7 @@ export function getServerSideProps(context:any){
           permanent:false
       }
   }
- }
+ 
      }
           return {
               props:{value:'Invalid ID'}
