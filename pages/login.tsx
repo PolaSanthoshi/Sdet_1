@@ -38,8 +38,11 @@ export default function login(){
 export function getServerSideProps(context:any){
   const jwt=require('jsonwebtoken')
   const {parseCookies}=require('nookies')
-     const {token}=parseCookies(context);
-     if(token){
+  const cookies=parseCookies(context);
+
+    
+     if(cookies){
+      const {token}=cookies
       const decodedPayLoad=jwt.decode(token);
       const {isLoggedIn,id,role}=decodedPayLoad;
       if(isLoggedIn && role=='employee'){
