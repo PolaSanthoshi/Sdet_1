@@ -35,7 +35,7 @@ export default function login(){
     <Login/>
   </div>
 }
-export function getServerSideProps(context:any){
+// export function getServerSideProps(context:any){
   // const jwt=require('jsonwebtoken')
   // const {parseCookies}=require('nookies')
   // const {token}=parseCookies(context);
@@ -57,9 +57,9 @@ export function getServerSideProps(context:any){
   // }
  
   //    }
-          return {
-              props:{value:'Invalid ID'}
-          }
+//           return {
+//               props:{value:'Invalid ID'}
+//           }
    
 
-}
+// }
