@@ -9,11 +9,11 @@ export default function Home() {
    
   )
 }
-export function getServerSideProps(){
-  return {
-    redirect: {
-      destination: '/login',
-      permanent: false, 
-    },
-  }
-}
+// export function getServerSideProps(){
+//   return {
+//     redirect: {
+//       destination: '/login',
+//       permanent: false, 
+//     },
+//   }
+// }
