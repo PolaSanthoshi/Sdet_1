@@ -15,21 +15,22 @@ export async function getServerSideProps(context:any){
      // const {id,role}=context.query;
      // const {parseCookies}=require('nookies')
      const jwt=require('jsonwebtoken')
+     const {parseCookies}=require('nookies')
      const {token}=parseCookies(context);
-     const decodedPayLoad=jwt.decode(token);
-     const {isLoggedIn,id,role}=decodedPayLoad;
-     // console.log(isLoggedIn)
-     const data=await fetch('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu');
-     const menuData= await data.json();
-     const response=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?id=${id}`);
-     const userData=await response.json();
-        
-  
-     if(isLoggedIn){
+     if(token){
+      const decodedPayLoad=jwt.decode(token);
+      const {isLoggedIn,id,role}=decodedPayLoad;
+      const data=await fetch('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu');
+      const menuData= await data.json();
+      const response=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?id=${id}`);
+      const userData=await response.json();
+      if(isLoggedIn){
           return {
                props:{menuData,userData,isLoggedIn:decodedPayLoad,id:id,role:role}
               }
      }
+     }
+     // console.log(isLoggedIn)
            return {
             redirect:{
                 destination:'/login',
