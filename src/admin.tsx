@@ -7,9 +7,7 @@ export default function Admin(props:{data:string[],count:number,id:string}) {
    const router=useRouter();
    const id=props.id;
    function handleLogout(){
-      // axios.get('/api/logout')
-      // .then((val)=>console.log(val.data))
-      // router.push('/login')
+    
    }
    function homeClick(){
       router.push('/home')
