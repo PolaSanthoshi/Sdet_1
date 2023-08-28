@@ -79,7 +79,7 @@ localStorage.setItem('token',authorizationHeader)
     if(localStorage.getItem('token')){
       const x=localStorage.getItem('token')
       console.log('get',x)
-    axios.get('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/auth',
+    axios.get('https://netlify-code--charming-tulumba-2b645d.netlify.app/.netlify/functions/auth',
     {
       headers:{
         'Authorization':`Bearer ${x}`,

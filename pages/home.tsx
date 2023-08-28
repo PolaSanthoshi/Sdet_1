@@ -19,9 +19,9 @@ export async function getServerSideProps(context:any){
      if(token){
           const decodedPayLoad=jwt.decode(token);
           const {isLoggedIn,id,role}=decodedPayLoad;
-          const data=await fetch('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu');
+          const data=await fetch('https://netlify-code--charming-tulumba-2b645d.netlify.app/.netlify/functions/menu');
           const menuData= await data.json();
-          const response=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?id=${id}`);
+          const response=await fetch(`https://netlify-code--charming-tulumba-2b645d.netlify.app/.netlify/functions/employee?id=${id}`);
           const userData=await response.json();
           if(isLoggedIn){
               return {

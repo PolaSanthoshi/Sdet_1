@@ -10,27 +10,20 @@ export async function getServerSideProps(context:any){
      const jwt=require('jsonwebtoken')
      const {token}=parseCookies(context);
      if(token){
-        try{
+      
     const secretKey=process.env.SECRET_KEY;
     const decodedPayLoad=jwt.verify(token,secretKey);
     const {isLoggedIn,id,role}=decodedPayLoad;
-    const response=await fetch("https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu")
+    const response=await fetch("https://netlify-code--charming-tulumba-2b645d.netlify.app/.netlify/functions/menu")
     const val=await response.json();
-    const data=await fetch(`https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/employee?id=${id}&role=admin`)
+    const data=await fetch(`https://netlify-code--charming-tulumba-2b645d.netlify.app/.netlify/functions/employee?id=${id}&role=admin`)
     const value=await data.json();    
             if(isLoggedIn&&role==='admin'){
                 return {
                     props:{items:val,count:value,id}
                     }
            }
-        }catch{
-            return {
-                redirect:{
-                    destination:'/login',
-                    permanent:false,
-        }
-    }
-    }
+       
                  return {
                   redirect:{
                       destination:'/login',
