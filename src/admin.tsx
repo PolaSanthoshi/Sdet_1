@@ -7,6 +7,10 @@ export default function Admin(props:{data:string[],count:number,id:string}) {
    const router=useRouter();
    const id=props.id;
    function handleLogout(){
+       axios.get('.netlify/functions/logout')
+      .then(list=>{console.log(list.data)
+      router.push('/login')})
+     
     
    }
    function homeClick(){
