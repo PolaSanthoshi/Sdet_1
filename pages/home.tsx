@@ -18,9 +18,9 @@ export async function getServerSideProps(context:any){
      const {parseCookies}=require('nookies')
      const {token}=parseCookies(context);
      if(token){
-         try{
+        //  try{
           const secretKey=process.env.SECRET_KEY;
-          const decodedPayLoad=jwt.verify(token);
+          const decodedPayLoad=jwt.decode(token);
           const {isLoggedIn,id,role}=decodedPayLoad;
           const data=await fetch('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu');
           const menuData= await data.json();
@@ -32,16 +32,16 @@ export async function getServerSideProps(context:any){
                   }
          }
          }
-         catch{
-          return {
-               redirect:{
-                   destination:'/login',
-                   permanent:false,
-        }
- }
-         }
+//          catch{
+//           return {
+//                redirect:{
+//                    destination:'/login',
+//                    permanent:false,
+//         }
+//  }
+//          }
    
-     }
+    //  }
 
            return {
             redirect:{
