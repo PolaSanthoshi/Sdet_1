@@ -12,14 +12,11 @@ export default function Homee(props:{menuData:string[],userData:{id:string,haveL
 }
 export async function getServerSideProps(context:any){
     
-     // const {id,role}=context.query;
-     // const {parseCookies}=require('nookies')
+
      const jwt=require('jsonwebtoken')
      const {parseCookies}=require('nookies')
      const {token}=parseCookies(context);
      if(token){
-        //  try{
-          const secretKey=process.env.SECRET_KEY;
           const decodedPayLoad=jwt.decode(token);
           const {isLoggedIn,id,role}=decodedPayLoad;
           const data=await fetch('https://netlify-code--transcendent-toffee-89a6b6.netlify.app/.netlify/functions/menu');
@@ -32,17 +29,6 @@ export async function getServerSideProps(context:any){
                   }
          }
          }
-//          catch{
-//           return {
-//                redirect:{
-//                    destination:'/login',
-//                    permanent:false,
-//         }
-//  }
-//          }
-   
-    //  }
-
            return {
             redirect:{
                 destination:'/login',
