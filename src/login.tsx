@@ -5,6 +5,7 @@ import { error } from 'console';
 export default function Login() {
   const [role, setRole] = useState('employee');
   const [id, setId] = useState('');
+  const [name,setName]=useState('');
   const[key,setKey]=useState('');
   // const [adminId, setAdminId] = useState('');
   const router=useRouter();
@@ -38,11 +39,11 @@ export default function Login() {
     .then(response=>{
       if(response.data.length>0){
       console.log(response.data)
-      axios.post('.netlify/functions/auth',{id,role})
+      setName(response.data[0].name)
+      axios.post('.netlify/functions/auth',{id,role,name})
       .then(response=>{
         console.log(response.data)
       }
-    
       )
       if(role=='employee'){
         router.push('/home')

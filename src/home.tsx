@@ -8,7 +8,7 @@ import { FaCaretUp, FaUser } from "react-icons/fa";
 import SubmitPopUp from "./designComponents.tsx/submitPopUp";
 import Link from "next/link";
 
-export default function Home(props: { menuData: string[],userData:{id:string,haveLunch:string},id:string,role:string }) {
+export default function Home(props: { menuData: string[],userData:{id:string,haveLunch:string},id:string,role:string ,name:string}) {
   const router = useRouter();
   const [animate, setAnimate] = useState("");
   const [showPopUp,setShowPopUp]=useState(false);
@@ -21,7 +21,7 @@ export default function Home(props: { menuData: string[],userData:{id:string,hav
       return ()=>{
         clearInterval(interval)
       }},[])
-  const {id,role}=props;
+  const {id,role,name}=props;
   const  handleLogout = async() => {
    await axios.get('/.netlify/functions/logout')
     .then(list=>console.log(list.data))
@@ -63,7 +63,7 @@ export default function Home(props: { menuData: string[],userData:{id:string,hav
       <nav className="pr-4 h-[70px] flex justify-between items-center relative ">
         <div className="flex items-center">
           <div className="bg-black text-white min-w-[130px] p-2 rounded-r-lg">
-            Welcome, <span className="font-bold">{id}</span>
+            Welcome, <span className="font-bold">{name}</span>
           </div>
           <Link href={"https://sdettech.com/"}  target="_blank">          
           <div className=" p-2 text-lg font-semibold   rounded-md ml-5">S D E T</div>
