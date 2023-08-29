@@ -7,8 +7,8 @@ exports.handler=async(event,context)=>{
     const supabase = createClient(supabaseUrl, supabaseApiKey);
     const { data, error } = await supabase
       .from('employees')
-      .select('employeeId','name')
-      .eq('employeeId')
+      .select('employeeid','name')
+      .eq('employeeid',id);
       
     if (error) {
         return {
@@ -18,7 +18,7 @@ exports.handler=async(event,context)=>{
       }
       return {
         statusCode: 200,
-        body: JSON.stringify('Present in supabase')
+        body: JSON.stringify('Present in supabase',id)
       };
 
 
