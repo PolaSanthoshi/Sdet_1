@@ -32,9 +32,9 @@ export default function Login() {
       setKey(value)
     }
   }
-  const handleLogin = () => {
+  const handleLogin = async() => {
     console.log(id)
-  axios.get(`.netlify/functions/supabase?id=${id}`)
+  await axios.get(`.netlify/functions/supabase?id=${id}`)
     .then(response=>{
       axios.post('.netlify/functions/auth',{id,role})
       if(role=='employee'){

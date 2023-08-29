@@ -9,7 +9,7 @@ export default function Admin(props:{data:string[],count:number,id:string}) {
    function handleLogout(){
        axios.get('.netlify/functions/logout')
       .then(list=>{console.log(list.data)
-      router.push('/login')})
+      router.push('/')})
      
     
    }
