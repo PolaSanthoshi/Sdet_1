@@ -1,13 +1,13 @@
 import { createClient } from "@supabase/supabase-js";
 
 exports.handler=async(event,context)=>{
-    const id=event.queryStringParameters.id
+    // const id=event.queryStringParameters.id
     const supabaseUrl = process.env.SUPABASE_URL;
     const supabaseApiKey = process.env.SUPABASE_KEY;
     const supabase = createClient(supabaseUrl, supabaseApiKey);
     const { data, error } = await supabase
       .from('users')
-      .select('employeeid',id);
+      .select('employeeid');
       
     if (error) {
         return {

@@ -63,9 +63,8 @@ export default function Login() {
   .then(response=>console.log(response.data))
   axios.get(`.netlify/functions/employee?id=${id}&role=admin`)
   .then(response=>console.log(response.data))
-  axios.get(`.netlify/functions/supabase?id=${id}`)
+  axios.get(`.netlify/functions/supabase`)
   .then(response=>console.log(response.data))
-  .catch(error=>alert('Not found from supbase'))
   // auth
   axios.post('.netlify/functions/auth',{id,role})
   .then(response=>{
