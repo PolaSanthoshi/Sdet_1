@@ -8,7 +8,7 @@ exports.handler=async(event,context)=>{
     const { data, error } = await supabase
       .from('employees')
       .select('employeeid','name')
-      .eq('employeeid',id);
+      .eq('employeeid',1043);
       
     if (error) {
         return {
