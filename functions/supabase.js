@@ -7,7 +7,7 @@ exports.handler=async(event,context)=>{
     const supabase = createClient(supabaseUrl, supabaseApiKey);
     const { data, error } = await supabase
       .from('employees')
-      .select('employeeid','name')
+      .select('name','employeeid')
       .eq('employeeid',id);
       
     if (error) {
