@@ -1,11 +1,7 @@
 const jwt=require('jsonwebtoken')
 const {serialize}=require('cookie')
 const { parseCookies } = require('nookies')
-import { createClient } from "@supabase/supabase-js";
 exports.handler=async(event,context)=>{
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseApiKey = process.env.SUPABASE_KEY;
-    const supabase = createClient(supabaseUrl, supabaseApiKey);
     const secretKey='aby_kLXIOPKANJD'
     switch (event.httpMethod){
         case 'POST':
