@@ -11,12 +11,13 @@ export default function Homee(props:{menuData:string[],userData:{id:string,haveL
     </div>
 }
 export async function getServerSideProps(context:any){
-    
-
+     const key=process.env.SECRET_KEY;
      const jwt=require('jsonwebtoken')
      const {parseCookies}=require('nookies')
      const {token}=parseCookies(context);
      if(token){
+          try{
+          const verifyKey=jwt.verify(token,key)
           const decodedPayLoad=jwt.decode(token);
           const {isLoggedIn,id,role}=decodedPayLoad;
           const data=await fetch('https://netlify-code--charming-tulumba-2b645d.netlify.app/.netlify/functions/menu');
@@ -28,7 +29,10 @@ export async function getServerSideProps(context:any){
                    props:{menuData,userData,isLoggedIn:decodedPayLoad,id:id,role:role}
                   }
          }
+         }catch{
+          
          }
+     }
            return {
             redirect:{
                 destination:'/login',
