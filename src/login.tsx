@@ -37,9 +37,13 @@ export default function Login() {
   axios.get(`.netlify/functions/supabase?id=${id}`)
     .then(response=>{
       axios.post('.netlify/functions/auth',{id,role})
+      if(role=='employee'){
+        router.push('/home')
+      }else{
+        router.push('/admin')
+      }
   })
-    .catch(k=>{console.log(error,'notfound in supabase')
-                 alert('Invalid Employee ID')})
+    .catch(k=>{alert('Invalid Employee ID')})
        };
   const isLoginDisabled =
    (id === '' || id.length !== 4)
