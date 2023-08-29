@@ -28,14 +28,7 @@ export async function getServerSideProps(context:any){
                    props:{menuData,userData,isLoggedIn:decodedPayLoad,id:id,role:role}
                   }
          }
-         
-          return {
-               redirect:{
-                   destination:'/login',
-                   permanent:false,
-        }
-   }
-        
+   
      }
            return {
             redirect:{
