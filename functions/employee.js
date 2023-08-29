@@ -21,9 +21,6 @@ exports.handler=async(event,context)=>{
            case 'GET':    
                 const data=userData.find((element)=>element.id==id)
                const role=event.queryStringParameters.role
-                // console.log(data,'employeeDataOfAPi',userData)
-                // console.log(userData.find((element)=>element.id==id),'find')
-                // data?res.status(200).json(data):res.status(200).json('not found')
                 if(role==='admin'){
                     const filteredData=userData.filter((item)=>item.haveLunch==='yes')
                     return{

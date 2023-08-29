@@ -34,60 +34,12 @@ export default function Login() {
   }
   const handleLogin = () => {
     console.log(id)
-    // axios.post('/api/login',{id,role:role})
-    // .then((val)=>{
-    //     if(val.data.valid){
-    //       role==='employee'&&router.push({pathname:'/home',query:{id:id}},'/home')
-    //       role==='admin'&& (key==='6789'&&(router.push('/admin')))
-    //     }else{
-    //         alert('Invalid id')
-    //     }
-    // })
-  axios.post('.netlify/functions/loginApi',{id,role})
-    .then(response=>{console.log(response.data,role)
-                if(response.data.valid===true){
-                  role==='employee'&&router.push('/home')
-                  role==='admin'&& (key==='6789'&&(router.push('/admin')))
-                }else{
-                  alert('Invalid id')
-                }
-              })
-    .catch(k=>console.log('error'))
-    axios.post('.netlify/functions/menu',['rice','book'])
-    .then(reponse=>console.log(reponse.data))
-
-  axios.get(`.netlify/functions/employee?id=${id}`)
-  .then(response=>console.log(response.data))
-  
-  axios.post(`.netlify/functions/employee?id=${id}`,{val:"yes"})
-  .then(response=>console.log(response.data))
-  axios.get(`.netlify/functions/employee?id=${id}&role=admin`)
-  .then(response=>console.log(response.data))
-  axios.get(`.netlify/functions/supabase`)
-  .then(response=>console.log(response.data))
-  // auth
-  axios.post('.netlify/functions/auth',{id,role})
-  .then(response=>{
-    const headers = response.headers;
-     // Access a specific header value (e.g., Authorization)
-const authorizationHeader=headers.authorization
-console.log('post',authorizationHeader)
-localStorage.setItem('token',authorizationHeader)
-  }
-    )
-    console.log(localStorage.getItem('token'))
-    // set header in server<<<<<<<<<<<<<<<<<<<<<<<<<<
-    if(localStorage.getItem('token')){
-      const x=localStorage.getItem('token')
-      console.log('get',x)
-    axios.get('https://netlify-code--charming-tulumba-2b645d.netlify.app/.netlify/functions/auth',
-    {
-      headers:{
-        'Authorization':`Bearer ${x}`,
-      }
-    }).then(response=>console.log(response.data))
-    }
-
+  axios.get(`.netlify/functions/supabase?id=${id}`)
+    .then(response=>{
+      axios.post('.netlify/functions/auth',{id,role})
+  })
+    .catch(k=>{console.log(error,'notfound in supabase')
+                 alert('Invalid Employee ID')})
        };
   const isLoginDisabled =
    (id === '' || id.length !== 4)
