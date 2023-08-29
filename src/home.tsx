@@ -26,7 +26,7 @@ export default function Home(props: { menuData: string[],userData:{id:string,hav
    await axios.get('/.netlify/functions/logout')
     .then(list=>console.log(list.data))
    
-    router.push('/login')
+    router.push('/')
   };
   function mouseOverfn(e: any) {
     setAnimate(e.target.value);

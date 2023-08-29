@@ -36,7 +36,11 @@ export default function Login() {
     console.log(id)
   await axios.get(`.netlify/functions/supabase?id=${id}`)
     .then(response=>{
+      console.log(response.data)
       axios.post('.netlify/functions/auth',{id,role})
+      .then(response=>{
+        console.log(response.data)
+      })
       if(role=='employee'){
         router.push('/home')
       }else{
