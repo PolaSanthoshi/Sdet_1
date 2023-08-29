@@ -11,7 +11,7 @@ export default function Homee(props:{menuData:string[],userData:{id:string,haveL
     </div>
 }
 export async function getServerSideProps(context:any){
-     const key=process.env.SECRET_KEY;
+     const key='aby_kLXIOPKANJD'
      const jwt=require('jsonwebtoken')
      const {parseCookies}=require('nookies')
      const {token}=parseCookies(context);
