@@ -40,7 +40,7 @@ export default function Login() {
       if(response.data.length>0){
       console.log(response.data)
       setName(response.data[0].name)
-      axios.post('.netlify/functions/auth',{id,role,name})
+      axios.post('.netlify/functions/auth',{id,role,name:response.data[0].name})
       .then(response=>{
         console.log(response.data)
       }
