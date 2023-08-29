@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { error } from 'console';
 export default function Login() {
   const [role, setRole] = useState('employee');
   const [id, setId] = useState('');
@@ -62,8 +63,9 @@ export default function Login() {
   .then(response=>console.log(response.data))
   axios.get(`.netlify/functions/employee?id=${id}&role=admin`)
   .then(response=>console.log(response.data))
-  axios.get('.netlify/functions/supabase')
+  axios.get(`.netlify/functions/supabase?id=${id}`)
   .then(response=>console.log(response.data))
+  .catch(error=>alert('Not found from supbase'))
   // auth
   axios.post('.netlify/functions/auth',{id,role})
   .then(response=>{
