@@ -8,7 +8,7 @@ exports.handler=async(event,context)=>{
         case 'GET':
             const {data,error}= await supabase
             .from('admin')
-            .select()
+            .select('name')
             .eq('employeeid',id)
            if(data){
             return{
