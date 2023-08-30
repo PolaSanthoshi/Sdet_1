@@ -9,7 +9,7 @@ exports.handler=async(event,context)=>{
             const {data,error}= await supabase
             .from('admin')
             .select('name')
-            .eq('employeeid',id)
+            .eq('adminid',id)
            if(data){
             return{
                 statusCode:200,

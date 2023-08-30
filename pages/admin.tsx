@@ -10,9 +10,7 @@ export async function getServerSideProps(context:any){
      const jwt=require('jsonwebtoken')
      const {token}=parseCookies(context);
      if(token){
-      
-    const secretKey=process.env.SECRET_KEY;
-    const decodedPayLoad=jwt.verify(token,secretKey);
+    const decodedPayLoad=jwt.decode(token);
     const {isLoggedIn,id,role}=decodedPayLoad;
     const response=await fetch("https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/menu")
     const val=await response.json();
