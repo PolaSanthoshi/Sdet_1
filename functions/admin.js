@@ -10,15 +10,15 @@ exports.handler=async(event,context)=>{
             .from('admin')
             .select('name')
             .eq('adminid',id)
-           if(data){
+           if(error){
             return{
-                statusCode:200,
-                body:JSON.stringify(data)
+                statusCode:500,
+                body:JSON.stringify(error)
             }
            }else{
                 return{
-                    statusCode:500,
-                    body:JSON.stringify(error)
+                    statusCode:200,
+                    body:JSON.stringify(data)
                 }
            }
     }
