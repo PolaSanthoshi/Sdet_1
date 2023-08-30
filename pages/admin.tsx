@@ -1,7 +1,7 @@
 import Admin from "@/src/admin";
 import axios from "axios";
-export default function adminn(props:{items:string[],count:number,id:string}){
-    return <Admin data={props.items} count={props.count} id={props.id}/>
+export default function adminn(props:{items:string[],count:number,id:string,name:string}){
+    return <Admin data={props.items} count={props.count} id={props.id} name={props.name}/>
 }
 
 
@@ -11,14 +11,14 @@ export async function getServerSideProps(context:any){
      const {token}=parseCookies(context);
      if(token){
     const decodedPayLoad=jwt.decode(token);
-    const {isLoggedIn,id,role}=decodedPayLoad;
+    const {isLoggedIn,id,role,name}=decodedPayLoad;
     const response=await fetch("https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/menu")
     const val=await response.json();
     const data=await fetch(`https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/employee?id=${id}&role=admin`)
     const value=await data.json();    
             if(isLoggedIn&&role==='admin'){
                 return {
-                    props:{items:val,count:value,id}
+                    props:{items:val,count:value,id,name}
                     }
            }
        

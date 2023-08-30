@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
 import getdate from './models/Date';
-export default function Admin(props:{data:string[],count:number,id:string}) {
+export default function Admin(props:{data:string[],count:number,id:string,name:string}) {
    const router=useRouter();
-   const id=props.id;
+   const name=props.name;
    function handleLogout(){
        axios.get('.netlify/functions/logout')
       .then(list=>{console.log(list.data)
@@ -19,7 +19,7 @@ export default function Admin(props:{data:string[],count:number,id:string}) {
  return <div className='adminBg h-screen w-full'>
    <div className='flex bg-blue-400 justify-between p-3 '>
       <div className='flex gap-5 justify-center items-center'>
-      <div className='min-w-[100px] bg-black text-white rounded-r-lg p-2 -ml-3'>Hello ,{'Vinay'}</div>
+      <div className='min-w-[100px] bg-black text-white rounded-r-lg p-2 -ml-3'>Hello ,{props.name}</div>
       <button className='text-black font-bold hover:text-[#635e5e]' onClick={homeClick}>Home</button>
    
       </div>
