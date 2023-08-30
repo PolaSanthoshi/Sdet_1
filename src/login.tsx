@@ -37,7 +37,8 @@ export default function Login() {
   }
   const handleLogin = async(e:any) => {
     console.log(id)
-  await axios.get(`.netlify/functions/supabase?id=${id}`)
+    // when user login as employee
+  await axios.get(`.netlify/functions/${role=='employee'?'supabase':'admin'}?id=${id}`)
     .then(response=>{
       if(response.data.length>0){
         e.preventDefault()
@@ -52,9 +53,10 @@ export default function Login() {
   }else{
     setShowConfimation(true)
   }
-  })
-    .catch(k=>{alert('Invalid Employee ID')})
-       };
+  }).catch(k=>{alert('Invalid Employee ID')})
+
+       }
+       ;
   const isLoginDisabled =
    (id === '' || id.length !== 4)
   return (
@@ -105,7 +107,7 @@ export default function Login() {
                     />
                 </>
               )}
-              <div className='flex gap-3'>
+              <div className='flex gap-4'>
               <button
                 onClick={handleLogin}
                 disabled={isLoginDisabled}
@@ -115,7 +117,7 @@ export default function Login() {
               >
                 Login
               </button>
-              {loader&&<div className='h-5 w-5 border-black border-t-2 border-solid rounded-full animate-spinn'></div>}
+              {loader&&<div className='h-5 w-5 mt-4 border-black border-t-2 border-solid rounded-full animate-spinn'></div>}
               </div>
             </div>
           </div>
