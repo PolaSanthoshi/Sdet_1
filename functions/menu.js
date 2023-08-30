@@ -9,7 +9,7 @@ exports.handler=async(event,context)=>{
          const {data,error}=await supabase
          .from('admin')
          .update({menu:menu})
-         .eq('id',1)
+         .eq('adminid',1031)
          if(data){
             return{
                 statusCode:200,
@@ -23,19 +23,19 @@ exports.handler=async(event,context)=>{
          }
 
         case 'GET':
-            const  {data1,error1}=await supabase
+            const  {data:d,error:e}=await supabase
             .from('admin')
             .select('menu')
-            .eq('id',1)
-            if(error1){
+            .eq('adminid',1031)
+            if(e){
             return{
                 statusCode:500,
-                body:JSON.stringify(error1)
+                body:JSON.stringify(e)
             }
         }else{
             return{
                 statusCode:200,
-                body:JSON.stringify(data1)
+                body:JSON.stringify(d)
             }
         }
     }
