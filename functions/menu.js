@@ -9,7 +9,7 @@ exports.handler=async(event,context)=>{
          const {data,error}=await supabase
          .from('admin')
          .update({menu:menu})
-         .eq('id',1031)
+         .eq('adminid',1031)
          if(data){
             return{
                 statusCode:200,
@@ -26,7 +26,7 @@ exports.handler=async(event,context)=>{
             const  {data1,error1}=await supabase
             .from('admin')
             .select('menu')
-            .eq('id',1031)
+            .eq('adminid',1031)
             if(error1){
             return{
                 statusCode:500,
