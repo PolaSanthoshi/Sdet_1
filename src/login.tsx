@@ -115,7 +115,7 @@ export default function Login() {
               >
                 Login
               </button>
-              {loader&&<div className='h-5 w-5 border-black border-t-1 border-solid rounded-full '></div>}
+              {loader&&<div className='h-5 w-5 border-black border-t-1 border-solid rounded-full animate-spinn'></div>}
               </div>
             </div>
           </div>
