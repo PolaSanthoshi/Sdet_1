@@ -18,7 +18,7 @@ export async function getServerSideProps(context:any){
     const value=await data.json();    
             if(isLoggedIn&&role==='admin'){
                 return {
-                    props:{items:val,count:value,id,name}
+                    props:{items:JSON.parse(val.menu),count:value,id,name}
                     }
            }
        
