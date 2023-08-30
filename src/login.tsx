@@ -5,7 +5,7 @@ import PopUp from './designComponents.tsx/popUp';
 export default function Login() {
   useEffect(()=>{
     axios.get('.netlify/functions/menu')
-    .then(response=>console.log(response.data))
+    .then(response=>console.log((response.data)[0].menu))
   },[])
   const [role, setRole] = useState('employee');
   const [id, setId] = useState('');
