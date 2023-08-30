@@ -51,7 +51,7 @@ export default function Login() {
         router.push('/admin')
       }
   }else{
-      {showConfimation&& <PopUp message='Inalid EmployeeID'  changeView={()=>setShowConfimation(!showConfimation)}/>}
+    setShowConfimation(true)
   }
   })
     .catch(k=>{alert('Invalid Employee ID')})
@@ -61,6 +61,7 @@ export default function Login() {
   return (
     <>
       <div className="h-screen flex justify-center items-center w-full bg-blue-200">
+      {showConfimation&& <PopUp message='Invalid EmployeeID'  changeView={()=>setShowConfimation(!showConfimation)}/>}
         <div className="h-[550px] sm:h-[500px] w-full mx-7 sm:w-[800px]  rounded-2xl shadow-xl flex justify-center items-center overflow-hidden">
           <div className="hidden min-h-full sm:flex justify-center items-center w-[50%] bg-blue-400">
             <img src='/images/sdetLogo.png'/>
