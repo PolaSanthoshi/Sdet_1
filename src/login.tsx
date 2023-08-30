@@ -40,6 +40,7 @@ export default function Login() {
     // when user login as employee
   await axios.get(`.netlify/functions/${role=='employee'?'supabase':'admin'}?id=${id}`)
     .then(response=>{
+      console.log(response.data)
       if(response.data.length>0){
         e.preventDefault()
         setLoader(true)
