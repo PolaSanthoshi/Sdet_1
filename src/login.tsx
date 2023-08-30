@@ -47,7 +47,7 @@ export default function Login() {
         if(role=='employee'){
           router.push('/home')
         }else{
-          // router.push('/admin')
+          router.push('/admin')
         }
       setName(response.data[0].name)
       axios.post('.netlify/functions/auth',{id,role,name:response.data[0].name})
