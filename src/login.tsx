@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { error } from 'console';
+import PopUp from './designComponents.tsx/popUp';
 export default function Login() {
   const [role, setRole] = useState('employee');
   const [id, setId] = useState('');
   const [name,setName]=useState('');
   const[key,setKey]=useState('');
+  const[showConfimation,setShowConfimation]=useState(false);
   // const [adminId, setAdminId] = useState('');
   const router=useRouter();
   const handleRoleChange = (e:any) => {
@@ -38,7 +39,6 @@ export default function Login() {
   await axios.get(`.netlify/functions/supabase?id=${id}`)
     .then(response=>{
       if(response.data.length>0){
-      console.log(response.data)
       setName(response.data[0].name)
       axios.post('.netlify/functions/auth',{id,role,name:response.data[0].name})
       .then(response=>{
@@ -50,7 +50,10 @@ export default function Login() {
       }else{
         router.push('/admin')
       }
-  }})
+  }else{
+      {showConfimation&& <PopUp message='Inalid EmployeeID'  changeView={()=>setShowConfimation(!showConfimation)}/>}
+  }
+  })
     .catch(k=>{alert('Invalid Employee ID')})
        };
   const isLoginDisabled =
@@ -120,4 +123,8 @@ export default function Login() {
 }
 
 
+
+function setShowConfimation(arg0: boolean): void {
+  throw new Error('Function not implemented.');
+}
 
