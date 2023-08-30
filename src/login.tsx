@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import PopUp from './designComponents.tsx/popUp';
 export default function Login() {
+  useEffect(()=>{
+    axios.get('.netlify/functions/menu')
+    .then(response=>console.log(response.data))
+  },[])
   const [role, setRole] = useState('employee');
   const [id, setId] = useState('');
   const [name,setName]=useState('');
