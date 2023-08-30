@@ -1,6 +1,7 @@
 import Admin from "@/src/admin";
 import axios from "axios";
 export default function adminn(props:{items:string[],count:number,id:string,name:string}){
+    console.log(props)
     return <Admin data={props.items} count={props.count} id={props.id} name={props.name}/>
 }
 
@@ -21,7 +22,6 @@ export async function getServerSideProps(context:any){
                     props:{items:JSON.parse(val.menu),count:value,id,name}
                     }
            }
-       
                  return {
                   redirect:{
                       destination:'/',
