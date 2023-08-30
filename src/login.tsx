@@ -8,6 +8,7 @@ export default function Login() {
   const [name,setName]=useState('');
   const[key,setKey]=useState('');
   const[showConfimation,setShowConfimation]=useState(false);
+  const [loader,setLoader]=useState(false)
   // const [adminId, setAdminId] = useState('');
   const router=useRouter();
   const handleRoleChange = (e:any) => {
@@ -34,12 +35,13 @@ export default function Login() {
       setKey(value)
     }
   }
-  const handleLogin = async() => {
+  const handleLogin = async(e:any) => {
     console.log(id)
   await axios.get(`.netlify/functions/supabase?id=${id}`)
     .then(response=>{
       if(response.data.length>0){
-        
+        e.preventDefault()
+        setLoader(true)
         if(role=='employee'){
           router.push('/home')
         }else{
@@ -103,6 +105,7 @@ export default function Login() {
                     />
                 </>
               )}
+              <div className='flex gap-3'>
               <button
                 onClick={handleLogin}
                 disabled={isLoginDisabled}
@@ -112,6 +115,8 @@ export default function Login() {
               >
                 Login
               </button>
+              {loader&&<div className='h-5 w-5 Border'></div>}
+              </div>
             </div>
           </div>
         </div>
