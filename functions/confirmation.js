@@ -5,14 +5,14 @@ exports.handler=async(event,confirmation)=>{
     const supabase = createClient(supabaseUrl, supabaseApiKey);
     const date=new Date();
     const formattedDate=date.toISOString().split('T')[0]
-       const id=event.queryStringParameters.id;
+       const id=parseInt(event.queryStringParameters.id);
        switch (event.httpMethod){
         case 'POST':{
             const {val}=JSON.parse(event.body)=='yes'?true:false;
             const {data,error}=await supabase
             .from('confirmation')
             .upsert([
-                {'employeeId':id,'date':formattedDate,'response':val }
+                {'employeeId':id,'date':date,'response':val }
         ],{ onConflict: 'employeeId' })
             if(error){
                 return{
