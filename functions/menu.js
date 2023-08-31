@@ -5,10 +5,11 @@ exports.handler=async(event,context)=>{
     const supabase = createClient(supabaseUrl, supabaseApiKey);
     switch (event.httpMethod){
         case 'POST':
-         const menu=event.body
+         const menu=JSON.parse(event.body)
+         const menu_tostring=menu.join(',')
          const {data,error}=await supabase
          .from('admin')
-         .update({menu:menu})
+         .update({menu:menu_tostring})
          .eq('adminid',1031)
          if(data){
             return{
