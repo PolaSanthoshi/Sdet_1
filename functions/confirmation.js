@@ -12,9 +12,8 @@ exports.handler=async(event,confirmation)=>{
             const {data,error}=await supabase
             .from('confirmation')
             .upsert([
-                {'employeeId':id,'date':formattedDate,'response':val,
-            }
-        ],{ onConflict: ['employeeId'] })
+                {'employeeId':id,'date':formattedDate,'response':val }
+        ],{ onConflict: 'employeeId' })
             if(error){
                 return{
                     statusCode:500,
