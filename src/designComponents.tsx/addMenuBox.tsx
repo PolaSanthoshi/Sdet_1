@@ -30,7 +30,7 @@ export default function AddMenuBox(props: { menuData: string[] }) {
       setShowConfimation(true);
     } else {
       console.log(listOfItems)
-      axios.post('/.netlify/functions/menu', listOfItems).then((response) => {
+      axios.post('/.netlify/functions/menu', listOfItems.join()).then((response) => {
         console.log(response)
         setCustomMessage('Items are added successfully');
         setShowConfimation(true);
