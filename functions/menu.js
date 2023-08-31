@@ -6,7 +6,7 @@ exports.handler=async(event,context)=>{
     switch (event.httpMethod){
         case 'POST':
          const menu=JSON.parse(event.body)
-         const menu_tostring=menu.join(',')
+         const menu_tostring=menu.join()
          const {data,error}=await supabase
          .from('admin')
          .update({menu:menu_tostring})
