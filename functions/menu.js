@@ -6,20 +6,20 @@ exports.handler=async(event,context)=>{
     switch (event.httpMethod){
         case 'POST':
          const menu=JSON.parse(event.body)
-
+         const menu_tostring=menu.join()
          const {data,error}=await supabase
          .from('admin')
-         .update({menu:menu})
+         .update({menu:menu_tostring})
          .eq('adminid',1031)
-         if(data){
+         if(error){
             return{
-                statusCode:200,
-                body:JSON.stringify(data)
+                statusCode:500,
+                body:JSON.stringify(error)
             }
          }else{
             return{
-                statusCode:500,
-                body:JSON.stringify([error,event])
+                statusCode:200,
+                body:JSON.stringify(data)
             }
          }
 
