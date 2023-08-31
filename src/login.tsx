@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import PopUp from './designComponents.tsx/popUp';
 export default function Login() {
   useEffect(()=>{
-    axios.get('.netlify/functions/menu')
-    .then(response=>console.log((response.data)[0].menu))
+ fetch('https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/menu')
+   .then(response=>console.log(response.json()))
   },[])
   const [role, setRole] = useState('employee');
   const [id, setId] = useState('');
