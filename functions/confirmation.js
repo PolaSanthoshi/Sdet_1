@@ -8,12 +8,12 @@ exports.handler=async(event,confirmation)=>{
        const id=parseInt(event.queryStringParameters.id);
        switch (event.httpMethod){
         case 'POST':{
-            const body=JSON.parse(event.body)
-            const {val}=body.val=='yes'?true:false;
+            const {val}=JSON.parse(event.body)
+            const value=val=='yes'?true:false;
             const {data,error}=await supabase
             .from('confirmation')
             .upsert(
-                {'employeeId':id,'date':date,'response':val })
+                {'employeeId':id,'date':date,'response':value })
             .select()
             if(error){
                 return{
