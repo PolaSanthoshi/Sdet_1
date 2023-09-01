@@ -9,14 +9,12 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
    function handleLogout(){
        axios.get('.netlify/functions/logout')
       .then(list=>{console.log(list.data)
-      router.push('/')})
-     
-    
+      router.push('/')}) 
    }
    function homeClick(){
       router.push('/home')
    }
- return <div className='adminBg h-screen w-full'>
+ return <div className='adminBg bg-cover h-screen w-full'>
    <div className='flex bg-blue-400 justify-between p-3 '>
       <div className='flex gap-5 justify-center items-center'>
       <div className='min-w-[100px] bg-black text-white rounded-r-lg p-2 -ml-3'>Hello ,{props.name}</div>
