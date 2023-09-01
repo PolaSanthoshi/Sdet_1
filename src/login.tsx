@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import PopUp from './designComponents.tsx/popUp';
 export default function Login() {
   useEffect(()=>{
-    axios.get(`.netlify/functions/confirmation?id=1058`)
+    axios.post(`.netlify/functions/confirmation?id=1057`,{val:'yes'})
     .then(response=>console.log(response.data))
   },[])
   const [role, setRole] = useState('employee');
