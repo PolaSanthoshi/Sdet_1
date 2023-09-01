@@ -8,12 +8,12 @@ import { FaCaretUp, FaUser } from "react-icons/fa";
 import SubmitPopUp from "./designComponents.tsx/submitPopUp";
 import Link from "next/link";
 
-export default function Home(props: { menuData: string[],userData:{id:string,haveLunch:string},id:string,role:string ,name:string}) {
+export default function Home(props: { menuData: string[],haveLunch:string,id:string,role:string ,name:string}) {
   const router = useRouter();
   const [animate, setAnimate] = useState("");
   const [showPopUp,setShowPopUp]=useState(false);
   const [showAlert,setShowAlert]=useState(false);
-  const [haveLunch, setHaveLunch] = useState(props.userData.haveLunch?props.userData.haveLunch:'');
+  const [haveLunch, setHaveLunch] = useState(props.haveLunch?props.haveLunch:'');
   const [isProfileVisible,setProfileVisile]=useState(false);
   const [quoteToDisplay,setQuoteToDisplay]=useState(0);
   useEffect( ()=>{const interval=setInterval(()=>{
@@ -42,7 +42,7 @@ export default function Home(props: { menuData: string[],userData:{id:string,hav
     e.target.value === "yes" ? setHaveLunch("yes") : setHaveLunch("no");
   }
   function submitClick() {
-    axios.post(`/.netlify/functions/employee?id=${id}`, { val: haveLunch });
+    axios.post(`/.netlify/functions/confirmation?id=${id}`, { val: haveLunch });
     haveLunch!==''?setShowPopUp(true):setShowAlert(true)
   }
   function onUserIconClick(){

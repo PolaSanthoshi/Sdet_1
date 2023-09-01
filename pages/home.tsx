@@ -2,12 +2,13 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Home from "@/src/home";
 import { parseCookies } from "nookies";
-export default function Homee(props:{menuData:string[],userData:{id:string,haveLunch:string},id:string,role:string,isLoggedIn:any,name:string}){
+export default function Homee(props:{menuData:string[],haveLunch:string,id:string,role:string,isLoggedIn:any,name:string}){
      const router=useRouter();
      console.log(props.isLoggedIn,typeof props.isLoggedIn)
+     const haveLunch=props.haveLunch?'yes':'no';
      // const {id}=router.query;
   return  <div>
-     <Home menuData={props.menuData} userData={props.userData} id={props.id} role={props.role} name={props.name}/>
+     <Home menuData={props.menuData} haveLunch={haveLunch} id={props.id} role={props.role} name={props.name}/>
     </div>
 }
 export async function getServerSideProps(context:any){
@@ -20,11 +21,11 @@ export async function getServerSideProps(context:any){
           const {isLoggedIn,id,name,role}=decodedPayLoad;
           const data=await fetch('https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/menu');
           const menuData= await data.json();
-          const response=await fetch(`https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/employee?id=${id}`);
+          const response=await fetch(`https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/confirmation?id=${id}`);
           const userData=await response.json();
           if(isLoggedIn){
               return {
-                   props:{menuData:menuData[0].menu.split(','),userData,isLoggedIn:decodedPayLoad,id:id,role:role,name:name}
+                   props:{menuData:menuData[0].menu.split(','),userData:userData[0].response,isLoggedIn:decodedPayLoad,id:id,role:role,name:name}
                   }
          }
      }
