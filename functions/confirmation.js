@@ -9,7 +9,6 @@ exports.handler=async(event,confirmation)=>{
        switch (event.httpMethod){
         case 'POST':{
             const {val}=JSON.parse(event.body)
-            const value=val=='yes'?true:false;
             const {data,error}=await supabase
             .from('confirmation')
             .select()
@@ -23,7 +22,7 @@ exports.handler=async(event,confirmation)=>{
                 if(data.length>0){
                     const {data:x,error:y}=await supabase
                     .from('confirmation')
-                    .update({response:value})
+                    .update({response:val})
                     .eq('employeeId',id)
                     if(y){
                         return{
@@ -39,7 +38,7 @@ exports.handler=async(event,confirmation)=>{
                 }else{
                     const {data,error}=await supabase
                     .from('confirmation')
-                    .insert({'employeeId':id,response:value,date:formattedDate})
+                    .insert({'employeeId':id,response:val,date:formattedDate})
                     if(error){
                         return{
                             statusCode:200,

@@ -5,15 +5,9 @@ import { parseCookies } from "nookies";
 export default function Homee(props:{menuData:string[],haveLunch:string,id:string,role:string,isLoggedIn:any,name:string}){
      const router=useRouter();
      console.log(props.isLoggedIn,typeof props.isLoggedIn)
-     let haveLunch:any='';
-     if(props.haveLunch!==''){
-         
-         haveLunch=props.haveLunch?'yes':'no';
-     }
-     
      // const {id}=router.query;
   return  <div>
-     <Home menuData={props.menuData} haveLunch={haveLunch} id={props.id} role={props.role} name={props.name}/>
+     <Home menuData={props.menuData} haveLunch={props.haveLunch} id={props.id} role={props.role} name={props.name}/>
     </div>
 }
 export async function getServerSideProps(context:any){

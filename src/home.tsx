@@ -13,7 +13,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
   const [animate, setAnimate] = useState("");
   const [showPopUp,setShowPopUp]=useState(false);
   const [showAlert,setShowAlert]=useState(false);
-  const [haveLunch, setHaveLunch] = useState(props.haveLunch?props.haveLunch:'');
+  const [haveLunch, setHaveLunch] = useState(props.haveLunch);
   const [isProfileVisible,setProfileVisile]=useState(false);
   const [quoteToDisplay,setQuoteToDisplay]=useState(0);
   useEffect( ()=>{const interval=setInterval(()=>{
@@ -117,7 +117,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
             <button
               className={`w-20 h-20 font-bold text-[30px] text-red-800 shadow-md bg-white flex items-center justify-center rounded-md relative ${
                 animate == "no" ? "buttonAnimation" : ""
-              } ${haveLunch == "no" ? "Outline" : ""} Border`}
+              } ${haveLunch == "yes" ? "Outline" : ""} Border`}
               onMouseEnter={mouseOverfn}
               onMouseLeave={mouseLeavefn}
               value="no"
