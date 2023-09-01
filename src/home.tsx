@@ -117,7 +117,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
             <button
               className={`w-20 h-20 font-bold text-[30px] text-red-800 shadow-md bg-white flex items-center justify-center rounded-md relative ${
                 animate == "no" ? "buttonAnimation" : ""
-              } ${haveLunch == "yes" ? "Outline" : ""} Border`}
+              } ${haveLunch == "no" ? "Outline" : ""} Border`}
               onMouseEnter={mouseOverfn}
               onMouseLeave={mouseLeavefn}
               value="no"
