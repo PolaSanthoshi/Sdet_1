@@ -5,7 +5,12 @@ import { parseCookies } from "nookies";
 export default function Homee(props:{menuData:string[],haveLunch:string,id:string,role:string,isLoggedIn:any,name:string}){
      const router=useRouter();
      console.log(props.isLoggedIn,typeof props.isLoggedIn)
-     const haveLunch=props.haveLunch?'yes':'no';
+     let haveLunch:any='';
+     if(props.haveLunch!==''){
+         
+         haveLunch=props.haveLunch?'yes':'no';
+     }
+     
      // const {id}=router.query;
   return  <div>
      <Home menuData={props.menuData} haveLunch={haveLunch} id={props.id} role={props.role} name={props.name}/>
@@ -23,9 +28,10 @@ export async function getServerSideProps(context:any){
           const menuData= await data.json();
           const response=await fetch(`https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/confirmation?id=${id}`);
           const userData=await response.json();
+          const userVal=userData.length>0?userData[0].response:'';
           if(isLoggedIn){
               return {
-                   props:{menuData:menuData[0].menu.split(','),userData:userData[0].response,isLoggedIn:decodedPayLoad,id:id,role:role,name:name}
+                   props:{menuData:menuData[0].menu.split(','),userData:userVal,isLoggedIn:decodedPayLoad,id:id,role:role,name:name}
                   }
          }
      }
