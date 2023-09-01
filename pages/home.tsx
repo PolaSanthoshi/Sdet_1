@@ -4,8 +4,7 @@ import Home from "@/src/home";
 import { parseCookies } from "nookies";
 export default function Homee(props:{menuData:string[],haveLunch:string,id:string,role:string,isLoggedIn:any,name:string}){
      const router=useRouter();
-     console.log(props.isLoggedIn,typeof props.isLoggedIn)
-     // const {id}=router.query;
+     console.log(props.haveLunch,'haveLunch')
   return  <div>
      <Home menuData={props.menuData} haveLunch={props.haveLunch} id={props.id} role={props.role} name={props.name}/>
     </div>
