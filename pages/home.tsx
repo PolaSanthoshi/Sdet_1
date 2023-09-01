@@ -24,7 +24,7 @@ export async function getServerSideProps(context:any){
           const userVal=userData.length>0?userData[0].response:'';
           if(isLoggedIn){
               return {
-                   props:{menuData:menuData[0].menu.split(','),userData:userVal,isLoggedIn:decodedPayLoad,id:id,role:role,name:name}
+                   props:{menuData:menuData[0].menu.split(','),haveLunch:userVal,isLoggedIn:decodedPayLoad,id:id,role:role,name:name}
                   }
          }
      }
