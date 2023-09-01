@@ -17,7 +17,7 @@ exports.handler=async(event,confirmation)=>{
             if(error){
                 return{
                     statusCode:500,
-                    body:JSON.stringify(error)
+                    body:JSON.stringify('Check error')
                 }
             }else{
                 if(data.length>0){
@@ -25,14 +25,32 @@ exports.handler=async(event,confirmation)=>{
                     .from('confirmation')
                     .update({response:value})
                     .eq('employeeId',id)
+                    if(y){
+                        return{
+                            statusCode:200,
+                            body:JSON.stringify('update error')
+                    }
+                    }else{
+                    return{
+                        statusCode:200,
+                        body:JSON.stringify(x)
+                    }
+                }
                 }else{
                     const {data,error}=await supabase
                     .from('confirmation')
                     .insert({'employeeId':id,response:value,date:formattedDate})
+                    if(error){
+                        return{
+                            statusCode:200,
+                            body:JSON.stringify('Insert error')
+                    }
+                    }else{
+                    return{
+                        statusCode:200,
+                        body:JSON.stringify(data)
+                    }
                 }
-                return{
-                    statusCode:200,
-                    body:JSON.stringify(data)
                 }
             }
        }
