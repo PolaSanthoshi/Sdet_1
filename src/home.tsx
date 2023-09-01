@@ -25,7 +25,6 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
   const  handleLogout = async() => {
    await axios.get('/.netlify/functions/logout')
     .then(list=>console.log(list.data))
-   
     router.push('/')
   };
   function mouseOverfn(e: any) {
