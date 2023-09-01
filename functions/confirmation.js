@@ -12,15 +12,24 @@ exports.handler=async(event,confirmation)=>{
             const value=val=='yes'?true:false;
             const {data,error}=await supabase
             .from('confirmation')
-            .upsert(
-                {'employeeId':id,'date':date,'response':value })
             .select()
+            .eq('employeeId',id)
             if(error){
                 return{
                     statusCode:500,
                     body:JSON.stringify(error)
                 }
             }else{
+                if(data.length>0){
+                    const {data:x,error:y}=await supabase
+                    .from('confirmation')
+                    .update({response:value})
+                    .eq('employeeId',id)
+                }else{
+                    const {data,error}=await supabase
+                    .from('confirmation')
+                    .insert({'employeeId':id,response:value,date:formattedDate})
+                }
                 return{
                     statusCode:200,
                     body:JSON.stringify(data)
