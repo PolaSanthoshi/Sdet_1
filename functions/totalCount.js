@@ -9,7 +9,6 @@ exports.handler=async(event,context)=>{
     .from('confirmation')
     .select('response')
     .eq('response','yes')
-    .eq('date',formattedDate)
     const count=data.length;
     return{
         statusCode:200,
