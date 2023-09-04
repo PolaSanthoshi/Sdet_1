@@ -10,7 +10,7 @@ exports.handler=async(event,context)=>{
     .select('item')
     return {
         statusCode:200,
-        body:JSON.stringify(data.map(val=>val['item']))
+        body:JSON.stringify(data)
     }
     
 }
