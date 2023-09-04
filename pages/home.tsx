@@ -2,7 +2,11 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Home from "@/src/home";
 import { parseCookies } from "nookies";
+import { useEffect } from "react";
 export default function Homee(props:{menuData:string[],haveLunch:string,id:string,role:string,isLoggedIn:any,name:string}){
+     const date=new Date();
+     useEffect(()=>{ axios.delete('.netlify/functions/confirmation')
+                        .then(response=>{console.log(response.data)})},[date])
      const router=useRouter();
      console.log(props.haveLunch,'haveLunch')
   return  <div>
@@ -10,6 +14,7 @@ export default function Homee(props:{menuData:string[],haveLunch:string,id:strin
     </div>
 }
 export async function getServerSideProps(context:any){
+    
      const key='aby_kLXIOPKANJD'
      const jwt=require('jsonwebtoken')
      const {parseCookies}=require('nookies')

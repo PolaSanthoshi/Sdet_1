@@ -53,7 +53,7 @@ exports.handler=async(event,confirmation)=>{
                 }
             }
        }
-       case 'GET':
+       case 'GET':{
         const {data:d,error:e}=await supabase
         .from('confirmation')
         .select('response')
@@ -69,6 +69,20 @@ exports.handler=async(event,confirmation)=>{
                 body:JSON.stringify(d)
             }
         }
-
+    }
+        case 'DELETE':
+            const {data,error}=await supabase
+            .from('confirmation')
+            .delete();
+            if(error){
+                return{
+                    statusCode:500,
+                    body:JSON.stringify(e)
+                }
+            }else{
+                return{
+                    statusCode:200,
+                    body:JSON.stringify('successfully deleted previous data')
+            }}
 }
 }
