@@ -14,11 +14,11 @@ export async function getServerSideProps(context:any){
     const {isLoggedIn,id,role,name}=decodedPayLoad;
     const response=await fetch("https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/menu")
     const val=await response.json();
-    // const data=await fetch(`https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/totalCount`)
-    // const value=await data.json();    
+    const data=await fetch(`https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/totalCount`)
+    const value=await data.json();    
             if(isLoggedIn&&role==='admin'){
                 return {
-                    props:{items:val[0].menu.split(','),count:5,id,name}
+                    props:{items:val[0].menu.split(','),count:value,id,name}
                     }
            }
                  return {
