@@ -3,7 +3,9 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
 import getdate from './models/Date';
+import { FaCaretSquareDown } from 'react-icons/fa';
 export default function Admin(props:{data:string[],count:number,id:string,name:string}) {
+   const [isDropDownActive,setDropDownActive]=useState(false)
    const router=useRouter();
    const name=props.name;
    function handleLogout(){
@@ -14,6 +16,9 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
    function homeClick(){
       router.push('/home')
    }
+   function changeDropDown(){
+      setDropDownActive(!isDropDownActive)
+}
  return <div className='adminBg bg-cover h-screen w-full'>
    <div className='flex bg-blue-400 justify-between p-3 '>
       <div className='flex gap-5 justify-center items-center'>
@@ -22,12 +27,17 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
    
       </div>
       <div className='flex items-center gap-4'>
-      <div className='font-semibold'>Date : {getdate()}</div>
+      <button className={`font-semibold p-2 rounded-md ${isDropDownActive?'bg-slate-500 text-white':'bg-slate-300'}`}>
+       <div className="flex gap-2 items-center " onClick={changeDropDown}>
+        <FaCaretSquareDown/>
+        <div>Monthly-Data</div>
+       </div>
+      </button>
       <div className='h-full  w-[2px] bg-black'></div>
 
-      <button className='font-bold bg-slate-300 p-2 rounded-md' onClick={handleLogout}>Logout</button>
+      <button className='font-bold bg-slate-300 p-2 rounded-md active:bg-slate-400 active:text-white' onClick={handleLogout}>Logout</button>
       </div>
-   </div>
+   </div>  
     <div className='flex justify-center mt-10 '>
     <AddMenuBox menuData={props.data} />
     </div>

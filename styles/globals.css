@@ -34,11 +34,11 @@ input::-webkit-inner-spin-button {
     background-size: cover;
 
 }
-.adminBg{
+/* .adminBg{
     background-image: url('/images/adminBg.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-}
+} */
 
 @keyframes buttonAnimate{
     0%{
