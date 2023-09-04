@@ -36,7 +36,7 @@ exports.handler=async(event,context)=>{
         }else{
             return{
                 statusCode:200,
-                body:JSON.stringify(d)
+                body:JSON.stringify(d.map(val=>val['item']))
             }
         }
     }

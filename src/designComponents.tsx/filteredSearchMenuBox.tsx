@@ -1,16 +1,17 @@
-const Storedmenu=['Alloo Jeera','Aloo matar','Chole','Dal','Raita','Roti','Rice']
+// const Storedmenu=['Alloo Jeera','Aloo matar','Chole','Dal','Raita','Roti','Rice']
 import axios from "axios";
 import { useEffect, useState } from "react";
 export default function SearchMenu(props:{itemtoSearch:string,setSelectedItem:(item:string)=>void}){
+    const [StoredMenu,setStoredMenu]=useState([''])
     useEffect(()=>{setItemEnteredInSearchBar(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase())},[props.itemtoSearch])
     useEffect(()=>{
         axios.get('/.netlify/functions/storedMenu')
-        .then((response)=>{console.log(response.data)})
+        .then((response)=>{console.log(response.data);setStoredMenu(response.data)})
     },[])
     const [isValueSelected,setIsValueSelected]=useState(false);
     const [itemEnteredInSearchBar,setItemEnteredInSearchBar]=useState(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase());
     const [filteredMenu,setFilteredMenu]=useState<any>([])
-    useEffect(()=>{setIsValueSelected(false);setFilteredMenu(Storedmenu.filter((item)=>itemEnteredInSearchBar===item.trim().toLowerCase().substring(0,itemEnteredInSearchBar.length)))},[itemEnteredInSearchBar])
+    useEffect(()=>{setIsValueSelected(false);setFilteredMenu(StoredMenu.filter((item)=>itemEnteredInSearchBar===item.trim().toLowerCase().substring(0,itemEnteredInSearchBar.length)))},[itemEnteredInSearchBar])
     function onItemClick(elem:string){
          
          props.setSelectedItem(elem)
