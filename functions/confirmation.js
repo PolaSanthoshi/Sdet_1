@@ -12,14 +12,9 @@ exports.handler=async(event,confirmation)=>{
             const {data,error}=await supabase
             .from('confirmation')
             .select()
-            .and(
-                supabase
-                .from('confirmation')
-                .eq('employeeId',id),
-                supabase
-                .from('confirmation')
-                .eq('date',formattedDate)
-            )
+            .eq('employeeId',id)
+            .eq('date',formattedDate)
+                
             if(error){
                 return{
                     statusCode:500,
@@ -30,14 +25,8 @@ exports.handler=async(event,confirmation)=>{
                     const {data:x,error:y}=await supabase
                     .from('confirmation')
                     .update({response:val})
-                    .and(
-                        supabase
-                        .from('confirmation')
-                        .eq('employeeId',id),
-                        supabase
-                        .from('confirmation')
-                        .eq('date',formattedDate)
-                    )
+                    .eq('employeeId',id)
+                    .eq('date',formattedDate)
                     if(y){
                         return{
                             statusCode:200,
@@ -71,14 +60,8 @@ exports.handler=async(event,confirmation)=>{
         const {data:d,error:e}=await supabase
         .from('confirmation')
         .select('response')
-        .and(
-            supabase
-            .from('confirmation')
-            .eq('employeeId',id),
-            supabase
-            .from('confirmation')
-            .eq('date',formattedDate)
-        )
+        .eq('employeeId',id)
+        .eq('date',formattedDate)
         if(e){
             return{
                 statusCode:500,
