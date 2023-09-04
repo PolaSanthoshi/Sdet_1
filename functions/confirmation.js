@@ -57,7 +57,14 @@ exports.handler=async(event,confirmation)=>{
         const {data:d,error:e}=await supabase
         .from('confirmation')
         .select('response')
-        .eq('employeeId',id)
+        .and(
+            supabase
+            .from('confirmation')
+            .eq('employeeId',id),
+            supabase
+            .from('confirmation')
+            .eq('date',formattedDate)
+        )
         if(e){
             return{
                 statusCode:500,
@@ -70,19 +77,19 @@ exports.handler=async(event,confirmation)=>{
             }
         }
     }
-        case 'DELETE':
-            const {data,error}=await supabase
-            .from('confirmation')
-            .delete();
-            if(error){
-                return{
-                    statusCode:500,
-                    body:JSON.stringify(e)
-                }
-            }else{
-                return{
-                    statusCode:200,
-                    body:JSON.stringify('successfully deleted previous data')
-            }}
+        // case 'DELETE':
+        //     const {data,error}=await supabase
+        //     .from('confirmation')
+        //     .delete();
+        //     if(error){
+        //         return{
+        //             statusCode:500,
+        //             body:JSON.stringify(error)
+        //         }
+        //     }else{
+        //         return{
+        //             statusCode:200,
+        //             body:JSON.stringify('successfully deleted previous data')
+        //     }}
 }
 }
