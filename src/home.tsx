@@ -41,8 +41,16 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
     e.target.value === "yes" ? setHaveLunch("yes") : setHaveLunch("no");
   }
   function submitClick() {
-    axios.post(`/.netlify/functions/confirmation?id=${id}`, { val: haveLunch });
     haveLunch!==''?setShowPopUp(true):setShowAlert(true)
+    axios.post(`/.netlify/functions/confirmation?id=${id}`, { val: haveLunch })
+    .then(v=>{
+      axios.get('/.netlify/functions/totalCount')
+      .then(response=>{
+        axios.post(`./netlify/functions/monthlyCount?count=${response.data}`)
+      })
+    })
+  
+
   }
   function onUserIconClick(){
     setProfileVisile(!isProfileVisible)
