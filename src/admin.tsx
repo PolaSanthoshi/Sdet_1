@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
 import getdate from './models/Date';
-import Table from './designComponents.tsx/MonthData';
 import { FaCaretSquareDown } from 'react-icons/fa';
 export default function Admin(props:{data:string[],count:number,id:string,name:string}) {
    const [monthData,setmonthData]=useState([]);
