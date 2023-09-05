@@ -2,7 +2,7 @@ import { FaSearch } from "react-icons/fa"
 import getdate from "../models/Date"
 export default function Table(props:{data:any}){
     const {data}=props;
-    return <div className="mt-3 w-[400px] min-h-[300px] max-h-[550px] overflow-scroll scrollbar bg-zinc-200 shadow-lg rounded-lg p-3 absolute right-3 top-10">
+    return <div className="mt-3 w-[400px] min-h-[300px] max-h-[550px] overflow-scroll scrollbar bg-zinc-200 shadow-lg rounded-lg p-3 absolute right-3 top-12">
            <div className="flex w-full gap-5 justify-center">
             <div className="flex bg-slate-300 rounded-md p-1 items-center gap-3">
               <div className="text-slate-600 text-[10px]"><FaSearch/> </div>  

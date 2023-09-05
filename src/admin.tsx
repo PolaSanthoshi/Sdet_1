@@ -8,7 +8,7 @@ import { FaCaretSquareDown } from 'react-icons/fa';
 export default function Admin(props:{data:string[],count:number,id:string,name:string}) {
    useEffect(()=>{axios.get('/.netlify/functions/monthlyCount')
 .then(response=>{console.log(response.data);
-   setmonthData(response.data.sort((a:any,b:any)=>a.id-b.id))})},[])
+   setmonthData(response.data)})},[])
    const [monthData,setmonthData]=useState({});
    const [isDropDownActive,setDropDownActive]=useState(false)
    const router=useRouter();
