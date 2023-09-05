@@ -56,7 +56,7 @@ exports.handler=async(event,confirmation)=>{
         case 'GET':
            const {data,error}= await supabase
             .from('count')
-            .select('count','date')
+            .select()
         
         if(error){
             return{
