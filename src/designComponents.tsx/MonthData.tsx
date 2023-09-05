@@ -1,6 +1,6 @@
 import { FaSearch } from "react-icons/fa"
 import getdate from "../models/Date"
-export default function DD(){
+export default function TAble(){
 
     return <div className="mt-3 w-[400px] min-h-[300px] max-h-[550px] overflow-scroll scrollbar bg-zinc-200 shadow-lg rounded-lg p-3 absolute right-3">
            <div className="flex w-full gap-5 justify-center">

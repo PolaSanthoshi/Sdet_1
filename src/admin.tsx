@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
 import getdate from './models/Date';
+import Table from './designComponents.tsx/MonthData';
 import { FaCaretSquareDown } from 'react-icons/fa';
 export default function Admin(props:{data:string[],count:number,id:string,name:string}) {
    useEffect(()=>{axios.get('/.netlify/functions/monthlyCount')
@@ -45,5 +46,6 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
     <div className='mt-5 w-[500px] m-auto flex justify-center bg-blue-500 p-2'>
    <div className='font-semibold'>Count-{props.count}</div>
       </div>
+      {isDropDownActive&&<Table/>}
  </div>
 }

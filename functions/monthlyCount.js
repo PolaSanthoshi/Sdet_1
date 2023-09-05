@@ -53,11 +53,11 @@ exports.handler=async(event,confirmation)=>{
             }
 
         }
-        case 'GET':{
+        case 'GET':
            const {data,error}= await supabase
             .from('count')
             .select('count','date')
-        }
+        
         if(error){
             return{
             statusCode:500,
