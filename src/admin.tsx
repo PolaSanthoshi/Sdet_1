@@ -7,7 +7,9 @@ import Table from './designComponents.tsx/MonthData';
 import { FaCaretSquareDown } from 'react-icons/fa';
 export default function Admin(props:{data:string[],count:number,id:string,name:string}) {
    useEffect(()=>{axios.get('/.netlify/functions/monthlyCount')
-.then(response=>{console.log(response.data)})},[])
+.then(response=>{console.log(response.data);
+   setmonthData(response.data.sort((a:any,b:any)=>a.id-b.id))})},[])
+   const [monthData,setmonthData]=useState({});
    const [isDropDownActive,setDropDownActive]=useState(false)
    const router=useRouter();
    const name=props.name;
@@ -22,7 +24,7 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
    function changeDropDown(){
       setDropDownActive(!isDropDownActive)
 }
- return <div className='adminBg bg-cover h-screen w-full'>
+ return <div className='adminBg bg-cover h-screen w-full '>
    <div className='flex bg-blue-400 justify-between p-3 '>
       <div className='flex gap-5 justify-center items-center'>
       <div className='min-w-[100px] bg-black text-white rounded-r-lg p-2 -ml-3'>Hello ,{props.name}</div>
@@ -46,6 +48,6 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
     <div className='mt-5 w-[500px] m-auto flex justify-center bg-blue-500 p-2'>
    <div className='font-semibold'>Count-{props.count}</div>
       </div>
-      {isDropDownActive&&<Table/>}
+      {isDropDownActive&&<Table data={monthData}/>}
  </div>
 }
