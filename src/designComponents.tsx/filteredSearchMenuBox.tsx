@@ -3,13 +3,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 export default function SearchMenu(props:{itemtoSearch:string,setSelectedItem:(item:string)=>void}){
     const [StoredMenu,setStoredMenu]=useState([''])
-    useEffect(()=>{props.itemtoSearch&&setItemEnteredInSearchBar(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase())},[props.itemtoSearch])
+    // useEffect(()=>{props.itemtoSearch&&setItemEnteredInSearchBar(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase())},[props.itemtoSearch])
     useEffect(()=>{
         axios.get('/.netlify/functions/storedMenu')
         .then((response)=>{console.log(response.data);setStoredMenu(response.data)})
     },[])
     const [isValueSelected,setIsValueSelected]=useState(false);
-    const [itemEnteredInSearchBar,setItemEnteredInSearchBar]=useState(props.itemtoSearch.replaceAll(' ','').toLowerCase());
+    const [itemEnteredInSearchBar,setItemEnteredInSearchBar]=useState(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase());
     const [filteredMenu,setFilteredMenu]=useState<any>([])
     useEffect(()=>{setIsValueSelected(false);setFilteredMenu(StoredMenu.filter((item)=>itemEnteredInSearchBar===item.toLowerCase().substring(0,itemEnteredInSearchBar.length)))},[itemEnteredInSearchBar])
     function onItemClick(elem:string){
