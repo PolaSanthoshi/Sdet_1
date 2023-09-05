@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
 import getdate from './models/Date';
 import { FaCaretSquareDown } from 'react-icons/fa';
 export default function Admin(props:{data:string[],count:number,id:string,name:string}) {
+   useEffect(()=>{axios.get('/.netlify/functions/monthlyCount')
+.then(response=>{console.log(response.data)})})
    const [isDropDownActive,setDropDownActive]=useState(false)
    const router=useRouter();
    const name=props.name;
@@ -24,7 +26,6 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       <div className='flex gap-5 justify-center items-center'>
       <div className='min-w-[100px] bg-black text-white rounded-r-lg p-2 -ml-3'>Hello ,{props.name}</div>
       <button className='text-black font-bold hover:text-[#635e5e]' onClick={homeClick}>Home</button>
-   
       </div>
       <div className='flex items-center gap-4'>
       <button className={`font-semibold p-2 rounded-md ${isDropDownActive?'bg-slate-500 text-white':'bg-slate-300'}`}>
