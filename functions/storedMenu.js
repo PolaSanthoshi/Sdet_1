@@ -8,9 +8,10 @@ exports.handler=async(event,context)=>{
     const { data, error } = await supabase
     .from('menu')
     .select('item')
+    const valueToReturn=data.map(each=>each.item)
     return {
         statusCode:200,
-        body:JSON.stringify(data)
+        body:JSON.stringify(valueToReturn)
     }
     
 }
