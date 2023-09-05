@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 export default function SearchMenu(props:{itemtoSearch:string,setSelectedItem:(item:string)=>void}){
     const [StoredMenu,setStoredMenu]=useState([''])
-    // useEffect(()=>{props.itemtoSearch&&setItemEnteredInSearchBar(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase())},[props.itemtoSearch])
+    useEffect(()=>{setItemEnteredInSearchBar(props.itemtoSearch)},[props.itemtoSearch])
     useEffect(()=>{
         axios.get('/.netlify/functions/storedMenu')
         .then((response)=>{console.log(response.data);setStoredMenu(response.data)})
