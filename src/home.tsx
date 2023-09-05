@@ -46,11 +46,9 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
     .then(v=>{
       axios.get('/.netlify/functions/totalCount')
       .then(response=>{
-        axios.post(`./netlify/functions/monthlyCount?count=${response.data}`)
+        axios.post(`/.netlify/functions/monthlyCount?count=${response.data}`)
       })
     })
-  
-
   }
   function onUserIconClick(){
     setProfileVisile(!isProfileVisible)
