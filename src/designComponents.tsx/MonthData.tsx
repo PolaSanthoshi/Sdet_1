@@ -17,7 +17,7 @@ export default function Table(props:{data:any}){
             <div className="w-[50%] text-center">Date</div>
             <div className="w-[50%] text-center">Count</div>
            </div>
-          {data.map((item: any)=>{ <div className="flex w-full mt-1  text-sm border-b-[0.5px] border-solid border-slate-400 pb-1 ">
+          {data.map((item: any)=>{return <div className="flex w-full mt-1  text-sm border-b-[0.5px] border-solid border-slate-400 pb-1 ">
             <div className="w-[50%] text-center">{item.date}</div>
             <div className="w-[50%] text-center">{item.count}</div>
              </div> } )}    
