@@ -60,7 +60,9 @@ export default function AddMenuBox(props: { menuData: string[] }) {
           +
         </div>
       </div>
-     { isSearchToBeShown&& itemEnteredInSearchBar.length>0 &&<div className=' left-0 right-0  m-auto absolute'> <SearchMenu itemtoSearch={itemEnteredInSearchBar.trim().replace(' ','').toLowerCase()} setSelectedItem={(elem)=>{setItemEnteredInSearchBar(elem);setIsSearchBarToBeShown(false)}}/></div>}
+     { isSearchToBeShown&& itemEnteredInSearchBar.length>0 &&<div className=' left-0 right-0  m-auto absolute'> 
+     <SearchMenu itemtoSearch={itemEnteredInSearchBar.toLowerCase()} setSelectedItem={(elem)=>{setItemEnteredInSearchBar(elem);setIsSearchBarToBeShown(false)}}/>
+     </div>}
       <div className="w-[400px] bg-white m-auto h-[250px] overflow-y-scroll scrollbar px-5">
         {listOfItems.length !== 0 &&
           listOfItems.map((each: string, index: number) => (

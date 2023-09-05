@@ -5,7 +5,7 @@ export default function SearchMenu(props:{itemtoSearch:string,setSelectedItem:(i
     console.log(props.itemtoSearch)
     const [StoredMenu,setStoredMenu]=useState([{}])
     const [itemEnteredInSearchBar,setItemEnteredInSearchBar]=useState(props.itemtoSearch);
-    useEffect(()=>{setItemEnteredInSearchBar(props.itemtoSearch)},[props.itemtoSearch])
+    // useEffect(()=>{setItemEnteredInSearchBar(props.itemtoSearch)},[props.itemtoSearch])
     useEffect(()=>{
         axios.get('/.netlify/functions/storedMenu')
         .then((response)=>{console.log(response.data);setStoredMenu(response.data)})
