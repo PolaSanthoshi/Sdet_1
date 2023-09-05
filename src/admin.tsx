@@ -6,10 +6,10 @@ import getdate from './models/Date';
 import Table from './designComponents.tsx/MonthData';
 import { FaCaretSquareDown } from 'react-icons/fa';
 export default function Admin(props:{data:string[],count:number,id:string,name:string}) {
+   const [monthData,setmonthData]=useState([]);
    useEffect(()=>{axios.get('/.netlify/functions/monthlyCount')
 .then(response=>{console.log(response.data);
    setmonthData(response.data)})},[])
-   const [monthData,setmonthData]=useState({});
    const [isDropDownActive,setDropDownActive]=useState(false)
    const router=useRouter();
    const name=props.name;
