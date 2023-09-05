@@ -12,7 +12,7 @@ export default function Table(props:{data:any}){
     //   setDataToSearch(e.target.value)
     // }
     console.log(response,'uiuiuiuiou')
-    return <div className="mt-3 w-[400px] min-h-[300px] max-h-[550px] overflow-scroll scrollbar bg-zinc-200 shadow-lg rounded-lg p-3 absolute right-3 top-13">
+    return <div className="mt-3 w-[400px] min-h-[300px] max-h-[550px] overflow-scroll scrollbar bg-zinc-200 shadow-lg rounded-lg p-3 absolute right-3 top-14">
           <div className="flex w-full gap-5 justify-center">
         <div className="flex  rounded-md p-1 items-center gap-3">
        {/* <div className="text-slate-600 text-[10px]"><FaSearch/> </div>   */}

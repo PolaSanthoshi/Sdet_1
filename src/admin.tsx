@@ -49,6 +49,6 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
     <div className='mt-5 w-[500px] m-auto flex justify-center bg-blue-500 p-2'>
    <div className='font-semibold'>Count-{props.count}</div>
       </div>
-      {isDropDownActive&&<Table data={monthData}/>}
+      {/* {isDropDownActive&&<Table data={monthData}/>} */}
  </div>
 }
