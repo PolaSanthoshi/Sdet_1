@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 export default function SearchMenu(props:{itemtoSearch:string,setSelectedItem:(item:string)=>void}){
+    console.log(props.itemtoSearch)
     const [StoredMenu,setStoredMenu]=useState([''])
     useEffect(()=>{setItemEnteredInSearchBar(props.itemtoSearch)},[props.itemtoSearch])
     useEffect(()=>{
