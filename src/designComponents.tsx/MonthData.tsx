@@ -1,18 +1,30 @@
 import { FaSearch } from "react-icons/fa"
 import getdate from "../models/Date"
+import { useState } from "react";
 export default function Table(props:{data:any}){
     const  response  =props.data;
+    const [dataToSearch,setDataToSearch]=useState('');
+    const [dataToDisplay,setDataToDisplay]=useState(dataToSearch==''?response:dataToSearch);
+    function onSearchClick(e:React.MouseEvent<HTMLElement>){
+         setDataToDisplay(response.filter((item:any)=>item.date==dataToSearch))
+    }
+    function onSearchChange(e:React.ChangeEvent<HTMLButtonElement>){
+      setDataToSearch(e.target.value)
+    }
     console.log(response,'uiuiuiuiou')
-    return <div className="mt-3 w-[400px] min-h-[300px] max-h-[550px] overflow-scroll scrollbar bg-zinc-200 shadow-lg rounded-lg p-3 absolute right-3 top-12">
-           <div className="flex w-full gap-5 justify-center">
-            <div className="flex bg-slate-300 rounded-md p-1 items-center gap-3">
-              <div className="text-slate-600 text-[10px]"><FaSearch/> </div>  
-            <input type="text" placeholder="yyyy-mm-dd" className="bg-slate-300 text-[12px] outline-none"/>
-            </div>
+    return <div className="mt-3 w-[400px] min-h-[300px] max-h-[550px] overflow-scroll scrollbar bg-zinc-200 shadow-lg rounded-lg p-3 absolute right-3">
+          <div className="flex w-full gap-5 justify-center">
+        <div className="flex  rounded-md p-1 items-center gap-3">
+    
+       {/* <div className="text-slate-600 text-[10px]"><FaSearch/> </div>   */}
+     <input type="text" placeholder="yyyy-mm-dd" className="text-[12px] outline-none p-2 rounded-md" id="search"/>
+     <button className="font-semibold rounded-md bg-slate-300 px-1 " onClick={onSearchClick} onChange={onSearchChange}>Search</button>
+     <div className="font-semibold font-mono ">
+        {`${getdate('month')}-${getdate('year')}`}
+     </div>
+     </div>
             {/* <div className="w-[2px] h-7 bg-black"></div> */}
-            <div className="font-semibold font-mono">
-               {`${getdate('month')}-${getdate('year')}`}
-            </div>
+           
            </div>
            <div className="flex w-full mt-3 font-medium bg-slate-800 text-white">
             <div className="w-[50%] text-center">Date</div>
