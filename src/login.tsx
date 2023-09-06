@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import PopUp from './designComponents.tsx/popUp';
@@ -45,6 +45,7 @@ export default function Login() {
         setLoader(true)
       setName(response.data[0].name)
       axios.post('.netlify/functions/auth',{id,role,name:response.data[0].name})
+      .then(()=>{
       if(role=='employee'){
         router.push('/home') 
     }
@@ -54,8 +55,8 @@ export default function Login() {
         }else{
           setShowConfimation('Invalid Key')
         }
-       
       }
+      })
   }else{
     setShowConfimation(`Invalid ${role}ID`)
   }
@@ -134,8 +135,4 @@ export default function Login() {
 }
 
 
-
-function setShowConfimation(arg0: boolean): void {
-  throw new Error('Function not implemented.');
-}
 
