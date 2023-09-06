@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import  axios  from "axios";
 export default function SearchMenu(props:{itemtoSearch:string,setSelectedItem:(item:string)=>void,apiMenu:string[]}){
  const [StoredMenu,setStoredMenu]=useState(props.apiMenu)
-       useEffect(()=>{
-        axios.get('/.netlify/functions/storedMenu')
-        .then((response)=>{console.log(response.data);setStoredMenu(response.data)})
-    },[])
-    useEffect(()=>{setItemEnteredInSearchBar(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase())},[props.itemtoSearch])
+    //    useEffect(()=>{
+    //     axios.get('/.netlify/functions/storedMenu')
+    //     .then((response)=>{console.log(response.data);setStoredMenu(response.data)})
+    // },[])
+    // useEffect(()=>{setItemEnteredInSearchBar(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase())},[props.itemtoSearch])
     const [isValueSelected,setIsValueSelected]=useState(false);
     const [itemEnteredInSearchBar,setItemEnteredInSearchBar]=useState(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase());
     const [filteredMenu,setFilteredMenu]=useState<any>([])

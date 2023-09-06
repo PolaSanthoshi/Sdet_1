@@ -45,6 +45,7 @@ export default function Login() {
         setLoader(true)
       setName(response.data[0].name)
       axios.post('.netlify/functions/auth',{id,role,name:response.data[0].name})
+      .then(()=>{
       if(role=='employee'){
         router.push('/home') 
     }
@@ -54,8 +55,8 @@ export default function Login() {
         }else{
           setShowConfimation('Invalid Key')
         }
-       
       }
+      })
   }else{
     setShowConfimation(`Invalid ${role}ID`)
   }
