@@ -13,7 +13,6 @@ export default function Login() {
   const router=useRouter();
   const handleRoleChange = (e:any) => {
     setRole(e.target.value);
-    
   };
   const handleEmployeeIdChange = (e:any) => {
     // setEmployeeId(e.target.value);
@@ -43,18 +42,15 @@ export default function Login() {
       console.log(response.data)
       if(response.data.length>0){
         e.preventDefault()
+        setLoader(true)
       setName(response.data[0].name)
       axios.post('.netlify/functions/auth',{id,role,name:response.data[0].name})
       if(role=='employee'){
-        setLoader(true)
-        router.push('/home')
-        setLoader(false)
+        router.push('/home') 
     }
       else{
         if(key=='6789'){
-          setLoader(true)
           router.push('/admin')
-          setLoader(false)
         }else{
           setShowConfimation('Invalid Key')
         }
@@ -72,7 +68,7 @@ export default function Login() {
   return (
     <>
       <div className="h-screen flex justify-center items-center w-full bg-blue-200">
-      {showConfimation&& <PopUp message={showConfimation}  changeView={()=>setShowConfimation('')}/>}
+      {showConfimation&& <PopUp message={showConfimation}  changeView={()=>{setShowConfimation('');setLoader(false)}}/>}
         <div className="h-[550px] sm:h-[500px] w-full mx-7 sm:w-[800px]  rounded-2xl shadow-xl flex justify-center items-center overflow-hidden">
           <div className="hidden min-h-full sm:flex justify-center items-center w-[50%] bg-blue-400">
             <img src='/images/sdetLogo.png'/>
