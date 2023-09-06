@@ -12,11 +12,11 @@ export async function getServerSideProps(context:any){
      if(token){
     const decodedPayLoad=jwt.decode(token);
     const {isLoggedIn,id,role,name}=decodedPayLoad;
-    const response=await fetch("https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/menu")
+    const response=await fetch("https://sdetflavours.netlify.app/.netlify/functions/menu")
     const val=await response.json();
-    const data=await fetch(`https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/totalCount`)
+    const data=await fetch(`https://sdetflavours.netlify.app/.netlify/functions/totalCount`)
     const value=await data.json();    
-    const fetchedVal=await fetch('https://supabase--stalwart-capybara-60fcb3.netlify.app/.netlify/functions/storedMenu');
+    const fetchedVal=await fetch('https://sdetflavours.netlify.app/.netlify/functions/storedMenu');
     const dataBaseMenu=await fetchedVal.json();
             if(isLoggedIn&&role==='admin'){
                 return {
