@@ -132,7 +132,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
             </button>
           </div>
           <button
-            className="mt-5 font-semibold Border p-2 rounded-md text-xs active:bg-blue-200 cursor-pointer"
+            className="mt-5 p-1  font-semibold bg-black text-white  rounded-md text-xs active:bg-zinc-500 "
             onClick={submitClick}
           >
          Submit
@@ -140,7 +140,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
         </div>
       </div>
     
-      <div className="border-box h-[40px] flex items-center justify-center text-center fixed bottom-0 right-0 left-0 bg-[#16141471]">
+      <div className="border-box h-[30px] text-xs flex items-center justify-center text-center fixed bottom-0 right-0 left-0 bg-[#16141471]">
         &copy; 2023 SDETTECH. All rights reserved.
       </div>
       </div>

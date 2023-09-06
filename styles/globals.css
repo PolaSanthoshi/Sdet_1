@@ -11,7 +11,7 @@ input::-webkit-inner-spin-button {
 }
 .homeHeight{
     box-sizing: border-box;
-    height: calc(100vh - 110px);
+    height: calc(100vh - 100px);
 }
  @keyframes animatePopUp{
     0%{
@@ -55,6 +55,7 @@ input::-webkit-inner-spin-button {
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
 }
+
 @keyframes sloganAnimate{
     0%{
         top:50px;
