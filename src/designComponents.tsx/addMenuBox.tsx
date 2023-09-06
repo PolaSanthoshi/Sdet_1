@@ -29,16 +29,13 @@ export default function AddMenuBox(props: { menuData: string[] }) {
       setCustomMessage('Add items to the list');
       setShowConfimation(true);
     } else {
-      console.log(listOfItems)
       axios.post('/.netlify/functions/menu', listOfItems).then((response) => {
-        console.log(response)
         setCustomMessage('Items are added successfully');
         setShowConfimation(true);
       });
     }
   }
-  console.log(itemEnteredInSearchBar)
-
+ 
   return (
     <div className="w-[500px] h-[420px] bg-blue-300 rounded-lg pt-5 justify-center items-center">
       {/* <div className='ml-4 cursor-pointer' onClick={arrowLeftClick}><FaArrowLeft/></div> */}
@@ -61,9 +58,7 @@ export default function AddMenuBox(props: { menuData: string[] }) {
           +
         </div>
       </div>
-     { isSearchToBeShown  &&<div className=' left-0 right-0  m-auto absolute'> 
-     <SearchMenu itemtoSearch={itemEnteredInSearchBar.toLowerCase()}  setSelectedItem={(elem)=>{setItemEnteredInSearchBar(elem);setIsSearchBarToBeShown(false)}}/>
-     </div>}
+     { isSearchToBeShown&&<div className=' left-0 right-0 top- m-auto absolute'> <SearchMenu itemtoSearch={itemEnteredInSearchBar} setSelectedItem={(elem)=>{setItemEnteredInSearchBar(elem);setIsSearchBarToBeShown(false)}}/></div>}
       <div className="w-[400px] bg-white m-auto h-[250px] overflow-y-scroll scrollbar px-5">
         {listOfItems.length !== 0 &&
           listOfItems.map((each: string, index: number) => (
@@ -101,11 +96,3 @@ export default function AddMenuBox(props: { menuData: string[] }) {
     </div>
   );
 }
-
-
-
-
-
-
-
-
