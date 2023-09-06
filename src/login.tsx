@@ -7,13 +7,12 @@ export default function Login() {
   const [id, setId] = useState('');
   const [name,setName]=useState('');
   const[key,setKey]=useState('');
-  const[showConfimation,setShowConfimation]=useState(false);
+  const[showConfimation,setShowConfimation]=useState('');
   const [loader,setLoader]=useState(false)
   // const [adminId, setAdminId] = useState('');
   const router=useRouter();
   const handleRoleChange = (e:any) => {
     setRole(e.target.value);
-    
   };
   const handleEmployeeIdChange = (e:any) => {
     // setEmployeeId(e.target.value);
@@ -47,13 +46,18 @@ export default function Login() {
       setName(response.data[0].name)
       axios.post('.netlify/functions/auth',{id,role,name:response.data[0].name})
       if(role=='employee'){
-        router.push('/home')
-      }
+        router.push('/home') 
+    }
       else{
-        router.push('/admin')
+        if(key=='6789'){
+          router.push('/admin')
+        }else{
+          setShowConfimation('Invalid Key')
+        }
+       
       }
   }else{
-    setShowConfimation(true)
+    setShowConfimation(`Invalid ${role}ID`)
   }
   }).catch(k=>{alert('Invalid Employee ID')})
 
@@ -64,7 +68,7 @@ export default function Login() {
   return (
     <>
       <div className="h-screen flex justify-center items-center w-full bg-blue-200">
-      {showConfimation&& <PopUp message='Invalid EmployeeID'  changeView={()=>setShowConfimation(!showConfimation)}/>}
+      {showConfimation&& <PopUp message={showConfimation}  changeView={()=>{setShowConfimation('');setLoader(false)}}/>}
         <div className="h-[550px] sm:h-[500px] w-full mx-7 sm:w-[800px]  rounded-2xl shadow-xl flex justify-center items-center overflow-hidden">
           <div className="hidden min-h-full sm:flex justify-center items-center w-[50%] bg-blue-400">
             <img src='/images/sdetLogo.png'/>
