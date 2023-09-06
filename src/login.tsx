@@ -46,11 +46,9 @@ export default function Login() {
       setName(response.data[0].name)
       axios.post('.netlify/functions/auth',{id,role,name:response.data[0].name})
       if(role=='employee'){
-        if(key=='6789'){
-          setLoader(true)
+        setLoader(true)
         router.push('/home')
         setLoader(false)
-      }
     }
       else{
         if(key=='6789'){
