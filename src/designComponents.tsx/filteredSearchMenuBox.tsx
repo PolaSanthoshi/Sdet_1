@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import  axios  from "axios";
-export default function SearchMenu(props:{itemtoSearch:string,setSelectedItem:(item:string)=>void}){
- const [StoredMenu,setStoredMenu]=useState([''])
+export default function SearchMenu(props:{itemtoSearch:string,setSelectedItem:(item:string)=>void,apiMenu:string[]}){
+ const [StoredMenu,setStoredMenu]=useState(props.apiMenu)
        useEffect(()=>{
         axios.get('/.netlify/functions/storedMenu')
         .then((response)=>{console.log(response.data);setStoredMenu(response.data)})

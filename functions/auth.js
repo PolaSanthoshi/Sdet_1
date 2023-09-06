@@ -7,7 +7,7 @@ exports.handler=async(event,context)=>{
         case 'POST':
     const {id,role,name}=JSON.parse(event.body)
     const userVal={id,role,name,isLoggedIn:true}
-    const token=jwt.sign(userVal,secretKey,{expiresIn:'1h'})
+    const token=jwt.sign(userVal,secretKey)
     const logInCookie = serialize('token', token, {
         secure:true,
         path:'/'

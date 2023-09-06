@@ -4,13 +4,12 @@ import axios from 'axios';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
 import getdate from './models/Date';
 import { FaCaretSquareDown } from 'react-icons/fa';
-export default function Admin(props:{data:string[],count:number,id:string,name:string}) {
+export default function Admin(props:{data:string[],count:number,id:string,name:string,apiMenu:string[]}) {
    const [monthData,setmonthData]=useState([]);
    const [isDropDownActive,setDropDownActive]=useState(false)
    useEffect(()=>{axios.get('/.netlify/functions/monthlyCount')
 .then(response=>{console.log(response.data);
    setmonthData(response.data)})},[isDropDownActive])
-   
    const router=useRouter();
    const name=props.name;
    function handleLogout(){
@@ -43,7 +42,7 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       </div>
    </div>  
     <div className='flex justify-center mt-10 '>
-    <AddMenuBox menuData={props.data} />
+    <AddMenuBox menuData={props.data} apiMenu={props.apiMenu} />
     </div>
     <div className='mt-5 w-[500px] m-auto flex justify-center bg-blue-500 p-2'>
    <div className='font-semibold'>Count-{props.count}</div>
