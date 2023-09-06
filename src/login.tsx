@@ -49,9 +49,9 @@ export default function Login() {
       if(role=='employee'){
         router.push('/home')
       }
-      // else{
-      //   router.push('/admin')
-      // }
+      else{
+        router.push('/admin')
+      }
   }else{
     setShowConfimation(true)
   }
