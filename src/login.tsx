@@ -48,9 +48,10 @@ export default function Login() {
       axios.post('.netlify/functions/auth',{id,role,name:response.data[0].name})
       if(role=='employee'){
         router.push('/home')
-      }else{
-        router.push('/admin')
       }
+      // else{
+      //   router.push('/admin')
+      // }
   }else{
     setShowConfimation(true)
   }
