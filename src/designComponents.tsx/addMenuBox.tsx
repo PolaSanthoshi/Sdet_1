@@ -37,7 +37,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
   }
  
   return (
-    <div className="w-[500px] h-[420px] bg-blue-300 rounded-lg pt-5 justify-center items-center">
+    <div className="w-full px-10 mx-10  max-w-[500px] h-[420px] bg-blue-300 rounded-lg pt-5 justify-center items-center">
       {/* <div className='ml-4 cursor-pointer' onClick={arrowLeftClick}><FaArrowLeft/></div> */}
       <div className="m-5 flex w-full justify-center items-center ">
         <input
@@ -59,7 +59,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
         </div>
       </div>
      { isSearchToBeShown&&<div className=' left-0 right-0 top- m-auto absolute'> <SearchMenu apiMenu={props.apiMenu} itemtoSearch={itemEnteredInSearchBar} setSelectedItem={(elem)=>{setItemEnteredInSearchBar(elem);setIsSearchBarToBeShown(false)}}/></div>}
-      <div className="w-[400px] bg-white m-auto h-[250px] overflow-y-scroll scrollbar px-5">
+      <div className="w-full bg-white m-auto h-[250px] overflow-y-scroll scrollbar px-5">
         {listOfItems.length !== 0 &&
           listOfItems.map((each: string, index: number) => (
             <div
