@@ -64,7 +64,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
   // }
   return (
     <div>
-    <div className={`bg-[#16141471] ${showPopUp?'opacity-60 transition-opacity pointer-events-none':''}`}>
+    <div className={`bg-[#55647471]  ${showPopUp?'opacity-60 transition-opacity pointer-events-none':''}`}>
       <nav className="pr-4 h-[70px] flex justify-between items-center relative ">
         <div className="flex items-center">
           <div className="bg-black text-white min-w-[130px] p-2 rounded-r-lg">
@@ -101,12 +101,15 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
           {/* <div className="font-semibold text-[20px] text-white bg-[#A16347] w-[180px] rounded-md flex justify-center m-auto z-10">
             MENU
           </div> */}
-          <div className="mt-5">
+          <div>
+          <div className="text-md font-medium text-center mb-10 text-lg">
+          Your lunch is here. Please confirm if you would like to have it.
+          </div>
             <MenuBox menuItems={props.menuData} backgroundColor={""} />
           </div>
-          <div className="text-md font-medium text-center mt-5">
-            Do you want to have lunch?
-          </div>
+          {/* <div className="text-md font-medium text-center mt-5">
+          Your lunch is here. Please confirm if you would like to have it.
+          </div> */}
           <div className="flex w-full justify-center items-center gap-10 mt-10 relative">
             <button
               className={`w-20 h-20 font-bold text-[30px] text-green-800 shadow-md bg-white flex items-center justify-center rounded-md relative ${
@@ -132,7 +135,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
             </button>
           </div>
           <button
-            className="mt-5 p-1  font-semibold bg-black text-white  rounded-md text-xs active:bg-zinc-500 "
+            className="mt-3 p-1  font-semibold bg-black text-white  rounded-md text-md active:bg-zinc-500 z-1"
             onClick={submitClick}
           >
          Submit
@@ -140,7 +143,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
         </div>
       </div>
     
-      <div className="border-box h-[30px] text-xs flex items-center justify-center text-center fixed bottom-0 right-0 left-0 bg-[#16141471]">
+      <div className="border-box h-[28px] text-xs flex items-center justify-center text-center fixed bottom-0 right-0 left-0 bg-black text-white">
         &copy; 2023 SDETTECH. All rights reserved.
       </div>
       </div>
