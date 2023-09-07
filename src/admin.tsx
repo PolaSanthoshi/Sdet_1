@@ -26,14 +26,13 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
  return <div className='adminBg bg-cover min-h-screen w-full '>
    <div className='flex bg-blue-400 justify-between p-3 '>
       <div className='flex gap-5 justify-center items-center'>
-      <div className='min-w-[100px] bg-black text-white rounded-r-lg p-2 -ml-3'>Hello ,{props.name}</div>
+      <div className='min-w-[100px] bg-black text-white rounded-r-lg p-2 -ml-3'>Hello, {props.name}</div>
       <button className='text-black font-bold hover:text-[#635e5e]' onClick={homeClick}>Home</button>
       </div>
       <div className='flex items-center gap-4'>
       <button className={`font-semibold p-2 rounded-md ${isDropDownActive?'bg-slate-500 text-white':'bg-slate-300'}`}>
        <div className="flex gap-2 items-center " onClick={changeDropDown}>
-        <FaCaretSquareDown/>
-        <div>Monthly-Data</div>
+        <div>Billing</div>
        </div>
       </button>
       <div className='h-full  w-[2px] bg-black'></div>
