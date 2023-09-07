@@ -13,6 +13,13 @@ input::-webkit-inner-spin-button {
     box-sizing: border-box;
     height: calc(100vh - 100px);
 }
+@media (max-width: 768px) {
+    .homeHeight{
+        box-sizing: border-box;
+        height: calc(100vh - 80px);
+    }
+}
+
  @keyframes animatePopUp{
     0%{
         top:0px
