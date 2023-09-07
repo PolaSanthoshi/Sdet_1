@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import PopUp from './designComponents.tsx/popUp';
@@ -135,8 +135,4 @@ export default function Login() {
 }
 
 
-
-function setShowConfimation(arg0: boolean): void {
-  throw new Error('Function not implemented.');
-}
 
