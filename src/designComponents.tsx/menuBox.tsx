@@ -9,7 +9,7 @@ export default function MenuBox(props: { menuItems: string[]; backgroundColor: s
       </div>
       <div className="absolute p-1 text-sm font-semibold -top-3 right-3 rounded-md bg-yellow-400">Today &apos;s Menu</div>
       {/* <img src='/images/arrow.jpg '/> */}
-      <div className="mt-20 font-semibold font-mono ">
+      <div className="mt-20 font-semibold text-lg font-mono ">
       {props.menuItems&&props.menuItems.map((element,index)=><div key={index} className="flex gap-3 items-center  ml-[50px] break-all ">
        <div className="text-[10px]"><FaArrowRight/></div>
         {element[0].toUpperCase()+element.slice(1)}</div>
