@@ -118,7 +118,7 @@ export default function Login() {
               <button
                 onClick={handleLogin}
                 disabled={isLoginDisabled}
-                className={`mt-4 px-4 py-2 bg-blue-600 text-white rounded active:bg-blue-400${
+                className={`mt-4 px-4 py-2 bg-blue-600 text-white rounded active:bg-blue-400 ${
                     isLoginDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
                   }`}
               >

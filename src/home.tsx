@@ -56,12 +56,6 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
   function adminButtonClick(){
     router.push('/admin')
   }
-  // function loginMouseOver(){
-  //        setonProfileHover(true)
-  // }
-  // function loginMouseLeave(e: any) {
-  //        setonProfileHover(false)
-  // }
   return (
     <div>
     <div className={`bg-[#55647471]  ${showPopUp?'opacity-60 transition-opacity pointer-events-none':''}`}>
