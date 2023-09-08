@@ -81,7 +81,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
         >
           <FaUser />
         </button>
-        <button className="bg-white p-1 rounded-md  font-semibold md:hidden block" onClick={handleLogout}>Logout</button>
+        <button className="bg-white p-1 rounded-md  font-semibold block overflow-hidden md:hidden " onClick={handleLogout}>Logout</button>
         {isProfileVisible&&<div className="absolute cursor-pointer   right-4 -bottom-8  " onClick={handleLogout}>  
          <div className="w-full text-right flex justify-end"> <FaCaretUp/></div>
          <div className="p-2 rounded-md text-white bg-black -mt-[6px] ">Logout</div>
@@ -98,7 +98,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
           Your lunch is here.<div className="block">Please confirm if you would like to have it.</div> 
           </div>
           <div className="text-md font-medium text-center mb-10 text-sm block md:hidden">
-          It&apos;s lunchtime!<div className='whitespace-nowrap'> Would you like to have your meal?</div>
+          It&apos;s lunchtime!<div className='md:whitespace-nowrap'> Would you like to have your meal?</div>
           </div>
             <MenuBox menuItems={props.menuData} backgroundColor={""} />
           </div>
@@ -127,7 +127,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
             </button>
           </div>
           <button
-            className="mt-3 p-2  font-semibold bg-black text-white  rounded-md text-md active:bg-zinc-500 z-1"
+            className="mt-6 p-2  font-semibold bg-black text-white  rounded-md text-md active:bg-zinc-500 z-1"
             onClick={submitClick}
           >
          Submit
