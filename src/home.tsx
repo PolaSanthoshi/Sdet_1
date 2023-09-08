@@ -53,9 +53,6 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
   function onUserIconClick(){
     setProfileVisile(!isProfileVisible)
   }
-  function adminButtonClick(){
-    router.push('/admin')
-  }
   return (
     <div>
     <div className={`bg-[#55647471]  ${showPopUp?'opacity-60 transition-opacity pointer-events-none':''}`}>
@@ -67,10 +64,11 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
           <Link href={"https://sdettech.com/"}  target="_blank" className="md:block hidden">          
           <div className=" p-2 text-lg font-semibold   rounded-md ml-5">S D E T</div>
           </Link>
-          
           {
-          role=='admin'&& <> <div className='h-[30px]  w-[2px] bg-black ml-3 '></div>
-          <button className='font-semibold ml-3 hover:text-[#312f2f71]' onClick={adminButtonClick}>Admin</button>
+          role=='admin'&& <> <div className='h-[30px]  w-[2px] md:bg-black bg-white ml-1 '></div>
+          <Link href='/admin'>
+          <button className='font-semibold  ml-2 active:text-[#887f7f71] text-white md:text-black'>Admin</button>
+          </Link>
           </>
         }
         </div>
