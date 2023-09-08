@@ -11,7 +11,7 @@ export default function SearchMenu(props:{itemtoSearch:string,setSelectedItem:(i
     const [itemEnteredInSearchBar,setItemEnteredInSearchBar]=useState(props.itemtoSearch.replaceAll(' ','').trim().toLowerCase());
     const [filteredMenu,setFilteredMenu]=useState<any>([])
     useEffect(()=>{setIsValueSelected(false);
-        setFilteredMenu(StoredMenu.filter((item)=>itemEnteredInSearchBar===item.trim().toLowerCase().substring(0,itemEnteredInSearchBar.length)))},[itemEnteredInSearchBar])
+        setFilteredMenu(StoredMenu.filter((item)=>itemEnteredInSearchBar===item.replaceAll(' ','').trim().toLowerCase().substring(0,itemEnteredInSearchBar.length)))},[itemEnteredInSearchBar])
     function onItemClick(elem:string){
          
          props.setSelectedItem(elem)
