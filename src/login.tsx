@@ -74,7 +74,8 @@ export default function Login() {
           <div className="hidden min-h-full sm:flex justify-center items-center w-[50%] bg-blue-400">
             <img src='/images/sdetLogo.png'/>
           </div>
-          <div className="flex items-center justify-center w-full sm:w-[50%] h-full bg-slate-200">
+          <div className="sm:flex items-center justify-center w-full sm:w-[50%] h-full bg-slate-200">
+          <img src='/images/loginBG4.jpg' className='sm:hidden w-full h-[240px] mb-4 -mt-7'/>
             <div className="px-4">
               <div className="mb-2 font-bold">Login as:</div>
               <select
