@@ -74,10 +74,11 @@ export default function Login() {
           <div className="hidden min-h-full sm:flex justify-center items-center w-[50%] bg-blue-400">
             <img src='/images/sdetLogo.png'/>
           </div>
-          <div className="sm:flex items-center justify-center w-full sm:w-[50%] h-full bg-slate-200">
-          <img src='/images/loginBG4.jpg' className='sm:hidden w-full h-[240px] mb-4 -mt-7'/>
+          <div className="sm:flex justify-center items-center w-full sm:w-[50%] h-full bg-slate-200">
+            <img src='/images/loginBG5.jpg' className='sm:hidden w-full bg-white h-[240px] mb-4 -mt-7 object-center object-contain'/>
             <div className="px-4">
-              <div className="mb-2 font-bold">Login as:</div>
+              <div className="mb-2 font-bold text-lg">Login </div>
+            <p className='text-[10px] overflow-hidden whitespace-nowrap mb-2 xs:text-xs font-sans'>Please sign in as employee or admin to continue</p>
               <select
                 value={role}
                 onChange={handleRoleChange}
