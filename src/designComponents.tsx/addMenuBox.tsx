@@ -19,7 +19,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
     if (itemEnteredInSearchBar) {
       const isValuePresent=listOfItems.find((item:string)=>item.replace(' ','').toLowerCase()==itemEnteredInSearchBar.replace(' ','').toLowerCase());
       if(!isValuePresent){
-      setListOfItems([...listOfItems, itemEnteredInSearchBar]);
+      setListOfItems([itemEnteredInSearchBar,...listOfItems]);
       }else{
         setCustomMessage('Item is already present in List');
         setShowConfimation(true);
