@@ -45,6 +45,14 @@ input::-webkit-inner-spin-button {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+@media (max-width: 640px){
+    .loginBg{
+        background-image: url('/images/adminBackGround.png');
+        background-repeat: no-repeat;
+        background-size:cover
+    }
+    
+}
 
 @keyframes buttonAnimate{
     0%{

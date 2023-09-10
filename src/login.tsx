@@ -68,7 +68,7 @@ export default function Login() {
    (id === '' || id.length !== 4)
   return (
     <>
-      <div className="h-screen flex justify-center items-center w-full bg-blue-200">
+      <div className="loginBg h-screen flex justify-center items-center w-full bg-blue-200">
       {showConfimation&& <PopUp message={showConfimation}  changeView={()=>{setShowConfimation('');setLoader(false)}}/>}
         <div className="h-[550px] sm:h-[500px] w-full mx-7 sm:w-[800px]  rounded-2xl shadow-xl flex justify-center items-center overflow-hidden">
           <div className="hidden min-h-full sm:flex justify-center items-center w-[50%] bg-blue-400">
@@ -77,8 +77,13 @@ export default function Login() {
           <div className="sm:flex justify-center items-center w-full sm:w-[50%] h-full bg-slate-200">
             <img src='/images/loginBG5.jpg' className='sm:hidden w-full bg-white h-[240px] mb-4 -mt-7 object-center object-contain'/>
             <div className="px-4">
-              <div className="mb-2 font-bold text-lg">Login </div>
-            <p className='text-[10px] overflow-hidden whitespace-nowrap mb-2 xs:text-xs font-sans'>Please sign in as employee or admin to continue</p>
+            <div className='flex w-full justify-between items-center'>
+                <div>
+              <div className="mb-1 font-bold  text-lg sm:text-2xl">Welcome!</div>
+              <div className="mb-4 text-xs font-semibold text-gray-500">Sign in to Continue</div>
+              </div>
+              <img src='images/loginBG6.png' className='sm:hidden w-14 h-12 -mt-5 ' />
+              </div>
               <select
                 value={role}
                 onChange={handleRoleChange}
