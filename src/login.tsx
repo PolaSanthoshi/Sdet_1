@@ -74,8 +74,7 @@ export default function Login() {
           <div className="hidden min-h-full sm:flex justify-center items-center w-[50%] bg-blue-400">
             <img src='/images/sdetLogo.png'/>
           </div>
-          <div className="sm:flex justify-center items-center w-full sm:w-[50%] h-full bg-slate-200">
-            <img src='/images/loginBG5.jpg' className='sm:hidden w-full bg-white h-[240px] mb-4 -mt-7 object-center object-contain'/>
+          <div className="sm:flex justify-center items-center w-full sm:w-[50%] h-full sm:bg-slate-200 bg-blue-100">
             <div className="px-4">
             <div className='flex w-full justify-between items-center'>
                 <div>
