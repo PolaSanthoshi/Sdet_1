@@ -76,7 +76,7 @@ export default function Login() {
           </div>
           <div className="flex justify-center items-center w-full sm:w-[50%] h-full sm:bg-slate-200 bg-blue-100">
             <div className="px-4">
-            <div className='flex w-full justify-between items-center'>
+            <div className='flex w-full justify-between items-center mb-7'>
                 <div>
               <div className="mb-1 font-bold  text-lg sm:text-2xl">Welcome!</div>
               <div className="mb-4 text-xs font-semibold text-gray-500">Sign in to Continue</div>
