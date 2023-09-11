@@ -58,7 +58,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
   }
   return (
     <div>
-    <div className={`bg-[#55647471]  ${showPopUp?'opacity-60 transition-opacity pointer-events-none':''}`}>
+    <div className={`bg-[#55647471] ${showPopUp?'opacity-60 transition-opacity pointer-events-none':''}`}>
       <nav className="pr-4 h-[70px] flex justify-between items-center relative bg-black md:bg-transparent">
         <div className="flex items-center">
           <div className="bg-black text-white min-w-[130px] p-2 rounded-r-lg">
@@ -94,7 +94,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
         </div>
         <div className="md:w-[50%] w-full h-full pt-5 text-center">
         <div className="">
-          <div className="text-md font-medium text-center mb-7 text-lg md:block hidden">
+          <div className="text-md font-medium text-center mb-7 text-lg md:block hidden -mt-6">
           Your lunch is here.<div className="block">Please confirm if you would like to have it.</div> 
           </div>
           <div className="text-md font-medium text-center mb-10 text-sm block md:hidden">
