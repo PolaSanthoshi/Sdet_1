@@ -92,7 +92,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
         </div>
         <div className="md:w-[50%] w-full h-full pt-5 text-center">
         <div className="">
-          <div className="text-md font-medium text-center mb-7 text-lg md:block hidden -mt-6">
+          <div className="text-md font-medium text-center mb-7 text-lg md:block hidden -mt-6 pb-2">
           Your lunch is here.<div className="block">Please confirm if you would like to have it.</div> 
           </div>
           <div className="text-md font-medium text-center mb-10 text-sm block md:hidden">
