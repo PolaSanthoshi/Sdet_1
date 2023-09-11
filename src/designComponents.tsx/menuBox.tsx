@@ -3,7 +3,7 @@ import { FaArrowRight, FaPlane } from "react-icons/fa";
 export default function MenuBox(props: { menuItems: string[]; backgroundColor: string }) {
 
     return <div className="flex justify-center items-center ">
-      <div className=" w-[300px] md:h-[300px] h-[200px] relative Border rounded-3xl">
+      <div className=" w-[300px] md:h-[240px] h-[200px] relative Border rounded-3xl">
       <div className="absolute w-[100px]  bg-white -left-5 -top-5 rounded-full flex justify-center items-center overflow-hidden ">
         <img src='/images/menuLogo.jpg'/>
       </div>
