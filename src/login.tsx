@@ -70,7 +70,7 @@ export default function Login() {
     <>
       <div className="loginBg h-screen flex justify-center items-center w-full bg-blue-200">
       {showConfimation&& <PopUp message={showConfimation}  changeView={()=>{setShowConfimation('');setLoader(false)}}/>}
-        <div className="h-[550px] sm:h-[500px] w-full mx-7 sm:w-[800px]  rounded-2xl shadow-xl flex justify-center items-center overflow-hidden">
+        <div className="h-[450px] sm:h-[500px] w-full mx-7 sm:w-[800px]  rounded-2xl shadow-xl flex justify-center items-center overflow-hidden">
           <div className="hidden min-h-full sm:flex justify-center items-center w-[50%] bg-blue-400">
             <img src='/images/sdetLogo.png'/>
           </div>
