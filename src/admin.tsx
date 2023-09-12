@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Link from 'next/link';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
 import getdate from './models/Date';
 export default function Admin(props:{data:string[],count:number,id:string,name:string,apiMenu:string[]}) {
@@ -30,7 +31,11 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       <button className='text-black font-bold text-sm  md:text-base active:text-[#635e5e]' onClick={homeClick}>Home</button>
       </div>
       <div className='flex items-center md:gap-4 gap-2'>
-      <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base' onMouseOver={()=>setShowMessage(true)} onMouseOut={()=>setShowMessage(false)}>Billing</button>
+     
+    <Link href='/admin/billing'> 
+    <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base' onMouseOver={()=>setShowMessage(true)} onMouseOut={()=>setShowMessage(false)}>Billing</button>
+    </Link>
+   
       <div className={` bg-gray-300 p-2 rounded-md right-[120px] font-mono top-[70px] ${showMessage?'absolute':'hidden'}`}>Coming soon</div> 
       <div className='h-full  w-[2px] bg-black'></div>
 
