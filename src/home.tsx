@@ -137,7 +137,7 @@ export default function Home(props: { menuData: string[],haveLunch:string,id:str
         &copy; 2023 SDETTECH. All rights reserved.
       </div>
       </div>
-      {showPopUp &&<div><SubmitPopUp handleClose={()=>{setShowPopUp(!showPopUp)}}/></div>}
+      {showPopUp &&<div><SubmitPopUp handleClose={()=>{setShowPopUp(!showPopUp)}} handleLogout={()=>handleLogout()}/></div>}
       {showAlert&& <div className="bg-red-300"><PopUp message="Please select one of options" changeView={()=>setShowAlert(!showAlert)}/></div>}
 </div>
   );
