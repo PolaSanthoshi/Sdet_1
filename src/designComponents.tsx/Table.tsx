@@ -5,7 +5,8 @@ export default function Table(props:{monthDataToDisplayInTable:number,everyMonth
    const data=props.everyMonthData;
    const monthDataToDisplay=props.monthDataToDisplayInTable;
     const  response  =[{id:1,date:'2023-09-07',count:5},{id:1,date:'2023-09-07',count:5},{id:1,date:'2023-09-07',count:5},{id:1,date:'2023-09-06',count:5}]
-    const tableDataOfSelectedMonth=data.filter(((item:{date:string,count:number,id:number})=>new Date(item.date).getMonth()==monthDataToDisplay));
+    const tableDataOfSelectedMonth=[...data].filter(((item:{date:string,count:number,id:number})=>new Date(item.date).getMonth()==monthDataToDisplay));
+  
     return <div>
          <div className="w-full justify-center flex ">
          <div className="mt-3 max-w-[700px] w-full m-5 min-h-[300px] max-h-[550px] overflow-scroll scrollbar bg-zinc-200 shadow-lg rounded-lg p-3">

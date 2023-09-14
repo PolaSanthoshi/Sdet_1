@@ -5,6 +5,8 @@ import SideNav from "@/src/designComponents.tsx/sideNav";
 import Table from "@/src/designComponents.tsx/Table";
 import { FaBars, FaCross} from "react-icons/fa";
 export default function Billing( props:{data:any}){
+   const data=props.data;
+   console.log(props.data,'fromSrcBillingPage')
    const [showSideNav,setShowSideNav]=useState(false)
    const date=new Date();
    const [monthDataToDisplay,setMonthToDisplay]=useState(date.getMonth())
@@ -34,7 +36,7 @@ export default function Billing( props:{data:any}){
       <div className="flex  w-full">
       <div className={`w-[20%] md:block hidden`}><SideNav onMonthclick={(monthClicked:number)=>setMonthToDisplay(monthClicked)}/></div>
      <div className={`w-[45%] sm:w-[30%] md:hidden block ${showSideNav?'sideNavAnimate':'hidden'} fixed md:relative `}><SideNav onMonthclick={(monthClicked:number)=>setMonthToDisplay(monthClicked)} showSideNav={showSideNav}/></div>
-     <div className="md:w-[80%] w-[100%] "> <Table monthDataToDisplayInTable={monthDataToDisplay} everyMonthData={props.data}/></div>
+     <div className="md:w-[80%] w-[100%] "> <Table monthDataToDisplayInTable={monthDataToDisplay} everyMonthData={data}/></div>
       
       </div>
  </div>

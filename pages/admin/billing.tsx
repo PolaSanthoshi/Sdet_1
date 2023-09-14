@@ -1,5 +1,6 @@
  import Billing from "@/src/billing"
- export default function Billing1(props:{monthlyData:[]}){
+ export default function Billing1(props:{monthlyData:any}){
+   console.log(props.monthlyData,'BillingIndexpage')
     return <div>
       <Billing data={props.monthlyData}/>
     </div>

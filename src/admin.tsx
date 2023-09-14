@@ -32,7 +32,7 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       </div>
       <div className='flex items-center md:gap-4 gap-2'>
      
-    <Link href='/admin/billing'> 
+    <Link href='/admin/billing  '> 
     <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base' onMouseOver={()=>setShowMessage(true)} onMouseOut={()=>setShowMessage(false)}>Billing</button>
     </Link>
    
