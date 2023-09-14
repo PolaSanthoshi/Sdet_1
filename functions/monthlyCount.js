@@ -64,9 +64,10 @@ exports.handler=async(event,confirmation)=>{
             body:JSON.stringify(error)
             }
         }else{
+            const sortedData=data.sort((a,b)=>new Date(a.date)-new Date(b.date));
             return{
                 statusCode:200,
-                body:JSON.stringify(data)
+                body:JSON.stringify(sortedData)
             }
         }
     }

@@ -26,11 +26,11 @@ export default function Billing( props:{data:any}){
       </div>
       <div className='flex items-center md:gap-4 gap-2'>
          <Link href='/admin'>
-         <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base'>Admin</button>
+         <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base active:bg-slate-400 active:text-white'>Admin</button>
          </Link>
       <div className='h-full  w-[2px] bg-black'></div>
 
-      <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base ' >Logout</button>
+      <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base active:bg-slate-400 active:text-white' >Logout</button>
       </div> </div>
       
       <div className="flex  w-full">

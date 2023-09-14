@@ -11,7 +11,7 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
 .then(response=>{console.log(response.data);
    setmonthData(response.data)})},[isDropDownActive])
    const router=useRouter();
-   const [showMessage,setShowMessage]=useState(false)
+   // const [showMessage,setShowMessage]=useState(false)
    const name=props.name;
    function handleLogout(){
        axios.get('.netlify/functions/logout')
@@ -33,10 +33,10 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       <div className='flex items-center md:gap-4 gap-2'>
      
     <Link href='/admin/billing  '> 
-    <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base' onMouseOver={()=>setShowMessage(true)} onMouseOut={()=>setShowMessage(false)}>Billing</button>
+    <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base active:bg-slate-400  active:text-white'>Billing</button>
     </Link>
    
-      <div className={` bg-gray-300 p-2 rounded-md right-[120px] font-mono top-[70px] ${showMessage?'absolute':'hidden'}`}>Coming soon</div> 
+      {/* <div className={` bg-gray-300 p-2 rounded-md right-[120px] font-mono top-[70px] ${showMessage?'absolute':'hidden'}`}>Coming soon</div>  */}
       <div className='h-full  w-[2px] bg-black'></div>
 
       <button className='font-bold bg-slate-300 p-2 rounded-md active:bg-slate-400  text-xs md:text-base active:text-white' onClick={handleLogout}>Logout</button>

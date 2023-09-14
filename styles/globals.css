@@ -13,6 +13,10 @@ input::-webkit-inner-spin-button {
     box-sizing: border-box;
     height: calc(100vh - 100px);
 }
+.sideNavHeight{
+    height: calc(100vh - 60px);
+
+}
 @media (max-width: 768px) {
     .homeHeight{
         box-sizing: border-box;
