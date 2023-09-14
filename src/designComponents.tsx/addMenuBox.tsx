@@ -32,8 +32,10 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
   }
   function submitClick(e: any) {
     if (listOfItems.length === 0) {
-      setCustomMessage('Add items to the list');
+      axios.post('/.netlify/functions/menu', listOfItems).then((response) => {
+      setCustomMessage('Items are removed from list successfully');
       setShowConfimation(true);
+      })
     } else {
       axios.post('/.netlify/functions/menu', listOfItems).then((response) => {
         setCustomMessage('Items are added successfully');

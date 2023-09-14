@@ -4,7 +4,6 @@ import { useState ,useEffect} from "react";
 export default function Table(props:{monthDataToDisplayInTable:number,everyMonthData:[{date:string,count:number,id:number}]}){
    const data=props.everyMonthData;
    const monthDataToDisplay=props.monthDataToDisplayInTable;
-    const  response  =[{id:1,date:'2023-09-07',count:5},{id:1,date:'2023-09-07',count:5},{id:1,date:'2023-09-07',count:5},{id:1,date:'2023-09-06',count:5}]
     const tableDataOfSelectedMonth=[...data].filter(((item:{date:string,count:number,id:number})=>new Date(item.date).getMonth()==monthDataToDisplay));
   
     return <div>
