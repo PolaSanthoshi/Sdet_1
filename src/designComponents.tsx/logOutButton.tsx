@@ -5,7 +5,7 @@ export default function LogoutButton(props:{class:string}){
         axios.get('/api/logout')
     }
     return <div>
-         <Link href='/login'>
+         <Link href='/'>
          <button className={`font-bold  p-2 rounded-md text-xs md:text-base  ${props.class}`} onClick={()=>onLogoutClick()} >Logout</button>
          </Link> 
     </div>
