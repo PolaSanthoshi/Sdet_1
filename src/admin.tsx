@@ -4,6 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
 import getdate from './models/Date';
+import LogoutButton from './designComponents.tsx/logOutButton';
 export default function Admin(props:{data:string[],count:number,id:string,name:string,apiMenu:string[]}) {
    const [monthData,setmonthData]=useState([]);
    const [isDropDownActive,setDropDownActive]=useState(false)
@@ -39,8 +40,8 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       {/* <div className={` bg-gray-300 p-2 rounded-md right-[120px] font-mono top-[70px] ${showMessage?'absolute':'hidden'}`}>Coming soon</div>  */}
       <div className='h-full  w-[2px] bg-black'></div>
 
-      <button className='font-bold bg-slate-300 p-2 rounded-md active:bg-slate-400  text-xs md:text-base active:text-white' onClick={handleLogout}>Logout</button>
-      </div>
+      <LogoutButton class='bg-slate-300 active:bg-slate-400'/> 
+    </div>
    </div>  
     <div className='flex justify-center mt-10 m-auto'>
     <AddMenuBox menuData={props.data} apiMenu={props.apiMenu} />
