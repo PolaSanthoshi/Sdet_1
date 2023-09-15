@@ -16,7 +16,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
     setIsSearchBarToBeShown(true)
   }
   function plusClick() {
-    if (itemEnteredInSearchBar) {
+    if (itemEnteredInSearchBar.trim()) {
       const isValuePresent=listOfItems.find((item:string)=>item.replace(' ','').toLowerCase()==itemEnteredInSearchBar.replace(' ','').toLowerCase());
       if(!isValuePresent){
       setListOfItems([itemEnteredInSearchBar,...listOfItems]);
@@ -32,7 +32,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
   }
   function submitClick(e: any) {
     if (listOfItems.length === 0) {
-      axios.post('/.netlify/functions/menu',['empty']).then((response) => {
+      axios.post('/.netlify/functions/menu',['']).then((response) => {
       setCustomMessage('Items are removed from list successfully');
       setShowConfimation(true);
       })
@@ -57,7 +57,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
         />
         <div
           className={`${
-            itemEnteredInSearchBar
+            itemEnteredInSearchBar.trim()
               ? 'opacity-100 cursor-pointer'
               : 'opacity-40 cursor-not-allowed'
           } ml-3 w-8 h-8 bg-black text-white font-bold flex justify-center items-center rounded-lg`}
@@ -69,8 +69,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
      { isSearchToBeShown&&<div className=' left-0 right-0 top- m-auto absolute'> <SearchMenu apiMenu={props.apiMenu} itemtoSearch={itemEnteredInSearchBar} setSelectedItem={(elem)=>{setItemEnteredInSearchBar(elem);setIsSearchBarToBeShown(false)}}/></div>}
       <div className="w-full bg-white m-auto h-[250px] overflow-y-scroll scrollbar px-5">
         {listOfItems.length !== 0 &&
-          listOfItems.map((each: string, index: number) => (
-            <div
+          listOfItems.map((each: string, index: number) => each && <div
               key={index}
               className="w-full my-2 flex justify-between items-center mb-4 pb-2 font-semibold text-slate-700 border-solid border-b-[1px] border-slate-200"
             >
@@ -84,7 +83,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
                 </div>
               </div>
             </div>
-          ))}
+          )}
       </div>
       <div className="w-full flex justify-center">
         <button
