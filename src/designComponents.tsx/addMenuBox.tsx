@@ -32,7 +32,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
   }
   function submitClick(e: any) {
     if (listOfItems.length === 0) {
-      axios.post('/.netlify/functions/menu',['']).then((response) => {
+      axios.post('/.netlify/functions/menu',['empty']).then((response) => {
       setCustomMessage('Items are removed from list successfully');
       setShowConfimation(true);
       })
@@ -69,7 +69,7 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
      { isSearchToBeShown&&<div className=' left-0 right-0 top- m-auto absolute'> <SearchMenu apiMenu={props.apiMenu} itemtoSearch={itemEnteredInSearchBar} setSelectedItem={(elem)=>{setItemEnteredInSearchBar(elem);setIsSearchBarToBeShown(false)}}/></div>}
       <div className="w-full bg-white m-auto h-[250px] overflow-y-scroll scrollbar px-5">
         {listOfItems.length !== 0 &&
-          listOfItems.map((each: string, index: number) => each && <div
+          listOfItems.map((each: string, index: number) => each!='empty' && <div
               key={index}
               className="w-full my-2 flex justify-between items-center mb-4 pb-2 font-semibold text-slate-700 border-solid border-b-[1px] border-slate-200"
             >
