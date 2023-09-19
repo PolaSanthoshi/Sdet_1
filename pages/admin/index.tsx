@@ -14,12 +14,16 @@ export async function getServerSideProps(context:any){
     const {isLoggedIn,id,role,name}=decodedPayLoad;
     const response=await fetch("https://monthly_data--dashing-fenglisu-777608.netlify.app/.netlify/functions/menu")
     const val=await response.json();
+    console.log(val,'val')
     const data=await fetch(`https://monthly_data--dashing-fenglisu-777608.netlify.app/.netlify/functions/totalCount`)
-    const value=await data.json();    
+    const value=await data.json();  
+    console.log(value,'value')  
     const fetchedVal=await fetch('https://monthly_data--dashing-fenglisu-777608.netlify.app/.netlify/functions/storedMenu');
     const dataBaseMenu=await fetchedVal.json();
+    console.log(dataBaseMenu,'dataBaseMenu')
     const response2=await fetch('https://monthly_data--dashing-fenglisu-777608.netlify.app/.netlify/functions/adminCount');
     const adminCount=await response2.json();
+    console.log(adminCount,'adminCOunt')
     const adminCountVal=adminCount.length>0?adminCount[0].count:0;
 
             if(isLoggedIn&&role==='admin'){
