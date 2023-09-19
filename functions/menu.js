@@ -34,9 +34,10 @@ exports.handler=async(event,context)=>{
                 body:JSON.stringify(e)
             }
         }else{
+            const menuToReturn=d[0].menu?d[0].menu.split(','):'';
             return{
                 statusCode:200,
-                body:JSON.stringify(d)
+                body:JSON.stringify(menuToReturn)
             }
         }
     }

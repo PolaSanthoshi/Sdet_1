@@ -3,28 +3,35 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import Link from 'next/link';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
-import getdate from './models/Date';
 import LogoutButton from './designComponents.tsx/logOutButton';
-export default function Admin(props:{data:string[],count:number,id:string,name:string,apiMenu:string[]}) {
-   const [monthData,setmonthData]=useState([]);
-   const [isDropDownActive,setDropDownActive]=useState(false)
-   useEffect(()=>{axios.get('/.netlify/functions/monthlyCount')
+import { FaCheck } from 'react-icons/fa';
+export default function Admin(props:{data:string[],count:number,id:string,name:string,apiMenu:string[],adminCount:number}) {
+   const [inputActive,setInputActive]=useState(false)
+   const [adminInput,changeAdminInput]=useState(props.adminCount)
+   const [totalCount,changeTotalCount]=useState(props.adminCount+props.count)
+   useEffect(()=>{axios.get('.netlify/functions/monthlyCount')
 .then(response=>{console.log(response.data);
-   setmonthData(response.data)})},[isDropDownActive])
+   })},[])
+   useEffect(()=>{
+      axios.post(`.netlify/functions/monthlyCount?count=${totalCount}`)
+   },[totalCount])
    const router=useRouter();
-   // const [showMessage,setShowMessage]=useState(false)
    const name=props.name;
-   function handleLogout(){
-       axios.get('.netlify/functions/logout')
-      .then(list=>{console.log(list.data)
-      router.push('/')}) 
+   // function handleLogout(){
+   //     axios.get('.netlify/functions/logout')
+   //    .then(list=>{console.log(list.data)
+   //    router.push('/')}) 
+   // }
+  async function checkClick(){
+     await axios.post(`.netlify/functions/adminCount?adminCount=${adminInput}`)
+     .then(()=>alert('Count has been changed successfully!'))
+   }
+   function adminInputChange(e:any){
+      changeAdminInput(parseInt(e.target.value))
    }
    function homeClick(){
       router.push('/home')
    }
-   function changeDropDown(){
-      setDropDownActive(!isDropDownActive)
-}
  return <div className='adminBg bg-cover min-h-screen w-full '>
    <div className='flex bg-blue-400 justify-between p-3 '>
       <div className='flex md:gap-5 gap-2 justify-center items-center'>
@@ -46,9 +53,18 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
     <div className='flex justify-center mt-10 m-auto'>
     <AddMenuBox menuData={props.data} apiMenu={props.apiMenu} />
     </div>
-    <div className='mt-5 w-[200px] m-auto flex justify-center bg-blue-500 p-2'>
-   <div className='font-semibold'>Count-{props.count}</div>
+    <div className='flex justify-center gap-[20px] mt-5'>
+       <div className='font-semibold  p-2 bg-white rounded-md pointer-events-none '>Employee :  {props.count}</div>
+       <div className='flex w-[220px]  justify-center overflow-hidden rounded-md' >
+       <div className='font-semibold bg-white p-2 rounded-l-md'>Admin :</div>
+       <div className='flex  overflow-hidden' onMouseOver={()=>setInputActive(true) } onMouseOut={()=>setInputActive(false)}>
+       <input type='number' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
+       <div className={ ` h-full  items-center text-xs px-2 cursor-pointer bg-white rounded-r-md   ${inputActive?'flex':'hidden'} active:text-gray-500`} onClick={checkClick}><FaCheck/></div>
+       </div>  
+       </div> 
       </div>
-      {/* {isDropDownActive&&<Table data={monthData}/>} */}
+      <div className='mt-5 w-[200px] m-auto flex justify-center bg-blue-500 p-1'>
+       <div className='font-semibold'>Total Count-{totalCount} </div>
+      </div>
  </div>
 }

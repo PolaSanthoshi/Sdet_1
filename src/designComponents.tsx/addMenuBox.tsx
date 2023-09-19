@@ -4,10 +4,10 @@ import SearchMenu from './filteredSearchMenuBox';
 import axios from 'axios';
 import PopUp from './popUp';
 import { useRouter } from 'next/router';
-export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]}) {
+export default function AddMenuBox(props: { menuData: string[]|string ,apiMenu:string[]}) {
   const [itemEnteredInSearchBar, setItemEnteredInSearchBar] = useState('');
   const [isSearchToBeShown,setIsSearchBarToBeShown]=useState(false);
-  const [listOfItems, setListOfItems] = useState<any>(props.menuData);
+  const [listOfItems, setListOfItems] = useState<any>(props.menuData==''?[]:props.menuData);
   const [showConfimation, setShowConfimation] = useState(false);
   const [customMessage, setCustomMessage] = useState('');
   const router=useRouter();
@@ -30,10 +30,12 @@ export default function AddMenuBox(props: { menuData: string[] ,apiMenu:string[]
   function deleteClick(valueToDel: string) {
     setListOfItems(listOfItems.filter((val: string) => val !== valueToDel));
   }
-  function submitClick(e: any) {
+  async function submitClick(e: any) {
     if (listOfItems.length === 0) {
-      setCustomMessage('Add items to the list');
-      setShowConfimation(true);
+     await axios.post('/.netlify/functions/menu',[]).then((response) => {
+        setCustomMessage('Items are removed from list successfully');
+        setShowConfimation(true);
+      });
     } else {
       axios.post('/.netlify/functions/menu', listOfItems).then((response) => {
         setCustomMessage('Items are added successfully');
