@@ -22,9 +22,9 @@ export async function getServerSideProps(context:any){
      if(token){
           const decodedPayLoad=jwt.decode(token);
           const {isLoggedIn,id,name,role}=decodedPayLoad;
-          const data=await fetch('https://monthly_data--dashing-fenglisu-777608.netlify.app/.netlify/functions/menu');
+          const data=await fetch('https://lunch--sdetflavours.netlify.app/.netlify/functions/menu');
           const menuData= await data.json();
-          const response=await fetch(`https://monthly_data--dashing-fenglisu-777608.netlify.app/.netlify/functions/confirmation?id=${id}`);
+          const response=await fetch(`https://lunch--sdetflavours.netlify.app/.netlify/functions/confirmation?id=${id}`);
           const userData=await response.json();
           const userVal=userData.length>0?userData[0].response:'';
           if(isLoggedIn){
