@@ -10,10 +10,10 @@ exports.handler=async(event,context)=>{
            const {data,error}=await supabase
            .from('admin_count')
            .select('count')
-           .eq(date,formattedDate)
+           .eq('date',formattedDate)
            if(error){
             return {
-                statusCode:200,
+                statusCode:500,
                 body:JSON.stringify('error occured',error)
             }
            }else{
