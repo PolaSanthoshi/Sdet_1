@@ -73,7 +73,19 @@ input::-webkit-inner-spin-button {
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
 }
+.sideNavAnimationOpen{
+    animation-name: sideNavAnimation;
+    animation-duration: 0.5s;
 
+}
+
+@keyframes sideNavAnimation{
+    0%{
+        transform: translateX(-100%);
+    }100%{
+        transform: translateX(0%);
+    }
+}
 @keyframes sloganAnimate{
     0%{
         top:50px;
