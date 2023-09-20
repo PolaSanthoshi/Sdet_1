@@ -21,7 +21,9 @@ export default function Billing( props:{data:any}){
       <div className="md:hidden " onClick={HamBurgerClick}>
          {showSideNav?<div className=" w-5 h-5 flex justify-center items-center font-bold"> x </div>:<FaBars/>}
       </div>
+      <Link href='/home'>
       <button className='text-black font-bold text-sm  md:text-base active:text-[#635e5e]'>Home</button>  
+      </Link>
       </div>
       <div className='flex items-center md:gap-4 gap-2'>
          <Link href='/admin'>

@@ -5,10 +5,15 @@ import Link from 'next/link';
 import AddMenuBox from './designComponents.tsx/addMenuBox';
 import LogoutButton from './designComponents.tsx/logOutButton';
 import { FaCheck } from 'react-icons/fa';
+import PopUp from './designComponents.tsx/popUp';
 export default function Admin(props:{data:string[],count:number,id:string,name:string,apiMenu:string[],adminCount:number}) {
+   const adminCount=props.adminCount;
+   const employeeCount=props.count;
+   const strAdminCount=adminCount.toString();
    const [inputActive,setInputActive]=useState(false)
-   const [adminInput,changeAdminInput]=useState(props.adminCount)
-   const [totalCount,changeTotalCount]=useState(props.adminCount+props.count)
+   const [adminInput,setAdminInput]=useState(strAdminCount)
+   const [totalCount,setTotalCount]=useState(adminCount+props.count)
+   const [showConfirmation,setShowConfimation]=useState(false)
    useEffect(()=>{axios.get('.netlify/functions/monthlyCount')
 .then(response=>{console.log(response.data);
    })},[])
@@ -16,23 +21,23 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       axios.post(`.netlify/functions/monthlyCount?count=${totalCount}`)
    },[totalCount])
    const router=useRouter();
-   const name=props.name;
-   // function handleLogout(){
-   //     axios.get('.netlify/functions/logout')
-   //    .then(list=>{console.log(list.data)
-   //    router.push('/')}) 
-   // }
   async function checkClick(){
      await axios.post(`.netlify/functions/adminCount?adminCount=${adminInput}`)
-     .then(()=>alert('Count has been changed successfully!'))
+     .then(()=>{
+      setTotalCount(parseInt(adminInput)+props.count)
+      setShowConfimation(true)
+   })
    }
    function adminInputChange(e:any){
-      changeAdminInput(parseInt(e.target.value))
+      const x=e.target.value;
+      const pattern=/^-?[0-9]*$/
+      pattern.test(x)?setAdminInput(x):'';
    }
    function homeClick(){
       router.push('/home')
    }
  return <div className='adminBg bg-cover min-h-screen w-full '>
+     {showConfirmation&& <PopUp message='Count is added successfully' changeView={()=>setShowConfimation(false)} />}
    <div className='flex bg-blue-400 justify-between p-3 '>
       <div className='flex md:gap-5 gap-2 justify-center items-center'>
       <div className='min-w-[100px] bg-black text-white rounded-r-lg p-2 -ml-3'>Hello, {props.name}</div>
@@ -58,7 +63,7 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
        <div className='flex w-[220px]  justify-center overflow-hidden rounded-md' >
        <div className='font-semibold bg-white p-2 rounded-l-md'>Admin :</div>
        <div className='flex  overflow-hidden' onMouseOver={()=>setInputActive(true) } onMouseOut={()=>setInputActive(false)}>
-       <input type='number' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
+       <input type='text' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
        <div className={ ` h-full  items-center text-xs px-2 cursor-pointer bg-white rounded-r-md   ${inputActive?'flex':'hidden'} active:text-gray-500`} onClick={checkClick}><FaCheck/></div>
        </div>  
        </div> 

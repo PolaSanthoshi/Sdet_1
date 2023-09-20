@@ -91,6 +91,18 @@ input::-webkit-inner-spin-button {
     animation-duration: 3s;
     animation-iteration-count: infinite;
 }
+.hoverInput{
+    width: 100px;
+    text-align: center;
+    outline: 2px solid black;
+    outline-offset: -4px;
+    transition: width 0.5s,text-align 0.5s;
+}
+.noHoverInput{
+    width: 30px;
+    transition: width 0.5s,text-align 0.5s;
+    
+}
 @keyframes submitPopUpAnimate {
     0%{
         width: 0px;
@@ -123,6 +135,7 @@ input::-webkit-inner-spin-button {
     animation-iteration-count: infinite;
     
 }
+
 .Border{
     border-color: black;
     border:solid;
