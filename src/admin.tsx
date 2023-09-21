@@ -46,10 +46,8 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
     <Link href='/admin/billing  '> 
     <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base active:bg-slate-400  active:text-white'>Billing</button>
     </Link>
-   
       {/* <div className={` bg-gray-300 p-2 rounded-md right-[120px] font-mono top-[70px] ${showMessage?'absolute':'hidden'}`}>Coming soon</div>  */}
       <div className='h-full  w-[2px] bg-black'></div>
-
       <LogoutButton class='bg-slate-300 active:bg-slate-400'/> 
     </div>
    </div>  
@@ -58,7 +56,7 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
     </div>
     <div className='flex justify-center gap-[20px] mt-5'>
        <div className='font-semibold  p-2 bg-white rounded-md pointer-events-none '>Employee :  {props.count}</div>
-       <div className='flex w-[220px]  justify-center overflow-hidden rounded-md bg-white' >
+       <div className='flex  justify-center overflow-hidden rounded-md bg-white' >
        <div className='font-semibold bg-white p-2 rounded-l-md'>Admin :</div>
        <div className='flex  overflow-hidden' onMouseOver={()=>setInputActive(true) } onMouseOut={()=>setInputActive(false)}>
        <input type='number' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
