@@ -30,13 +30,12 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
    }
    function adminInputChange(e:any){
       const x=e.target.value;
-      const pattern=/^-?[0-9]*$/
-      pattern.test(x)?setAdminInput(x):'';
+      (x>=0||x=='')&& setAdminInput(x)
    }
    function homeClick(){
       router.push('/home')
    }
- return <div className='adminBg bg-cover min-h-screen w-full '>
+ return <div className='adminBg  min-h-screen w-full '>
      {showConfirmation&& <PopUp message='Count is added successfully' changeView={()=>setShowConfimation(false)} />}
    <div className='flex bg-blue-400 justify-between p-3 '>
       <div className='flex md:gap-5 gap-2 justify-center items-center'>
@@ -44,7 +43,6 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       <button className='text-black font-bold text-sm  md:text-base active:text-[#635e5e]' onClick={homeClick}>Home</button>
       </div>
       <div className='flex items-center md:gap-4 gap-2'>
-     
     <Link href='/admin/billing  '> 
     <button className='font-bold bg-slate-300 p-2 rounded-md text-xs md:text-base active:bg-slate-400  active:text-white'>Billing</button>
     </Link>
@@ -55,15 +53,15 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       <LogoutButton class='bg-slate-300 active:bg-slate-400'/> 
     </div>
    </div>  
-    <div className='flex justify-center mt-10 m-auto'>
+    <div className='flex justify-center sm:mt-10 mt-6 m-auto mx-2'>
     <AddMenuBox menuData={props.data} apiMenu={props.apiMenu} />
     </div>
     <div className='flex justify-center gap-[20px] mt-5'>
        <div className='font-semibold  p-2 bg-white rounded-md pointer-events-none '>Employee :  {props.count}</div>
-       <div className='flex w-[220px]  justify-center overflow-hidden rounded-md' >
+       <div className='flex w-[220px]  justify-center overflow-hidden rounded-md bg-white' >
        <div className='font-semibold bg-white p-2 rounded-l-md'>Admin :</div>
        <div className='flex  overflow-hidden' onMouseOver={()=>setInputActive(true) } onMouseOut={()=>setInputActive(false)}>
-       <input type='text' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
+       <input type='number' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
        <div className={ ` h-full  items-center text-xs px-2 cursor-pointer bg-white rounded-r-md   ${inputActive?'flex':'hidden'} active:text-gray-500`} onClick={checkClick}><FaCheck/></div>
        </div>  
        </div> 

@@ -45,7 +45,7 @@ export default function AddMenuBox(props: { menuData: string[]|string ,apiMenu:s
   }
  
   return (
-    <div className="w-full px-10 mx-10  max-w-[500px] h-[420px] bg-blue-300 rounded-lg pt-5 justify-center items-center">
+    <div className="w-full px-10  max-w-[500px] h-[340px] bg-blue-300 rounded-lg pt-2 justify-center items-center">
       {/* <div className='ml-4 cursor-pointer' onClick={arrowLeftClick}><FaArrowLeft/></div> */}
       <div className="m-5 flex w-full justify-center items-center ">
         <input
@@ -67,7 +67,7 @@ export default function AddMenuBox(props: { menuData: string[]|string ,apiMenu:s
         </div>
       </div>
      { isSearchToBeShown&&<div className=' left-0 right-0 top- m-auto absolute'> <SearchMenu apiMenu={props.apiMenu} itemtoSearch={itemEnteredInSearchBar} setSelectedItem={(elem)=>{setItemEnteredInSearchBar(elem);setIsSearchBarToBeShown(false)}}/></div>}
-      <div className="w-full bg-white m-auto h-[250px] overflow-y-scroll scrollbar px-5">
+      <div className="w-full bg-white m-auto h-[200px] overflow-y-scroll scrollbar px-5">
         {listOfItems.length !== 0 &&
           listOfItems.map((each: string, index: number) => each!='empty' && <div
               key={index}
@@ -87,7 +87,7 @@ export default function AddMenuBox(props: { menuData: string[]|string ,apiMenu:s
       </div>
       <div className="w-full flex justify-center">
         <button
-          className="mt-5 font-bold p-1 rounded-lg border-solid border-black border-2 hover:border-slate-700 hover:text-slate-500"
+          className="mt-3 font-bold p-[2px] text-sm rounded-lg border-solid border-black border-2 hover:border-slate-700 hover:text-slate-500"
           onClick={submitClick}
         >
           Save & Submit
