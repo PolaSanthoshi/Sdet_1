@@ -11,6 +11,7 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
    const employeeCount=props.count;
    const strAdminCount=adminCount.toString();
    const [inputActive,setInputActive]=useState(false)
+   const [message,setMessage]=useState('')
    const [adminInput,setAdminInput]=useState(strAdminCount)
    const [totalCount,setTotalCount]=useState(adminCount+props.count)
    const [showConfirmation,setShowConfimation]=useState(false)
@@ -22,12 +23,21 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
    },[totalCount])
    const router=useRouter();
   async function checkClick(){
+    if(adminInput!==''){
      await axios.post(`.netlify/functions/adminCount?adminCount=${adminInput}`)
      .then(()=>{
       setTotalCount(parseInt(adminInput)+props.count)
+      setMessage('Count is added successfully' )
       setShowConfimation(true)
+      setInputActive(false)
+
    })
+   }else{
+      setMessage('Enter value in admin count')
+      setShowConfimation(true)
+      
    }
+}
    function adminInputChange(e:any){
       const x=e.target.value;
       (x>=0||x=='')&& setAdminInput(x)
@@ -36,7 +46,7 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
       router.push('/home')
    }
  return <div className='adminBg  min-h-screen w-full '>
-     {showConfirmation&& <PopUp message='Count is added successfully' changeView={()=>setShowConfimation(false)} />}
+     {showConfirmation&& <PopUp message={message} changeView={()=>setShowConfimation(false)} />}
    <div className='flex bg-blue-400 justify-between p-3 '>
       <div className='flex md:gap-5 gap-2 justify-center items-center'>
       <div className='min-w-[100px] bg-black text-white rounded-r-lg p-2 -ml-3'>Hello, {props.name}</div>
@@ -58,9 +68,11 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
        <div className='font-semibold  p-2 bg-white rounded-md pointer-events-none '>Employee :  {props.count}</div>
        <div className='flex  justify-center overflow-hidden rounded-md bg-white' >
        <div className='font-semibold bg-white p-2 rounded-l-md'>Admin :</div>
-       <div className='flex  overflow-hidden' onMouseOver={()=>setInputActive(true) } onMouseOut={()=>setInputActive(false)}>
+       <div className='flex '>
        <input type='number' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
        <div className={ ` h-full  items-center text-xs px-2 cursor-pointer bg-white rounded-r-md   ${inputActive?'flex':'hidden'} active:text-gray-500`} onClick={checkClick}><FaCheck/></div>
+       <button className='text-white text-xs mx-2 active:text-blue-300 ' onClick={()=>setInputActive(true)}>Edit</button>
+
        </div>  
        </div> 
       </div>
