@@ -24,18 +24,16 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
    const router=useRouter();
   async function checkClick(){
     if(adminInput!==''){
+      setInputActive(false)
      await axios.post(`.netlify/functions/adminCount?adminCount=${adminInput}`)
      .then(()=>{
       setTotalCount(parseInt(adminInput)+props.count)
       setMessage('Count is added successfully' )
       setShowConfimation(true)
-      setInputActive(false)
-
    })
    }else{
       setMessage('Enter value in admin count')
-      setShowConfimation(true)
-      
+      setShowConfimation(true) 
    }
 }
    function adminInputChange(e:any){
@@ -66,10 +64,10 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
     </div>
     <div className='flex justify-center gap-[20px] mt-5'>
        <div className='font-semibold  p-2 bg-white rounded-md pointer-events-none '>Employee :  {props.count}</div>
-       <div className='flex  justify-center overflow-hidden rounded-md bg-white' >
+       <div className='flex  justify-center overflow-hidden rounded-md' >
        <div className='font-semibold bg-white p-2 rounded-l-md'>Admin :</div>
        <div className='flex '>
-       <input type='number' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
+       <input type='number' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput pointer-events-none'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
        <div className={ ` h-full  items-center text-xs px-2 cursor-pointer bg-white rounded-r-md   ${inputActive?'flex':'hidden'} active:text-gray-500`} onClick={checkClick}><FaCheck/></div>
        <button className='text-white text-xs mx-2 active:text-blue-300 ' onClick={()=>setInputActive(true)}>Edit</button>
 
