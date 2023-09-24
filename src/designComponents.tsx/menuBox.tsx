@@ -14,7 +14,7 @@ export default function MenuBox(props: { menuItems: any; backgroundColor: string
       {props.menuItems!==''?props.menuItems.map((element:string,index:number)=><div key={index} className="flex gap-3 items-center   ml-[110px] break-all ">
        <div className="text-[10px]"><FaArrowRight/></div>
         {element[0].toUpperCase()+element.slice(1)}</div>
-     ):<div className='text-center mt-10 '>Menu is not updated yet.</div>}
+     ):<div className='text-center mt-[50px]'>Menu is not updated yet.</div>}
       </div>
    
     </div>

@@ -50,7 +50,7 @@ export default function Login() {
         router.push('/home') 
     }
       else{
-        if(key=='6789'){
+        if(key=='3659'){
           router.push('/admin')
         }else{
           setShowConfimation('Invalid Key')

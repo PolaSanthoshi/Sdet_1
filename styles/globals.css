@@ -108,13 +108,15 @@ input::-webkit-inner-spin-button {
     text-align: center;
     outline: 2px solid black;
     outline-offset: -4px;
-    transition: width 0.5s,text-align 0.5s;
+    border-radius: 0px ;
+    transition: width 0.5s,text-align 0.5s;    
 }
 .noHoverInput{
     width: 32px;
     transition: width 0.5s,text-align 0.5s;
     outline-style: none;
     border-radius:0 6px 6px 0px !important;
+
 }
 @keyframes submitPopUpAnimate {
     0%{
@@ -169,4 +171,5 @@ ol{
 }
 input[type=number], input[type=button] {
     -webkit-appearance: none;
+
     }/* to remove default css to input bars in iphone*/

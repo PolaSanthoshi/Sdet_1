@@ -68,7 +68,7 @@ export default function Admin(props:{data:string[],count:number,id:string,name:s
        <div className='font-semibold bg-white p-2 rounded-l-md'>Admin :</div>
        <div className='flex '>
        <input type='number' className={`h-full w-7  font-semibold ${inputActive?'hoverInput':'noHoverInput pointer-events-none'} px-[2px] `} value={adminInput} onChange={adminInputChange}/>
-       <div className={ ` h-full  items-center text-xs px-2 cursor-pointer bg-white  ${inputActive?'flex':'hidden'} active:text-gray-500`} onClick={checkClick}><FaCheck/></div>
+       <div className={ ` h-full  items-center text-xs px-2 cursor-pointer rounded-r-md bg-white  ${inputActive?'flex':'hidden'} active:text-gray-500`} onClick={checkClick}><FaCheck/></div>
        <button className='text-white text-xs mx-2 active:text-blue-300 ' onClick={()=>setInputActive(true)}>Edit</button>
 
        </div>  
