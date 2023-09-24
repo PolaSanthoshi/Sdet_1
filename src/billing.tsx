@@ -21,7 +21,9 @@ export default function Billing( props:{data:any}){
       <div className="md:hidden " onClick={HamBurgerClick}>
          {showSideNav?<div className=" w-5 h-5 flex justify-center items-center font-bold"> x </div>:<FaBars/>}
       </div>
+      <Link href='/home'>
       <button className='text-black font-bold text-sm  md:text-base active:text-[#635e5e]'>Home</button>  
+      </Link>
       </div>
       <div className='flex items-center md:gap-4 gap-2'>
          <Link href='/admin'>
@@ -34,7 +36,7 @@ export default function Billing( props:{data:any}){
       
       <div className="flex  w-full">
       <div className={`w-[20%] md:block hidden`}><SideNav onMonthclick={(monthClicked:number)=>setMonthToDisplay(monthClicked)}/></div>
-      <div className={`w-[30%]  md:hidden block ${showSideNav?'sideNavAnimate':'hidden'} fixed md:relative `}><SideNav onMonthclick={(monthClicked:number)=>setMonthToDisplay(monthClicked)} changeSideNavVisibility={()=>setShowSideNav(!showSideNav)}/></div>
+      <div className={`w-[30%]  md:hidden block ${showSideNav?'sideNavAnimationOpen':'hidden'} fixed md:relative `}><SideNav onMonthclick={(monthClicked:number)=>setMonthToDisplay(monthClicked)} changeSideNavVisibility={()=>setShowSideNav(!showSideNav)}/></div>
      <div className="md:w-[80%] w-[100%] "> <Table monthDataToDisplayInTable={monthDataToDisplay} everyMonthData={data}/></div> 
       </div>
  </div>

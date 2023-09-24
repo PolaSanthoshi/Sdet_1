@@ -73,7 +73,19 @@ input::-webkit-inner-spin-button {
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
 }
+.sideNavAnimationOpen{
+    animation-name: sideNavAnimation;
+    animation-duration: 0.5s;
 
+}
+
+@keyframes sideNavAnimation{
+    0%{
+        transform: translateX(-100%);
+    }100%{
+        transform: translateX(0%);
+    }
+}
 @keyframes sloganAnimate{
     0%{
         top:50px;
@@ -90,6 +102,21 @@ input::-webkit-inner-spin-button {
     animation-name: sloganAnimate;
     animation-duration: 3s;
     animation-iteration-count: infinite;
+}
+.hoverInput{
+    width: 100px;
+    text-align: center;
+    outline: 2px solid black;
+    outline-offset: -4px;
+    border-radius: 0px ;
+    transition: width 0.5s,text-align 0.5s;    
+}
+.noHoverInput{
+    width: 32px;
+    transition: width 0.5s,text-align 0.5s;
+    outline-style: none;
+    border-radius:0 6px 6px 0px !important;
+
 }
 @keyframes submitPopUpAnimate {
     0%{
@@ -123,6 +150,7 @@ input::-webkit-inner-spin-button {
     animation-iteration-count: infinite;
     
 }
+
 .Border{
     border-color: black;
     border:solid;
@@ -141,3 +169,7 @@ ul{
 ol{
     list-style-type: decimal;
 }
+input[type=number], input[type=button] {
+    -webkit-appearance: none;
+
+    }/* to remove default css to input bars in iphone*/
