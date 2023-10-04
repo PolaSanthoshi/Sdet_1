@@ -6,7 +6,7 @@
     </div>
  }
 export async function getServerSideProps(){
-    const response=await fetch(`https://lunch--sdetflavours.netlify.app/.netlify/functions/monthlyCount`);
+    const response=await fetch(`https://sdetlunch.netlify.app/.netlify/functions/monthlyCount`);
     const monthData=await response.json();
     return {
       props:{

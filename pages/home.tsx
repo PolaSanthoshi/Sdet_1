@@ -17,10 +17,10 @@ export async function getServerSideProps(context:any){
      if(token){
           const decodedPayLoad=jwt.decode(token);
           const {isLoggedIn,id,name,role}=decodedPayLoad;
-          const data=await fetch('https://lunch--sdetflavours.netlify.app/.netlify/functions/menu');
+          const data=await fetch('https://sdetlunch.netlify.app/.netlify/functions/menu');
           const menuData= await data.json();
           // const menuVal=menuData[0].menu.length>0?menuData[0].menu.split(','):'';
-          const response=await fetch(`https://lunch--sdetflavours.netlify.app/.netlify/functions/confirmation?id=${id}`);
+          const response=await fetch(`https://sdetlunch.netlify.app/.netlify/functions/confirmation?id=${id}`);
           const userData=await response.json();
           const userVal=userData.length>0?userData[0].response:'';
           if(isLoggedIn){
